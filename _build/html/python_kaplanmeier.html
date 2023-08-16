@@ -1,0 +1,773 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TCGAのデータを使ってKaplanMeier生存曲線を作る &#8212; bioinformatics入門</title>
+    
+  <link rel="stylesheet" href="_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="共通のx軸に二つのプロットを表示する" href="python_plot_mergeplots.html" />
+    <link rel="prev" title="散布図の作成" href="python_plot_scatter.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">bioinformatics入門</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   bioinformaticsのためのpython入門
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_hensuu.html">
+   変数
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_mojiretsu.html">
+   文字列
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_list.html">
+   リスト
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_repeat.html">
+   繰り返し
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_if.html">
+   if文 wihle文
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_dictionary.html">
+   辞書
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_list_comprehension.html">
+   リスト内包表記
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_sort.html">
+   ソート
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_fileopen.html">
+   テキストファイルを開く・ファイルに出力する
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_pandas_dataframe.html">
+   pandasデータフレームの扱い方
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_plot_scatter.html">
+   散布図の作成
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   TCGAのデータを使ってKaplanMeier生存曲線を作る
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_plot_mergeplots.html">
+   共通のx軸に二つのプロットを表示する
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_plot_cumulativebar.html">
+   積み上げ棒グラフを作成する
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_functionlist.html">
+   関数一覧
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/python_kaplanmeier.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_kaplanmeier.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/python_kaplanmeier.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="tcgakaplanmeier">
+<h1>TCGAのデータを使ってKaplanMeier生存曲線を作る<a class="headerlink" href="#tcgakaplanmeier" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p><code class="docutils literal notranslate"><span class="pre">lifelines</span></code>モジュールを使いますので、インストールします。<br />
+公式ドキュメントの使い方の説明がとてもわかりやすいです。<br />
+https://lifelines.readthedocs.io/en/latest/index.html</p>
+<p>TCGAから臨床データを取得します。<br />
+今回は肺がんデータを使います。</p>
+<p>TCGA<br />
+https://portal.gdc.cancer.gov/</p>
+<p>Repositoryから<br />
+Cases<br />
+ Program: TCGA<br />
+ Project: TCGA-LUSC<br />
+Files<br />
+ Experimental Strategy: WXS<br />
+ Access: Open<br />
+にチェックをいれ、Add All Files to CartをクリックしてからCartに移動します。</p>
+<p>Clinicalのボタンをクリックし、ファイルをダウンロードします。<br />
+解凍(tar -xvzf ファイル名)して得られたclinical.tsvファイルを使用します。</p>
+<p>データフレームを駆使して必要な情報を取得してもよいですが、<br />
+必要なデータだけピックアップした新しいファイルを作ったほうがわかりやすいので、<br />
+ここでは以下のようにして新しいファイルを作成します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;clinical.tsv&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">header</span><span class="p">,</span> <span class="o">*</span><span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cols</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Alive&#39;</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">cols</span><span class="p">[</span><span class="mi">47</span><span class="p">]):</span> <span class="c1">#cols[47] days_to_last_follow_up</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">47</span><span class="p">])</span> <span class="o">//</span> <span class="mi">30</span><span class="si">}</span><span class="se">\t</span><span class="s1">0&#39;</span><span class="p">)</span> 
+        <span class="k">elif</span> <span class="n">cols</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Dead&#39;</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">cols</span><span class="p">[</span><span class="mi">9</span><span class="p">]):</span> <span class="c1">#cols[9] days_to_death</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span> <span class="o">//</span> <span class="mi">30</span><span class="si">}</span><span class="se">\t</span><span class="s1">1&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="c1">#欠損値があれば出力する</span>
+    
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;clinical_edited.tsv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68107725-a883-4b33-a366-d9b4adb18028	TCGA-63-5131	TCGA-LUSC	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	male	&#39;--	&#39;--	not reported	Dead	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	M0	N1	Stage IIB	T2	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.9	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Lung, NOS	&#39;--	&#39;--	No	Lung, NOS	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage iib	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2008	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Radiation Therapy, NOS
+
+68107725-a883-4b33-a366-d9b4adb18028	TCGA-63-5131	TCGA-LUSC	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	male	&#39;--	&#39;--	not reported	Dead	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	M0	N1	Stage IIB	T2	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.9	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Lung, NOS	&#39;--	&#39;--	No	Lung, NOS	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage iib	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2008	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Pharmaceutical Therapy, NOS
+
+d566fa32-382b-499c-820a-c2bbb22501fb	TCGA-56-6546	TCGA-LUSC	67	&#39;--	&#39;--	&#39;--	&#39;--	-24594	&#39;--	not hispanic or latino	male	&#39;--	&#39;--	white	Dead	&#39;--	1944	&#39;--	24594	&#39;--	&#39;--	&#39;--	&#39;--	MX	N0	Stage IIA	T2b	7th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	0	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.1	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Upper lobe, lung	&#39;--	&#39;--	No	Upper lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage iia	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2011	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Pharmaceutical Therapy, NOS
+
+d566fa32-382b-499c-820a-c2bbb22501fb	TCGA-56-6546	TCGA-LUSC	67	&#39;--	&#39;--	&#39;--	&#39;--	-24594	&#39;--	not hispanic or latino	male	&#39;--	&#39;--	white	Dead	&#39;--	1944	&#39;--	24594	&#39;--	&#39;--	&#39;--	&#39;--	MX	N0	Stage IIA	T2b	7th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	0	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.1	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Upper lobe, lung	&#39;--	&#39;--	No	Upper lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage iia	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2011	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Radiation Therapy, NOS
+
+3f1b4356-0b53-48cd-8938-96fc786c9b63	TCGA-79-5596	TCGA-LUSC	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	male	&#39;--	&#39;--	not reported	Alive	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	M0	N1	Stage IIIA	T3	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.1	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Upper lobe, lung	&#39;--	&#39;--	No	Upper lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage iiia	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2006	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Radiation Therapy, NOS
+
+3f1b4356-0b53-48cd-8938-96fc786c9b63	TCGA-79-5596	TCGA-LUSC	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	male	&#39;--	&#39;--	not reported	Alive	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	M0	N1	Stage IIIA	T3	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.1	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Upper lobe, lung	&#39;--	&#39;--	No	Upper lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage iiia	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2006	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Pharmaceutical Therapy, NOS
+
+7625a27d-a012-4f4d-b637-5f85d7cdae8c	TCGA-63-A5MU	TCGA-LUSC	48	&#39;--	&#39;--	&#39;--	&#39;--	-17801	&#39;--	not reported	male	&#39;--	&#39;--	not reported	Dead	&#39;--	&#39;--	&#39;--	17801	&#39;--	&#39;--	&#39;--	&#39;--	M0	N1	Stage IIB	T2b	7th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Lower lobe, lung	&#39;--	&#39;--	No	Lower lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage iib	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	yes	&#39;--	Pharmaceutical Therapy, NOS
+
+7625a27d-a012-4f4d-b637-5f85d7cdae8c	TCGA-63-A5MU	TCGA-LUSC	48	&#39;--	&#39;--	&#39;--	&#39;--	-17801	&#39;--	not reported	male	&#39;--	&#39;--	not reported	Dead	&#39;--	&#39;--	&#39;--	17801	&#39;--	&#39;--	&#39;--	&#39;--	M0	N1	Stage IIB	T2b	7th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Lower lobe, lung	&#39;--	&#39;--	No	Lower lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage iib	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Radiation Therapy, NOS
+
+dce87821-a5cd-4415-ab0c-ac5ed2459929	TCGA-63-5128	TCGA-LUSC	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	male	&#39;--	&#39;--	not reported	Dead	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	M0	N0	Stage IB	T2	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.1	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Upper lobe, lung	&#39;--	&#39;--	No	Upper lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage ib	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2007	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Pharmaceutical Therapy, NOS
+
+dce87821-a5cd-4415-ab0c-ac5ed2459929	TCGA-63-5128	TCGA-LUSC	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	male	&#39;--	&#39;--	not reported	Dead	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	M0	N0	Stage IB	T2	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.1	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Upper lobe, lung	&#39;--	&#39;--	No	Upper lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage ib	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2007	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Radiation Therapy, NOS
+
+7639fddb-86b5-45a1-bac3-ff6a575e0cf5	TCGA-6A-AB49	TCGA-LUSC	73	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not hispanic or latino	female	&#39;--	&#39;--	black or african american	Dead	&#39;--	1936	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	MX	N0	Stage IB	T2	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	0	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Lower lobe, lung	&#39;--	&#39;--	No	Lower lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage ib	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2009	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Pharmaceutical Therapy, NOS
+
+7639fddb-86b5-45a1-bac3-ff6a575e0cf5	TCGA-6A-AB49	TCGA-LUSC	73	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not hispanic or latino	female	&#39;--	&#39;--	black or african american	Dead	&#39;--	1936	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	MX	N0	Stage IB	T2	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	0	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Lower lobe, lung	&#39;--	&#39;--	No	Lower lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage ib	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2009	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Radiation Therapy, NOS
+</pre></div>
+</div>
+</div>
+</div>
+<p>結構欠損値があるようです。<br />
+必要なデータだけ記載された<code class="docutils literal notranslate"><span class="pre">clinical_edited.tsv</span></code>ファイルが作成されました。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;clinical_edited.tsv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>T</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>112</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>27</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>90</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>19</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>120</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>486</th>
+      <td>22</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>487</th>
+      <td>18</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>488</th>
+      <td>34</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>489</th>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>490</th>
+      <td>45</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>491 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lifelines</span> <span class="kn">import</span> <span class="n">KaplanMeierFitter</span>
+<span class="n">kmf</span> <span class="o">=</span> <span class="n">KaplanMeierFitter</span><span class="p">()</span>
+<span class="n">kmf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">event_observed</span><span class="o">=</span><span class="n">E</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;lung&#39;</span><span class="p">)</span>
+<span class="n">kmf</span><span class="o">.</span><span class="n">survival_function_</span>
+<span class="n">kmf</span><span class="o">.</span><span class="n">plot_survival_function</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;timeline&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/python_kaplanmeier_6_1.png" src="_images/python_kaplanmeier_6_1.png" />
+</div>
+</div>
+<p>stageI, IIとstage III, IVで分けて曲線を書いてみます。<br />
+先ほどと同じように、必要なデータだけピックアップしたファイルを作成します。</p>
+<blockquote>
+<div><p>caseによってAJCCのeditionが異なるので、実際に使う際は注意してください。</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;clinical.tsv&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">header</span><span class="p">,</span> <span class="o">*</span><span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cols</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Alive&#39;</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">cols</span><span class="p">[</span><span class="mi">47</span><span class="p">]):</span> <span class="c1">#cols[47] days_to_last_follow_up</span>
+            <span class="k">if</span> <span class="n">match</span> <span class="o">:=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;Stage (\w+)&#39;</span><span class="p">,</span> <span class="n">cols</span><span class="p">[</span><span class="mi">26</span><span class="p">]):</span> <span class="c1">#ウォルラス演算子 python3.8以降</span>
+                <span class="n">stage</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">stage</span> <span class="o">==</span> <span class="s1">&#39;I&#39;</span> <span class="ow">or</span> <span class="n">stage</span> <span class="o">==</span> <span class="s1">&#39;IA&#39;</span> <span class="ow">or</span> <span class="n">stage</span> <span class="o">==</span> <span class="s1">&#39;IB&#39;</span> <span class="ow">or</span> <span class="n">stage</span> <span class="o">==</span> <span class="s1">&#39;II&#39;</span> <span class="ow">or</span> <span class="n">stage</span> <span class="o">==</span> <span class="s1">&#39;IIA&#39;</span> <span class="ow">or</span> <span class="n">stage</span> <span class="o">==</span> <span class="s1">&#39;IIB&#39;</span><span class="p">:</span>
+                    <span class="n">data</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">47</span><span class="p">])</span> <span class="o">//</span> <span class="mi">30</span><span class="si">}</span><span class="se">\t</span><span class="s1">0</span><span class="se">\t</span><span class="s1">stageI-II&#39;</span><span class="p">)</span> 
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">data</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">47</span><span class="p">])</span> <span class="o">//</span> <span class="mi">30</span><span class="si">}</span><span class="se">\t</span><span class="s1">0</span><span class="se">\t</span><span class="s1">stageIII-IV&#39;</span><span class="p">)</span> 
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="c1">#欠損値を出力</span>
+                
+        <span class="k">elif</span> <span class="n">cols</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Dead&#39;</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">cols</span><span class="p">[</span><span class="mi">9</span><span class="p">]):</span> <span class="c1">#cols[9] days_to_death</span>
+            <span class="k">if</span> <span class="n">match</span> <span class="o">:=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;Stage (\w+)&#39;</span><span class="p">,</span> <span class="n">cols</span><span class="p">[</span><span class="mi">26</span><span class="p">]):</span>
+                <span class="n">stage</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">stage</span> <span class="o">==</span> <span class="s1">&#39;I&#39;</span> <span class="ow">or</span> <span class="n">stage</span> <span class="o">==</span> <span class="s1">&#39;IA&#39;</span> <span class="ow">or</span> <span class="n">stage</span> <span class="o">==</span> <span class="s1">&#39;IB&#39;</span> <span class="ow">or</span> <span class="n">stage</span> <span class="o">==</span> <span class="s1">&#39;II&#39;</span> <span class="ow">or</span> <span class="n">stage</span> <span class="o">==</span> <span class="s1">&#39;IIA&#39;</span> <span class="ow">or</span> <span class="n">stage</span> <span class="o">==</span> <span class="s1">&#39;IIB&#39;</span><span class="p">:</span>
+                    <span class="n">data</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span> <span class="o">//</span> <span class="mi">30</span><span class="si">}</span><span class="se">\t</span><span class="s1">1</span><span class="se">\t</span><span class="s1">stageI-II&#39;</span><span class="p">)</span> 
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">data</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span> <span class="o">//</span> <span class="mi">30</span><span class="si">}</span><span class="se">\t</span><span class="s1">1</span><span class="se">\t</span><span class="s1">stageIII-IV&#39;</span><span class="p">)</span> 
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="c1">#欠損値を出力</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="c1">#欠損値を出力</span>
+    
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;clinical_group.tsv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68107725-a883-4b33-a366-d9b4adb18028	TCGA-63-5131	TCGA-LUSC	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	male	&#39;--	&#39;--	not reported	Dead	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	M0	N1	Stage IIB	T2	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.9	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Lung, NOS	&#39;--	&#39;--	No	Lung, NOS	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage iib	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2008	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Radiation Therapy, NOS
+
+68107725-a883-4b33-a366-d9b4adb18028	TCGA-63-5131	TCGA-LUSC	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	male	&#39;--	&#39;--	not reported	Dead	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	M0	N1	Stage IIB	T2	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.9	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Lung, NOS	&#39;--	&#39;--	No	Lung, NOS	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage iib	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2008	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Pharmaceutical Therapy, NOS
+
+d566fa32-382b-499c-820a-c2bbb22501fb	TCGA-56-6546	TCGA-LUSC	67	&#39;--	&#39;--	&#39;--	&#39;--	-24594	&#39;--	not hispanic or latino	male	&#39;--	&#39;--	white	Dead	&#39;--	1944	&#39;--	24594	&#39;--	&#39;--	&#39;--	&#39;--	MX	N0	Stage IIA	T2b	7th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	0	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.1	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Upper lobe, lung	&#39;--	&#39;--	No	Upper lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage iia	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2011	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Pharmaceutical Therapy, NOS
+
+d566fa32-382b-499c-820a-c2bbb22501fb	TCGA-56-6546	TCGA-LUSC	67	&#39;--	&#39;--	&#39;--	&#39;--	-24594	&#39;--	not hispanic or latino	male	&#39;--	&#39;--	white	Dead	&#39;--	1944	&#39;--	24594	&#39;--	&#39;--	&#39;--	&#39;--	MX	N0	Stage IIA	T2b	7th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	0	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.1	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Upper lobe, lung	&#39;--	&#39;--	No	Upper lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage iia	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2011	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Radiation Therapy, NOS
+
+3f1b4356-0b53-48cd-8938-96fc786c9b63	TCGA-79-5596	TCGA-LUSC	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	male	&#39;--	&#39;--	not reported	Alive	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	M0	N1	Stage IIIA	T3	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.1	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Upper lobe, lung	&#39;--	&#39;--	No	Upper lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage iiia	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2006	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Radiation Therapy, NOS
+
+3f1b4356-0b53-48cd-8938-96fc786c9b63	TCGA-79-5596	TCGA-LUSC	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	male	&#39;--	&#39;--	not reported	Alive	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	M0	N1	Stage IIIA	T3	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.1	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Upper lobe, lung	&#39;--	&#39;--	No	Upper lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage iiia	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2006	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Pharmaceutical Therapy, NOS
+
+7625a27d-a012-4f4d-b637-5f85d7cdae8c	TCGA-63-A5MU	TCGA-LUSC	48	&#39;--	&#39;--	&#39;--	&#39;--	-17801	&#39;--	not reported	male	&#39;--	&#39;--	not reported	Dead	&#39;--	&#39;--	&#39;--	17801	&#39;--	&#39;--	&#39;--	&#39;--	M0	N1	Stage IIB	T2b	7th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Lower lobe, lung	&#39;--	&#39;--	No	Lower lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage iib	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	yes	&#39;--	Pharmaceutical Therapy, NOS
+
+7625a27d-a012-4f4d-b637-5f85d7cdae8c	TCGA-63-A5MU	TCGA-LUSC	48	&#39;--	&#39;--	&#39;--	&#39;--	-17801	&#39;--	not reported	male	&#39;--	&#39;--	not reported	Dead	&#39;--	&#39;--	&#39;--	17801	&#39;--	&#39;--	&#39;--	&#39;--	M0	N1	Stage IIB	T2b	7th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Lower lobe, lung	&#39;--	&#39;--	No	Lower lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage iib	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Radiation Therapy, NOS
+
+d38dbe20-bd5a-45d5-8db3-d5f777b454b6	TCGA-46-3769	TCGA-LUSC	57	&#39;--	&#39;--	&#39;--	&#39;--	-20941	&#39;--	not hispanic or latino	male	&#39;--	&#39;--	white	Alive	&#39;--	1952	&#39;--	20941	&#39;--	&#39;--	&#39;--	&#39;--	M0	N0	&#39;--	T4	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	0	135	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.1	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Upper lobe, lung	&#39;--	&#39;--	No	Upper lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2009	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	yes	&#39;--	Pharmaceutical Therapy, NOS
+
+d38dbe20-bd5a-45d5-8db3-d5f777b454b6	TCGA-46-3769	TCGA-LUSC	57	&#39;--	&#39;--	&#39;--	&#39;--	-20941	&#39;--	not hispanic or latino	male	&#39;--	&#39;--	white	Alive	&#39;--	1952	&#39;--	20941	&#39;--	&#39;--	&#39;--	&#39;--	M0	N0	&#39;--	T4	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	0	135	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.1	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Upper lobe, lung	&#39;--	&#39;--	No	Upper lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2009	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	yes	&#39;--	Radiation Therapy, NOS
+
+dce87821-a5cd-4415-ab0c-ac5ed2459929	TCGA-63-5128	TCGA-LUSC	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	male	&#39;--	&#39;--	not reported	Dead	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	M0	N0	Stage IB	T2	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.1	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Upper lobe, lung	&#39;--	&#39;--	No	Upper lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage ib	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2007	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Pharmaceutical Therapy, NOS
+
+dce87821-a5cd-4415-ab0c-ac5ed2459929	TCGA-63-5128	TCGA-LUSC	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	male	&#39;--	&#39;--	not reported	Dead	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	M0	N0	Stage IB	T2	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.1	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Upper lobe, lung	&#39;--	&#39;--	No	Upper lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage ib	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2007	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Radiation Therapy, NOS
+
+eea9575a-c842-4a95-9e47-3a3b12533f25	TCGA-22-5473	TCGA-LUSC	78	&#39;--	&#39;--	&#39;--	&#39;--	-28826	1933	not hispanic or latino	male	&#39;--	&#39;--	white	Dead	&#39;--	1927	2010	28826	&#39;--	&#39;--	&#39;--	&#39;--	M0	N0	&#39;--	T3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	0	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Lower lobe, lung	&#39;--	&#39;--	No	Lower lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2005	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Radiation Therapy, NOS
+
+eea9575a-c842-4a95-9e47-3a3b12533f25	TCGA-22-5473	TCGA-LUSC	78	&#39;--	&#39;--	&#39;--	&#39;--	-28826	1933	not hispanic or latino	male	&#39;--	&#39;--	white	Dead	&#39;--	1927	2010	28826	&#39;--	&#39;--	&#39;--	&#39;--	M0	N0	&#39;--	T3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	0	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Lower lobe, lung	&#39;--	&#39;--	No	Lower lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2005	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	yes	&#39;--	Pharmaceutical Therapy, NOS
+
+81b7cbc1-c037-426f-95b0-d729a30697da	TCGA-52-7812	TCGA-LUSC	68	&#39;--	&#39;--	&#39;--	&#39;--	-24887	835	hispanic or latino	male	&#39;--	&#39;--	white	Dead	&#39;--	1941	2011	24887	&#39;--	&#39;--	&#39;--	&#39;--	M0	N2	&#39;--	T2	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	0	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.9	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Lung, NOS	&#39;--	&#39;--	No	Lung, NOS	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2009	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	yes	&#39;--	Pharmaceutical Therapy, NOS
+
+81b7cbc1-c037-426f-95b0-d729a30697da	TCGA-52-7812	TCGA-LUSC	68	&#39;--	&#39;--	&#39;--	&#39;--	-24887	835	hispanic or latino	male	&#39;--	&#39;--	white	Dead	&#39;--	1941	2011	24887	&#39;--	&#39;--	&#39;--	&#39;--	M0	N2	&#39;--	T2	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	0	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.9	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Lung, NOS	&#39;--	&#39;--	No	Lung, NOS	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2009	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	yes	&#39;--	Radiation Therapy, NOS
+
+7639fddb-86b5-45a1-bac3-ff6a575e0cf5	TCGA-6A-AB49	TCGA-LUSC	73	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not hispanic or latino	female	&#39;--	&#39;--	black or african american	Dead	&#39;--	1936	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	MX	N0	Stage IB	T2	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	0	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Lower lobe, lung	&#39;--	&#39;--	No	Lower lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage ib	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2009	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Pharmaceutical Therapy, NOS
+
+7639fddb-86b5-45a1-bac3-ff6a575e0cf5	TCGA-6A-AB49	TCGA-LUSC	73	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not hispanic or latino	female	&#39;--	&#39;--	black or african american	Dead	&#39;--	1936	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	MX	N0	Stage IB	T2	6th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	0	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Lower lobe, lung	&#39;--	&#39;--	No	Lower lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	stage ib	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2009	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Radiation Therapy, NOS
+
+dc6ceece-efaa-4b9d-9e12-d35863d7a902	TCGA-92-8064	TCGA-LUSC	58	&#39;--	&#39;--	&#39;--	&#39;--	-21417	&#39;--	not hispanic or latino	male	&#39;--	&#39;--	white	Alive	&#39;--	1953	&#39;--	21417	&#39;--	&#39;--	&#39;--	&#39;--	MX	N0	&#39;--	T2b	7th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	0	160	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.1	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Upper lobe, lung	&#39;--	&#39;--	No	Upper lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2011	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	no	&#39;--	Radiation Therapy, NOS
+
+dc6ceece-efaa-4b9d-9e12-d35863d7a902	TCGA-92-8064	TCGA-LUSC	58	&#39;--	&#39;--	&#39;--	&#39;--	-21417	&#39;--	not hispanic or latino	male	&#39;--	&#39;--	white	Alive	&#39;--	1953	&#39;--	21417	&#39;--	&#39;--	&#39;--	&#39;--	MX	N0	&#39;--	T2b	7th	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	0	160	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	C34.1	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	8070/3	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	Squamous cell carcinoma, NOS	&#39;--	no	No	not reported	&#39;--	&#39;--	&#39;--	Upper lobe, lung	&#39;--	&#39;--	No	Upper lobe, lung	&#39;--	&#39;--	&#39;--	&#39;--	not reported	&#39;--	&#39;--	not reported	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	2011	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	&#39;--	yes	&#39;--	Pharmaceutical Therapy, NOS
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">clinical_group.tsv</span></code>ファイルが作成されました。<br />
+KaplanMeier曲線を作成していきます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;clinical_group.tsv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>T</th>
+      <th>E</th>
+      <th>group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>112</td>
+      <td>0</td>
+      <td>stageI-II</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>27</td>
+      <td>1</td>
+      <td>stageI-II</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>90</td>
+      <td>0</td>
+      <td>stageI-II</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>19</td>
+      <td>0</td>
+      <td>stageI-II</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>120</td>
+      <td>1</td>
+      <td>stageI-II</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>482</th>
+      <td>22</td>
+      <td>1</td>
+      <td>stageI-II</td>
+    </tr>
+    <tr>
+      <th>483</th>
+      <td>18</td>
+      <td>0</td>
+      <td>stageI-II</td>
+    </tr>
+    <tr>
+      <th>484</th>
+      <td>34</td>
+      <td>0</td>
+      <td>stageI-II</td>
+    </tr>
+    <tr>
+      <th>485</th>
+      <td>5</td>
+      <td>1</td>
+      <td>stageI-II</td>
+    </tr>
+    <tr>
+      <th>486</th>
+      <td>45</td>
+      <td>0</td>
+      <td>stageI-II</td>
+    </tr>
+  </tbody>
+</table>
+<p>487 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T12</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;stageI-II&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">]</span>
+<span class="n">E12</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;stageI-II&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">]</span>
+
+<span class="n">T34</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;stageIII-IV&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">]</span>
+<span class="n">E34</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;stageIII-IV&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E12</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      0
+1      1
+2      0
+3      0
+4      1
+      ..
+482    1
+483    0
+484    0
+485    1
+486    0
+Name: E, Length: 397, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lifelines</span> <span class="kn">import</span> <span class="n">KaplanMeierFitter</span>
+<span class="n">kmf</span> <span class="o">=</span> <span class="n">KaplanMeierFitter</span><span class="p">()</span>
+
+<span class="n">kmf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">T12</span><span class="p">,</span> <span class="n">event_observed</span><span class="o">=</span><span class="n">E12</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;stageI-II&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">kmf</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">kmf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">T34</span><span class="p">,</span> <span class="n">event_observed</span><span class="o">=</span><span class="n">E34</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;stageIII-IV&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">kmf</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/python_kaplanmeier_14_0.png" src="_images/python_kaplanmeier_14_0.png" />
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="python_plot_scatter.html" title="previous page">散布図の作成</a>
+    <a class='right-next' id="next-link" href="python_plot_mergeplots.html" title="next page">共通のx軸に二つのプロットを表示する</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
+    
+  </body>
+</html>

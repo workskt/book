@@ -1,6 +1,22 @@
 - file: intro
-- file: content
   sections:
-    - file: markdown
-    - file: notebooks
-    - file: testpage
+    - file: python_practice_hensuu
+    - file: python_practice_mojiretsu
+    - file: python_practice_list
+    - file: python_practice_repeat
+    - file: python_practice_if
+    - file: python_practice_dictionary
+    - file: python_practice_list_comprehension
+    - file: python_practice_sort
+    - file: python_practice_fileopen
+    - file: python_pandas_dataframe
+    - file: python_plot_scatter
+    - file: python_kaplanmeier
+    - file: python_plot_mergeplots
+    - file: python_plot_cumulativebar
+    - file: python_practice_functionlist.ipynb
+#- file: content
+#  sections:
+#    - file: markdown
+#    - file: notebooks
+#    - file: testpage

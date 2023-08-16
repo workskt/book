@@ -1,7 +1,6 @@
-Welcome to your Jupyter Book
-============================
+# bioinformaticsのためのpython入門
 
-This is a small sample book to give you a feel for how book content is
-structured.
+バイオデータの処理に最低限必要なpythonの基礎
 
-Check out the content pages bundled with this sample book to get started.
+- データベースから取得した遺伝子情報や発現量データのテキスト処理がメインです（機械学習等はあまり取り扱いません）。
+- 実装がメインですので、各データや手法の理論は別途学習する必要があります。
