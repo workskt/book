@@ -1,0 +1,641 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>テキストファイルを開く・ファイルに出力する &#8212; bioinformatics入門</title>
+    
+  <link rel="stylesheet" href="_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pandasデータフレームの扱い方" href="python_pandas_dataframe.html" />
+    <link rel="prev" title="ソート" href="python_practice_sort.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">bioinformatics入門</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   bioinformaticsのためのpython入門
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_hensuu.html">
+   変数
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_mojiretsu.html">
+   文字列
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_list.html">
+   リスト
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_repeat.html">
+   繰り返し
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_if.html">
+   if文 wihle文
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_dictionary.html">
+   辞書
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_list_comprehension.html">
+   リスト内包表記
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_sort.html">
+   ソート
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   テキストファイルを開く・ファイルに出力する
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_pandas_dataframe.html">
+   pandasデータフレームの扱い方
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_plot_scatter.html">
+   散布図の作成
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_kaplanmeier.html">
+   TCGAのデータを使ってKaplanMeier生存曲線を作る
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_plot_mergeplots.html">
+   共通のx軸に二つのプロットを表示する
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_plot_cumulativebar.html">
+   積み上げ棒グラフを作成する
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_functionlist.html">
+   関数一覧
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/python_practice_fileopen.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_practice_fileopen.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/python_practice_fileopen.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>テキストファイルを開く・ファイルに出力する<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>テキストファイルを処理するために、まずはテキストファイルを開いてみます。</p>
+<p>今回はUCSCのサイトから、ヒトの転写産物情報が記載されているrefFlatファイルをダウンロードします。<br />
+https://genome.ucsc.edu/<br />
+Downloads -&gt; Genome Data -&gt; Human -&gt; Annotations -&gt; SQL table dump annotations -&gt; refFlat.txt.gzをダウンロード</p>
+<p>gzファイルを解凍します。</p>
+<blockquote>
+<div><p>ターミナルであれば $ gunzip refFlat.txt.gz<br />
+windownsの場合だと解凍用フリーウェアがあります。</p>
+</div></blockquote>
+<p>pythonでファイルを開くためには<code class="docutils literal notranslate"><span class="pre">open(</span> <span class="pre">)</span></code>と<code class="docutils literal notranslate"><span class="pre">with</span></code>を使います。</p>
+<br>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">読み込みファイルパス</span><span class="p">)</span> <span class="k">as</span> <span class="n">ファイルオブジェクト</span><span class="p">:</span>
+    <span class="n">処理</span>
+</pre></div>
+</div>
+<br>
+<p>ファイルオブジェクトはそのファイルの内容を呼び出すときに使う名前のようなものと考えてください。<br />
+with以降の行はインデントを入れることで、ファイルを開いた状態での処理となります。</p>
+<p>ファイルを開いたあとは、そのファイルの内容を取り出す必要があります。<br />
+内容を取り出すためには<code class="docutils literal notranslate"><span class="pre">readlines(</span> <span class="pre">)</span></code>メソッドを使います。<br />
+これは、ファイルの内容を一行ずつリスト形式にして取り出します。<br />
+ファイルオブジェクトと<code class="docutils literal notranslate"><span class="pre">readlines(</span> <span class="pre">)</span></code>を<code class="docutils literal notranslate"><span class="pre">.</span></code>で繋ぎます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;refFlat.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span> <span class="c1">#表示の都合上１０行だけ出力していますが、for line in lines:で全ての行を出力できます。</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ZNF639	NM_001375803	chr3	+	179323030	179338583	179328293	179334422	5	179323030,179328282,179329617,179332988,179333268,	179323291,179328351,179329728,179333123,179338583,
+
+WASH7P	NR_024540	chr1	-	14361	29370	29370	29370	11	14361,14969,15795,16606,16857,17232,17605,17914,18267,24737,29320,	14829,15038,15947,16765,17055,17368,17742,18061,18366,24891,29370,
+
+MIR6859-1	NR_106918	chr1	-	17368	17436	17436	17436	1	17368,	17436,
+
+MIR6859-2	NR_107062	chr1	-	17368	17436	17436	17436	1	17368,	17436,
+
+MIR6859-3	NR_107063	chr1	-	17368	17436	17436	17436	1	17368,	17436,
+
+MIR6859-4	NR_128720	chr1	-	17368	17436	17436	17436	1	17368,	17436,
+
+MIR1302-2	NR_036051	chr1	+	30365	30503	30503	30503	1	30365,	30503,
+
+MIR1302-9	NR_036266	chr1	+	30365	30503	30503	30503	1	30365,	30503,
+
+MIR1302-10	NR_036267	chr1	+	30365	30503	30503	30503	1	30365,	30503,
+
+MIR1302-11	NR_036268	chr1	+	30365	30503	30503	30503	1	30365,	30503,
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">readlines(</span> <span class="pre">)</span></code>でファイルの内容を一行ずつ分けて<code class="docutils literal notranslate"><span class="pre">lines</span></code>というリストに格納しました。<br />
+その後、<strong>for文</strong>を使ってリストの要素を一つずつ、つまりファイル内容を一行ずつ表示させています。</p>
+<p><code class="docutils literal notranslate"><span class="pre">readlines(</span> <span class="pre">)</span></code>はファイルの内容を全て読み込みます。<br />
+バイオデータ解析では、次世代シーケンサーの配列データ（Fastq、SAM等）のように容量の大きなものを扱うことがあります。<br />
+メモリに負荷をかけないようにするため、一行だけ取り出して処理を行う、というのを繰り返した方がよい場合があります。<br />
+その場合は<code class="docutils literal notranslate"><span class="pre">in</span></code>の後ろに直接ファイルオブジェクトをもってきます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;refFlat.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">line_num</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#表示の都合上１０行だけ出力していますが、コメントをつけている行（コメントアウト）を除けば全て表示できます。</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        
+        <span class="n">line_num</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1">#全て出力する場合不要</span>
+        <span class="k">if</span> <span class="n">line_num</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span> <span class="c1">#全て出力する場合不要</span>
+            <span class="k">break</span> <span class="c1">#全て出力する場合不要</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ZNF639	NM_001375803	chr3	+	179323030	179338583	179328293	179334422	5	179323030,179328282,179329617,179332988,179333268,	179323291,179328351,179329728,179333123,179338583,
+
+WASH7P	NR_024540	chr1	-	14361	29370	29370	29370	11	14361,14969,15795,16606,16857,17232,17605,17914,18267,24737,29320,	14829,15038,15947,16765,17055,17368,17742,18061,18366,24891,29370,
+
+MIR6859-1	NR_106918	chr1	-	17368	17436	17436	17436	1	17368,	17436,
+
+MIR6859-2	NR_107062	chr1	-	17368	17436	17436	17436	1	17368,	17436,
+
+MIR6859-3	NR_107063	chr1	-	17368	17436	17436	17436	1	17368,	17436,
+
+MIR6859-4	NR_128720	chr1	-	17368	17436	17436	17436	1	17368,	17436,
+
+MIR1302-2	NR_036051	chr1	+	30365	30503	30503	30503	1	30365,	30503,
+
+MIR1302-9	NR_036266	chr1	+	30365	30503	30503	30503	1	30365,	30503,
+
+MIR1302-10	NR_036267	chr1	+	30365	30503	30503	30503	1	30365,	30503,
+
+MIR1302-11	NR_036268	chr1	+	30365	30503	30503	30503	1	30365,	30503,
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">__sizeof__()</span></code>を使うと使用メモリを確認できます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;refFlat.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">lines</span><span class="o">.</span><span class="n">__sizeof__</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>782016
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;refFlat.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">line_num</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#表示の都合上１０行だけ出力していますが、コメントをつけている行（コメントアウト）を除けば全て表示できます。</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">__sizeof__</span><span class="p">())</span>
+        
+        <span class="n">line_num</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1">#全て出力する場合不要</span>
+        <span class="k">if</span> <span class="n">line_num</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span> <span class="c1">#全て出力する場合不要</span>
+            <span class="k">break</span> <span class="c1">#全て出力する場合不要 </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>220
+234
+116
+116
+116
+116
+116
+116
+117
+117
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">readlines(</span> <span class="pre">)</span></code>を使用しない方が、一時的なメモリ使用量を少なく抑えられています。<br />
+解析環境やデータサイズを考慮して使い分けましょう。</p>
+<hr class="docutils" />
+<p>通常は見えませんが、ファイルには行末に改行コードという文字が存在しています。<br />
+これが残っているとデータ処理に影響するので、この改行コードを<code class="docutils literal notranslate"><span class="pre">strip(</span> <span class="pre">)</span></code>メソッドを使って削除します。</p>
+<p>データを処理するため、取り出したデータを一列ごとに分割します。<br />
+分割するためには<code class="docutils literal notranslate"><span class="pre">split(</span> <span class="pre">)</span></code>メソッドを使います。<br />
+カッコ内にどこで分割するかを指定します。<br />
+refFlat.txtはタブ区切りのファイルですので、カッコ内にタブを意味する<code class="docutils literal notranslate"><span class="pre">\t</span></code>を入力します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;refFlat.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ZNF639&#39;, &#39;NM_001375803&#39;, &#39;chr3&#39;, &#39;+&#39;, &#39;179323030&#39;, &#39;179338583&#39;, &#39;179328293&#39;, &#39;179334422&#39;, &#39;5&#39;, &#39;179323030,179328282,179329617,179332988,179333268,&#39;, &#39;179323291,179328351,179329728,179333123,179338583,&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>読み込んだファイルの一行目<code class="docutils literal notranslate"><span class="pre">lines[0]</span></code>の改行コードを<code class="docutils literal notranslate"><span class="pre">stirp(</span> <span class="pre">)</span></code>で削除して<code class="docutils literal notranslate"><span class="pre">line</span></code>という変数に格納し、<br />
+<code class="docutils literal notranslate"><span class="pre">line</span></code>を<code class="docutils literal notranslate"><span class="pre">split(\t)</span></code>でタブで分割し、返されたリスト形式のデータを<code class="docutils literal notranslate"><span class="pre">cols</span></code>という変数に格納しました。</p>
+<p><code class="docutils literal notranslate"><span class="pre">strip(</span> <span class="pre">)</span></code>と<code class="docutils literal notranslate"><span class="pre">split(</span> <span class="pre">)</span></code>は一行で書くこともできます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;refFlat.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ZNF639&#39;, &#39;NM_001375803&#39;, &#39;chr3&#39;, &#39;+&#39;, &#39;179323030&#39;, &#39;179338583&#39;, &#39;179328293&#39;, &#39;179334422&#39;, &#39;5&#39;, &#39;179323030,179328282,179329617,179332988,179333268,&#39;, &#39;179323291,179328351,179329728,179333123,179338583,&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+<p>refFlatファイルの二列目はRefSeq IDです。<br />
+mRNAにはNM_から始まるIDが付けられています。<br />
+non-coding RNAにはNR_から始まるIDが付けられています。
+次にmRANだけ取り出して表示させてみます。</p>
+<p>特定の文字列を探したい場合は、<code class="docutils literal notranslate"><span class="pre">re</span></code>モジュールの<code class="docutils literal notranslate"><span class="pre">search(</span> <span class="pre">)</span></code>を使います。</p>
+<br>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;探したい文字列&#39;</span><span class="p">,</span> <span class="n">対象の変数</span><span class="p">)</span>
+</pre></div>
+</div>
+<br>
+<p><code class="docutils literal notranslate"><span class="pre">re</span></code>モジュールをインポートしてから使います。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;refFlat.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">[:</span><span class="mi">50</span><span class="p">]:</span> <span class="c1">#表示の都合上最初の５０行だけ処理していますが、for line in lines:で全て処理できます</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;NM_&#39;</span><span class="p">,</span> <span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NM_001375803
+NM_002852
+NM_002851
+NM_001376627
+NM_001311175
+NM_001311168
+NM_014366
+NM_015154
+NM_015153
+NM_001286475
+NM_001365929
+NM_001365928
+NM_001366028
+NM_001330280
+NM_001365229
+NM_003678
+NM_001366680
+NM_005199
+NM_002636
+NM_001320313
+NM_001350235
+</pre></div>
+</div>
+</div>
+</div>
+<p>refFlatファイルの一列目はgene symbolです。<br />
+gene symbolをキーに、RefSeq IDを値とする辞書を作成し、gene symbolとRefSeq IDを紐付けしましょう。<br />
+ほとんどの遺伝子には複数の転写産物が存在するので、一つのキーに対して複数の値を格納するため、辞書の値はリスト形式にしてみます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">genes</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1">#空の辞書を作成</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;refFlat.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;NM_&#39;</span><span class="p">,</span> <span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">genes</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[])</span> <span class="c1">#値には空のリストを指定する</span>
+            <span class="n">genes</span><span class="p">[</span><span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> 
+
+<span class="n">line_num</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#表示の都合上最初の１０キー分だけ出力していますが、以下のコメントをつけている行（コメントアウト）を除けば全て表示できます。</span>
+<span class="k">for</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">refseqid_list</span> <span class="ow">in</span> <span class="n">genes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">refseqid</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">refseqid_list</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">refseqid</span><span class="p">)</span>
+    
+    <span class="n">line_num</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1">#全て出力する場合不要</span>
+    <span class="k">if</span> <span class="n">line_num</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span> <span class="c1">#全て出力する場合不要</span>
+        <span class="k">break</span> <span class="c1">#全て出力する場合不要</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ZNF639 NM_001375803,NM_016331,NM_001375807,NM_001375802,NM_001375800,NM_001375806,NM_001303426,NM_001303425,NM_001375805,NM_001375804
+PTX3 NM_002852
+PTPRZ1 NM_002851,NM_001206839,NM_001369395,NM_001206838,NM_001369396
+MADD NM_001376627,NM_001376575,NM_001376663,NM_001376637,NM_001376577,NM_001376609,NM_001376593,NM_001376599,NM_001376610,NM_001376617,NM_001376606,NM_130473,NM_130472,NM_001376653,NM_001376651,NM_001376650,NM_001376612,NM_001376645,NM_001376586,NM_001376585,NM_001376584,NM_001376635,NM_001376595,NM_130471,NM_001376583,NM_003682,NM_001376661,NM_001135943,NM_001376656,NM_001376655,NM_001376654,NM_001376625,NM_001376621,NM_001376619,NM_001376620,NM_001376613,NM_001376639,NM_001376636,NM_001376662,NM_001376607,NM_001376626,NM_130474,NM_130475,NM_001376618,NM_130470,NM_001376642,NM_001376641,NM_001376581,NM_001376660,NM_001376597,NM_001376624,NM_001376615,NM_001376623,NM_001376622,NM_001376640,NM_001376601,NM_001376628,NM_001376604,NM_001376603,NM_001376598,NM_001376596,NM_001376638,NM_001376614,NM_001376616,NM_001376644,NM_001376634,NM_001376648,NM_001376647,NM_001376649,NM_001376646,NM_001376611,NM_001376608,NM_001376659,NM_001376594,NM_001376643,NM_001376578,NM_001376582,NM_001376579,NM_001376605,NM_001376658,NM_001376602,NM_001376573,NM_001135944,NM_001376633,NM_001376632,NM_001376631,NM_001376630,NM_001376629,NM_130476,NM_001376571,NM_001376572,NM_001376574,NM_001376580,NM_001376600,NM_001376576,NM_001376652,NM_001376657
+TNFAIP8L3 NM_001311175,NM_207381
+NDUFB9 NM_001311168,NM_001278646,NM_001278645,NM_005005
+GNL3 NM_014366,NM_206825,NM_206826
+MESD NM_015154
+PHF3 NM_015153,NM_001290260,NM_001290259,NM_001370350,NM_001370349,NM_001370348
+TSBP1 NM_001286475,NM_001286475,NM_001286475,NM_006781,NM_006781,NM_006781,NM_001286475,NM_001286475,NM_001286475,NM_001286475,NM_001286474,NM_001286474,NM_001286474,NM_001286474,NM_006781,NM_001286474,NM_001286475,NM_006781,NM_006781,NM_001286474,NM_006781,NM_001286474,NM_006781,NM_001286474
+NLGN1 NM_001365929,NM_001365928,NM_001365934,NM_001365933,NM_001365932,NM_001365931,NM_001365930,NM_001365936,NM_014932,NM_001365925,NM_001365924,NM_001365923,NM_001365927,NM_001365926,NM_001365935
+</pre></div>
+</div>
+</div>
+</div>
+<p>情報をファイルに出力して保存する場合も、<code class="docutils literal notranslate"><span class="pre">with</span></code>と<code class="docutils literal notranslate"><span class="pre">open</span></code>を使用します。<br />
+出力する場合は、ファイルハンドルの後ろに出力方法を指定する必要があります。</p>
+<br>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">出力ファイルパス</span><span class="p">,</span> <span class="s1">&#39;出力方法&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ファイルオブジェクト</span><span class="p">:</span>
+</pre></div>
+</div>
+<br>
+<p>ファイルの新規作成は<code class="docutils literal notranslate"><span class="pre">w</span></code>を出力方法に指定します。<br />
+この場合、指定したファイル名が存在しない場合は、新たにファイルを作成してくれます。<br />
+また、すでに指定したファイル名が存在する場合は内容が上書きされます。</p>
+<p><code class="docutils literal notranslate"><span class="pre">a</span></code>を指定すると、指定したファイルに追加書き込みを行います。</p>
+<p><code class="docutils literal notranslate"><span class="pre">refFlat_out1.txt</span></code>というファイルに、gene symbolとRefSeq IDを出力します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">genes</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1">#空の辞書を作成</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;refFlat.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;NM_&#39;</span><span class="p">,</span> <span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">genes</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[])</span> <span class="c1">#値には空のリストを指定する</span>
+            <span class="n">genes</span><span class="p">[</span><span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> 
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;refFlat_out1.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">refseqid_list</span> <span class="ow">in</span> <span class="n">genes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">refseqid</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">refseqid_list</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">refseqid</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">refFlat_out1.txt</span></code>というファイルが作成されていますので、excel等で開いて中身を確認してみましょう。</p>
+<p><code class="docutils literal notranslate"><span class="pre">print(</span> <span class="pre">)</span></code>のカッコ内に、<code class="docutils literal notranslate"><span class="pre">file=出力ファイルオブジェクト</span></code>で出力先を指定します。<br />
+<code class="docutils literal notranslate"><span class="pre">sep=</span></code>で、<code class="docutils literal notranslate"><span class="pre">print(</span> <span class="pre">)</span></code>内の出力内容の区切り方を指定します。<br />
+今回は、gene symbolとRefSeq IDをタブで区切って出力したかったので、<code class="docutils literal notranslate"><span class="pre">sep='\t'</span></code>と記載しています。</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="python_practice_sort.html" title="previous page">ソート</a>
+    <a class='right-next' id="next-link" href="python_pandas_dataframe.html" title="next page">pandasデータフレームの扱い方</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
+    
+  </body>
+</html>

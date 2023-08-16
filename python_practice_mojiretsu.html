@@ -1,0 +1,517 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文字列 &#8212; bioinformatics入門</title>
+    
+  <link rel="stylesheet" href="_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="リスト" href="python_practice_list.html" />
+    <link rel="prev" title="変数" href="python_practice_hensuu.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">bioinformatics入門</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   bioinformaticsのためのpython入門
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_hensuu.html">
+   変数
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   文字列
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_list.html">
+   リスト
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_repeat.html">
+   繰り返し
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_if.html">
+   if文 wihle文
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_dictionary.html">
+   辞書
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_list_comprehension.html">
+   リスト内包表記
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_sort.html">
+   ソート
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_fileopen.html">
+   テキストファイルを開く・ファイルに出力する
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_pandas_dataframe.html">
+   pandasデータフレームの扱い方
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_plot_scatter.html">
+   散布図の作成
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_kaplanmeier.html">
+   TCGAのデータを使ってKaplanMeier生存曲線を作る
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_plot_mergeplots.html">
+   共通のx軸に二つのプロットを表示する
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_plot_cumulativebar.html">
+   積み上げ棒グラフを作成する
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_functionlist.html">
+   関数一覧
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/python_practice_mojiretsu.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_practice_mojiretsu.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/python_practice_mojiretsu.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   変数に文字列を代入する
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   特定の文字を取り出す
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   複数の文字を取り出す
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>文字列<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h2>変数に文字列を代入する<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>変数に代入した文字列は、一文字取り出したり、逆順にしたりと、いろんな処理を行うことができます。<br />
+DNA配列を扱う際に便利であることは容易に想像できると思います。</p>
+<p>例として、変数<code class="docutils literal notranslate"><span class="pre">a</span></code>に、<code class="docutils literal notranslate"><span class="pre">tumor</span> <span class="pre">protein</span> <span class="pre">p53</span></code>という文字列を代入してみます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;tumor protein p53&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tumor protein p53
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id3">
+<h2>特定の文字を取り出す<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>変数の後ろに<code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>をつけて、その中に数字を入れると、その数字の順番の文字を取り出すことができます。<br />
+この数値は<strong>添字</strong>や<strong>インデックス</strong>と呼ばれます。<br />
+<strong>この順番は0から始まる</strong>ので注意してください。<br />
+最初の文字を取り出したければ、0を入力することになります。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t
+</pre></div>
+</div>
+</div>
+</div>
+<p>インデックスに<code class="docutils literal notranslate"><span class="pre">0</span></code>を指定したので、先頭の<code class="docutils literal notranslate"><span class="pre">t</span></code>が表示されます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r
+</pre></div>
+</div>
+</div>
+</div>
+<p>インデックスに<code class="docutils literal notranslate"><span class="pre">4</span></code>を指定したので、５文字目の<code class="docutils literal notranslate"><span class="pre">r</span></code>が表示されます。</p>
+<br>
+<p><strong>マイナスの数値</strong>を入力すると、後ろから順番に文字を取り出せます。<br />
+−1は最後から1番目の文字、−2は最後から2番目の文字、といった具合です。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>インデックスに<code class="docutils literal notranslate"><span class="pre">-1</span></code>を指定したので、最後の文字の<code class="docutils literal notranslate"><span class="pre">3</span></code>が表示されます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p
+</pre></div>
+</div>
+</div>
+</div>
+<p>インデックスに<code class="docutils literal notranslate"><span class="pre">-3</span></code>を指定したので、最後から３文字目の<code class="docutils literal notranslate"><span class="pre">p</span></code>が表示されます。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id4">
+<h2>複数の文字を取り出す<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p><strong>コロン</strong><code class="docutils literal notranslate"><span class="pre">:</span></code>を使って、複数の文字を取得することができます。</p>
+<p>この操作を<strong>スライス</strong>と呼びます。</p>
+<br>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">変数</span><span class="p">[</span><span class="n">始点</span><span class="p">:</span><span class="n">終点</span><span class="p">]</span>
+</pre></div>
+</div>
+<br>
+<p>この時、<strong>終点の1つ前</strong>までを取得することができます。<br />
+ここで入力する順番は、もちろん<strong>最初を0</strong>としたときの順番です。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>protein
+</pre></div>
+</div>
+</div>
+</div>
+<p>7文字目(インデックスでは6)から13文字目(インデックスでは12)までの文字<code class="docutils literal notranslate"><span class="pre">protein</span></code>が表示されます。<br />
+<strong>スペースも一文字とカウント</strong>されます。<br />
+終点で指定した順番の一つ前まで、というのが、慣れるまでは少しややこしいかもしれません。</p>
+<br>
+<p>始点だけ記入した場合は、その<strong>始点から最後まで</strong>を取得できます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>protein p53
+</pre></div>
+</div>
+</div>
+</div>
+<p>7文字目以降の<code class="docutils literal notranslate"><span class="pre">protein</span> <span class="pre">p53</span></code>が表示されます。</p>
+<br>
+<p>同様に、終点だけ記載した場合は、<strong>最初から終点の一つ前まで</strong>を取得できます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:</span><span class="mi">13</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tumor protein
+</pre></div>
+</div>
+</div>
+</div>
+<p>13文字目(インデックスでは12)までの<code class="docutils literal notranslate"><span class="pre">tumor</span> <span class="pre">protein</span></code>が表示されます。</p>
+<br>
+<p><code class="docutils literal notranslate"><span class="pre">[::-1]</span></code>と書くと<strong>逆順</strong>の文字列を取得できます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35p nietorp romut
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="python_practice_hensuu.html" title="previous page">変数</a>
+    <a class='right-next' id="next-link" href="python_practice_list.html" title="next page">リスト</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
+    
+  </body>
+</html>
