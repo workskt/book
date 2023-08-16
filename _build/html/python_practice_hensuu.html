@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>変数 &#8212; bioinformatics入門</title>
+    <title>変数 &#8212; bioinformatics指導用資料</title>
     
   <link rel="stylesheet" href="_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
 
@@ -80,7 +80,7 @@
   <img src="_static/logo.png" class="logo" alt="logo">
   
   
-  <h1 class="site-logo" id="site-title">bioinformatics入門</h1>
+  <h1 class="site-logo" id="site-title">bioinformatics指導用資料</h1>
   
 </a>
 </div>
@@ -291,7 +291,7 @@
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">a</span></code>という変数に、<code class="docutils literal notranslate"><span class="pre">10</span></code>という数値を代入しました。<br />
-<code class="docutils literal notranslate"><span class="pre">print(</span> <span class="pre">)</span></code>はカッコ内の変数や文字等を表示させる関数です。<br />
+<code class="docutils literal notranslate"><span class="pre">print()</span></code>はカッコ内の変数や文字等を表示させる関数です。<br />
 <code class="docutils literal notranslate"><span class="pre">print(a)</span></code>という命令により、<code class="docutils literal notranslate"><span class="pre">10</span></code>が出力されました。</p>
 <br><div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -319,7 +319,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="n">a2cf4bbfdd8e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">a2cf4bbfdd8e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">c</span> <span class="o">=</span> <span class="n">TP53</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 
@@ -334,15 +334,10 @@
 <br>
 <hr class="docutils" />
 <p>文字列と数値は異なる型として扱われます。<br />
-型を調べるには<code class="docutils literal notranslate"><span class="pre">type(</span> <span class="pre">)</span></code>関数を使用します。</p>
+型を調べるには<code class="docutils literal notranslate"><span class="pre">type()</span></code>関数を使用します。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
 </pre></div>
 </div>
 </div>
@@ -350,11 +345,6 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
 </pre></div>
 </div>
 </div>
@@ -370,11 +360,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-</pre></div>
-</div>
-</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">a</span></code>と<code class="docutils literal notranslate"><span class="pre">b</span></code>は整数なので、足し算をした<code class="docutils literal notranslate"><span class="pre">3</span></code>が出力されます。</p>
 <br><div class="cell docutils container">
@@ -385,27 +370,16 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12
-</pre></div>
-</div>
-</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">a</span></code>と<code class="docutils literal notranslate"><span class="pre">b</span></code>は文字列なので、二つの文字列をつなげた<code class="docutils literal notranslate"><span class="pre">12</span></code>が出力されます。</p>
 <br>
-<p>文字列の型を持っている数字を、整数に変換する場合は、<code class="docutils literal notranslate"><span class="pre">int(</span> <span class="pre">)</span></code>を使います。</p>
+<p>文字列の型を持っている数字を、整数に変換する場合は、<code class="docutils literal notranslate"><span class="pre">int()</span></code>を使います。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;2&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;文字列&#39;</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;整数&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>文字列 12
-整数 3
 </pre></div>
 </div>
 </div>
@@ -418,13 +392,8 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;float&#39;&gt;
-</pre></div>
 </div>
-</div>
-</div>
-<p>小数に変換する場合は<code class="docutils literal notranslate"><span class="pre">float(</span> <span class="pre">)</span></code>関数を使用します。</p>
+<p>小数に変換する場合は<code class="docutils literal notranslate"><span class="pre">float()</span></code>関数を使用します。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;1.005&#39;</span>
@@ -435,14 +404,8 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.005 &lt;class &#39;str&#39;&gt;
-1.005 &lt;class &#39;float&#39;&gt;
-</pre></div>
 </div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">int(</span> <span class="pre">)</span></code>は整数に変換する関数なので、小数と思われる文字列を整数に変換しようとするとエラーになります。</p>
+<p><code class="docutils literal notranslate"><span class="pre">int()</span></code>は整数に変換する関数なので、小数と思われる文字列を整数に変換しようとするとエラーになります。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;1.005&#39;</span>
@@ -450,29 +413,13 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">6</span><span class="n">b4be7f4d80d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;1.005&#39;</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-
-<span class="ne">ValueError</span>: invalid literal for int() with base 10: &#39;1.005&#39;
-</pre></div>
 </div>
-</div>
-</div>
-<p>小数に<code class="docutils literal notranslate"><span class="pre">int(</span> <span class="pre">)</span></code>を使うと、整数に変換されます。</p>
+<p>小数に<code class="docutils literal notranslate"><span class="pre">int()</span></code>を使うと、整数に変換されます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">1.005</span>
 <span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -486,30 +433,13 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">14</span><span class="o">-</span><span class="n">a131a4f64917</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;TP&#39;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">53</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: can only concatenate str (not &quot;int&quot;) to str
-</pre></div>
 </div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">str(</span> <span class="pre">)</span></code>関数で文字列に変換するとつなげることができます。</p>
+<p><code class="docutils literal notranslate"><span class="pre">str()</span></code>関数で文字列に変換するとつなげることができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;TP&#39;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">53</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TP53
 </pre></div>
 </div>
 </div>
