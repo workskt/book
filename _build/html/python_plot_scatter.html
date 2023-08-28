@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>散布図の作成 &#8212; bioinformatics入門</title>
+    <title>散布図の作成 &#8212; bioinformatics python資料</title>
     
   <link rel="stylesheet" href="_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
 
@@ -80,7 +80,7 @@
   <img src="_static/logo.png" class="logo" alt="logo">
   
   
-  <h1 class="site-logo" id="site-title">bioinformatics入門</h1>
+  <h1 class="site-logo" id="site-title">bioinformatics python資料</h1>
   
 </a>
 </div>
@@ -427,11 +427,11 @@
 <p>pyplotだけで図を作成することは可能ですが、オブジェクト指向的に作成する方が色々細かい加工ができるため、こちらにも慣れておくことをオススメします。</p>
 <hr class="docutils" />
 <p><strong>(1)pyplotだけで作成するもの</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">subplot(</span> <span class="pre">)</span></code>で図の配置等を指定します。まずはカッコ内は空でつくりましょう。</p>
+<p><code class="docutils literal notranslate"><span class="pre">subplot()</span></code>で図の配置等を指定します。まずはカッコ内は空でつくりましょう。</p>
 <p><code class="docutils literal notranslate"><span class="pre">scatter(x軸データ,</span> <span class="pre">y軸データ)</span></code>で散布図を作成します。</p>
-<p><code class="docutils literal notranslate"><span class="pre">xlabel(</span> <span class="pre">)</span></code>、<code class="docutils literal notranslate"><span class="pre">ylabel(</span> <span class="pre">)</span></code>で座標のラベルを出力します。</p>
-<p><code class="docutils literal notranslate"><span class="pre">title(</span> <span class="pre">)</span></code>で図のタイトルを出力します。</p>
-<p><code class="docutils literal notranslate"><span class="pre">show(</span> <span class="pre">)</span></code>で作成した図を表示します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">xlabel()</span></code>、<code class="docutils literal notranslate"><span class="pre">ylabel()</span></code>で座標のラベルを出力します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">title()</span></code>で図のタイトルを出力します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">show()</span></code>で作成した図を表示します。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">()</span>
@@ -448,7 +448,7 @@
 </div>
 </div>
 <br>
-<p>表示範囲を変更したい場合は、<code class="docutils literal notranslate"><span class="pre">xlim(</span> <span class="pre">)</span></code> <code class="docutils literal notranslate"><span class="pre">ylim(</span> <span class="pre">)</span></code>を使用します。<br />
+<p>表示範囲を変更したい場合は、<code class="docutils literal notranslate"><span class="pre">xlim()</span></code> <code class="docutils literal notranslate"><span class="pre">ylim()</span></code>を使用します。<br />
 カッコ内に表示したい範囲をカンマ区切りで指定します。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -469,11 +469,11 @@
 </div>
 <hr class="docutils" />
 <p><strong>(2)オブジェクト指向的に作成するもの</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">subplots(</span> <span class="pre">)</span></code>でfigオブジェクトとaxオブジェクトを作成します。subplotsとsがついているので注意。</p>
+<p><code class="docutils literal notranslate"><span class="pre">subplots()</span></code>でfigオブジェクトとaxオブジェクトを作成します。subplotsとsがついているので注意。</p>
 <p><code class="docutils literal notranslate"><span class="pre">scatter(x軸データ,</span> <span class="pre">y軸データ)</span></code>で散布図を作成します。</p>
-<p><code class="docutils literal notranslate"><span class="pre">set_xlabel(</span> <span class="pre">)</span></code>、<code class="docutils literal notranslate"><span class="pre">set_ylabel(</span> <span class="pre">)</span></code>で座標のラベルを出力します。</p>
-<p><code class="docutils literal notranslate"><span class="pre">set_title(</span> <span class="pre">)</span></code>で図のタイトルを出力します。</p>
-<p><code class="docutils literal notranslate"><span class="pre">show(</span> <span class="pre">)</span></code>で作成した図を表示します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">set_xlabel()</span></code>、<code class="docutils literal notranslate"><span class="pre">set_ylabel()</span></code>で座標のラベルを出力します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">set_title()</span></code>で図のタイトルを出力します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">show()</span></code>で作成した図を表示します。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -490,7 +490,7 @@
 </div>
 </div>
 <hr class="docutils" />
-<p>項目ごとに色を分けたい場合は、<code class="docutils literal notranslate"><span class="pre">scatter(</span> <span class="pre">)</span></code>のカッコ内に、色を<code class="docutils literal notranslate"><span class="pre">color=</span></code>で、ラベル名を<code class="docutils literal notranslate"><span class="pre">label=</span></code>で指定します。</p>
+<p>項目ごとに色を分けたい場合は、<code class="docutils literal notranslate"><span class="pre">scatter()</span></code>のカッコ内に、色を<code class="docutils literal notranslate"><span class="pre">color=</span></code>で、ラベル名を<code class="docutils literal notranslate"><span class="pre">label=</span></code>で指定します。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#項目ごとにデータを取得します。</span>
@@ -518,7 +518,7 @@
 </div>
 </div>
 <br>
-<p>表示範囲を変更したい場合は、<code class="docutils literal notranslate"><span class="pre">set_xlim(</span> <span class="pre">)</span></code> <code class="docutils literal notranslate"><span class="pre">set_ylim(</span> <span class="pre">)</span></code>を使用します。<br />
+<p>表示範囲を変更したい場合は、<code class="docutils literal notranslate"><span class="pre">set_xlim()</span></code> <code class="docutils literal notranslate"><span class="pre">set_ylim()</span></code>を使用します。<br />
 カッコ内に表示したい範囲をカンマ区切りで指定します。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

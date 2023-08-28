@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>テキストファイルを開く・ファイルに出力する &#8212; bioinformatics入門</title>
+    <title>テキストファイルを開く・ファイルに出力する &#8212; bioinformatics python資料</title>
     
   <link rel="stylesheet" href="_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
 
@@ -80,7 +80,7 @@
   <img src="_static/logo.png" class="logo" alt="logo">
   
   
-  <h1 class="site-logo" id="site-title">bioinformatics入門</h1>
+  <h1 class="site-logo" id="site-title">bioinformatics python資料</h1>
   
 </a>
 </div>
@@ -281,7 +281,7 @@ Downloads -&gt; Genome Data -&gt; Human -&gt; Annotations -&gt; SQL table dump a
 <div><p>ターミナルであれば $ gunzip refFlat.txt.gz<br />
 windownsの場合だと解凍用フリーウェアがあります。</p>
 </div></blockquote>
-<p>pythonでファイルを開くためには<code class="docutils literal notranslate"><span class="pre">open(</span> <span class="pre">)</span></code>と<code class="docutils literal notranslate"><span class="pre">with</span></code>を使います。</p>
+<p>pythonでファイルを開くためには<code class="docutils literal notranslate"><span class="pre">open()</span></code>と<code class="docutils literal notranslate"><span class="pre">with</span></code>を使います。</p>
 <br>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">読み込みファイルパス</span><span class="p">)</span> <span class="k">as</span> <span class="n">ファイルオブジェクト</span><span class="p">:</span>
     <span class="n">処理</span>
@@ -291,9 +291,9 @@ windownsの場合だと解凍用フリーウェアがあります。</p>
 <p>ファイルオブジェクトはそのファイルの内容を呼び出すときに使う名前のようなものと考えてください。<br />
 with以降の行はインデントを入れることで、ファイルを開いた状態での処理となります。</p>
 <p>ファイルを開いたあとは、そのファイルの内容を取り出す必要があります。<br />
-内容を取り出すためには<code class="docutils literal notranslate"><span class="pre">readlines(</span> <span class="pre">)</span></code>メソッドを使います。<br />
+内容を取り出すためには<code class="docutils literal notranslate"><span class="pre">readlines()</span></code>メソッドを使います。<br />
 これは、ファイルの内容を一行ずつリスト形式にして取り出します。<br />
-ファイルオブジェクトと<code class="docutils literal notranslate"><span class="pre">readlines(</span> <span class="pre">)</span></code>を<code class="docutils literal notranslate"><span class="pre">.</span></code>で繋ぎます。</p>
+ファイルオブジェクトと<code class="docutils literal notranslate"><span class="pre">readlines()</span></code>を<code class="docutils literal notranslate"><span class="pre">.</span></code>で繋ぎます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;refFlat.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -327,9 +327,9 @@ MIR1302-11	NR_036268	chr1	+	30365	30503	30503	30503	1	30365,	30503,
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">readlines(</span> <span class="pre">)</span></code>でファイルの内容を一行ずつ分けて<code class="docutils literal notranslate"><span class="pre">lines</span></code>というリストに格納しました。<br />
+<p><code class="docutils literal notranslate"><span class="pre">readlines()</span></code>でファイルの内容を一行ずつ分けて<code class="docutils literal notranslate"><span class="pre">lines</span></code>というリストに格納しました。<br />
 その後、<strong>for文</strong>を使ってリストの要素を一つずつ、つまりファイル内容を一行ずつ表示させています。</p>
-<p><code class="docutils literal notranslate"><span class="pre">readlines(</span> <span class="pre">)</span></code>はファイルの内容を全て読み込みます。<br />
+<p><code class="docutils literal notranslate"><span class="pre">readlines()</span></code>はファイルの内容を全て読み込みます。<br />
 バイオデータ解析では、次世代シーケンサーの配列データ（Fastq、SAM等）のように容量の大きなものを扱うことがあります。<br />
 メモリに負荷をかけないようにするため、一行だけ取り出して処理を行う、というのを繰り返した方がよい場合があります。<br />
 その場合は<code class="docutils literal notranslate"><span class="pre">in</span></code>の後ろに直接ファイルオブジェクトをもってきます。</p>
@@ -413,13 +413,13 @@ MIR1302-11	NR_036268	chr1	+	30365	30503	30503	30503	1	30365,	30503,
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">readlines(</span> <span class="pre">)</span></code>を使用しない方が、一時的なメモリ使用量を少なく抑えられています。<br />
+<p><code class="docutils literal notranslate"><span class="pre">readlines()</span></code>を使用しない方が、一時的なメモリ使用量を少なく抑えられています。<br />
 解析環境やデータサイズを考慮して使い分けましょう。</p>
 <hr class="docutils" />
 <p>通常は見えませんが、ファイルには行末に改行コードという文字が存在しています。<br />
-これが残っているとデータ処理に影響するので、この改行コードを<code class="docutils literal notranslate"><span class="pre">strip(</span> <span class="pre">)</span></code>メソッドを使って削除します。</p>
+これが残っているとデータ処理に影響するので、この改行コードを<code class="docutils literal notranslate"><span class="pre">strip()</span></code>メソッドを使って削除します。</p>
 <p>データを処理するため、取り出したデータを一列ごとに分割します。<br />
-分割するためには<code class="docutils literal notranslate"><span class="pre">split(</span> <span class="pre">)</span></code>メソッドを使います。<br />
+分割するためには<code class="docutils literal notranslate"><span class="pre">split()</span></code>メソッドを使います。<br />
 カッコ内にどこで分割するかを指定します。<br />
 refFlat.txtはタブ区切りのファイルですので、カッコ内にタブを意味する<code class="docutils literal notranslate"><span class="pre">\t</span></code>を入力します。</p>
 <div class="cell docutils container">
@@ -440,7 +440,7 @@ refFlat.txtはタブ区切りのファイルですので、カッコ内にタブ
 </div>
 <p>読み込んだファイルの一行目<code class="docutils literal notranslate"><span class="pre">lines[0]</span></code>の改行コードを<code class="docutils literal notranslate"><span class="pre">stirp(</span> <span class="pre">)</span></code>で削除して<code class="docutils literal notranslate"><span class="pre">line</span></code>という変数に格納し、<br />
 <code class="docutils literal notranslate"><span class="pre">line</span></code>を<code class="docutils literal notranslate"><span class="pre">split(\t)</span></code>でタブで分割し、返されたリスト形式のデータを<code class="docutils literal notranslate"><span class="pre">cols</span></code>という変数に格納しました。</p>
-<p><code class="docutils literal notranslate"><span class="pre">strip(</span> <span class="pre">)</span></code>と<code class="docutils literal notranslate"><span class="pre">split(</span> <span class="pre">)</span></code>は一行で書くこともできます。</p>
+<p><code class="docutils literal notranslate"><span class="pre">strip()</span></code>と<code class="docutils literal notranslate"><span class="pre">split()</span></code>は一行で書くこともできます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;refFlat.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -461,7 +461,7 @@ refFlat.txtはタブ区切りのファイルですので、カッコ内にタブ
 mRNAにはNM_から始まるIDが付けられています。<br />
 non-coding RNAにはNR_から始まるIDが付けられています。
 次にmRANだけ取り出して表示させてみます。</p>
-<p>特定の文字列を探したい場合は、<code class="docutils literal notranslate"><span class="pre">re</span></code>モジュールの<code class="docutils literal notranslate"><span class="pre">search(</span> <span class="pre">)</span></code>を使います。</p>
+<p>特定の文字列を探したい場合は、<code class="docutils literal notranslate"><span class="pre">re</span></code>モジュールの<code class="docutils literal notranslate"><span class="pre">search()</span></code>を使います。</p>
 <br>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;探したい文字列&#39;</span><span class="p">,</span> <span class="n">対象の変数</span><span class="p">)</span>
 </pre></div>
@@ -579,8 +579,8 @@ NLGN1 NM_001365929,NM_001365928,NM_001365934,NM_001365933,NM_001365932,NM_001365
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">refFlat_out1.txt</span></code>というファイルが作成されていますので、excel等で開いて中身を確認してみましょう。</p>
-<p><code class="docutils literal notranslate"><span class="pre">print(</span> <span class="pre">)</span></code>のカッコ内に、<code class="docutils literal notranslate"><span class="pre">file=出力ファイルオブジェクト</span></code>で出力先を指定します。<br />
-<code class="docutils literal notranslate"><span class="pre">sep=</span></code>で、<code class="docutils literal notranslate"><span class="pre">print(</span> <span class="pre">)</span></code>内の出力内容の区切り方を指定します。<br />
+<p><code class="docutils literal notranslate"><span class="pre">print()</span></code>のカッコ内に、<code class="docutils literal notranslate"><span class="pre">file=出力ファイルオブジェクト</span></code>で出力先を指定します。<br />
+<code class="docutils literal notranslate"><span class="pre">sep=</span></code>で、<code class="docutils literal notranslate"><span class="pre">print()</span></code>内の出力内容の区切り方を指定します。<br />
 今回は、gene symbolとRefSeq IDをタブで区切って出力したかったので、<code class="docutils literal notranslate"><span class="pre">sep='\t'</span></code>と記載しています。</p>
 </div>
 

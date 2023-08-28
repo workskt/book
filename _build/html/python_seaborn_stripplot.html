@@ -1,0 +1,1681 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&lt;no title&gt; &#8212; bioinformatics python資料</title>
+    
+  <link rel="stylesheet" href="_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">bioinformatics python資料</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   bioinformaticsのためのpython入門
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_hensuu.html">
+   変数
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_mojiretsu.html">
+   文字列
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_list.html">
+   リスト
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_repeat.html">
+   繰り返し
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_if.html">
+   if文 wihle文
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_dictionary.html">
+   辞書
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_list_comprehension.html">
+   リスト内包表記
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_sort.html">
+   ソート
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_fileopen.html">
+   テキストファイルを開く・ファイルに出力する
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_pandas_dataframe.html">
+   pandasデータフレームの扱い方
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_plot_scatter.html">
+   散布図の作成
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_kaplanmeier.html">
+   TCGAのデータを使ってKaplanMeier生存曲線を作る
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_plot_mergeplots.html">
+   共通のx軸に二つのプロットを表示する
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_plot_cumulativebar.html">
+   積み上げ棒グラフを作成する
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_practice_functionlist.html">
+   関数一覧
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/python_seaborn_stripplot.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_seaborn_stripplot.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/python_seaborn_stripplot.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="simple nav section-nav flex-column">
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">a4732e5dffa2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;irisdata.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal length (cm)</th>
+      <th>sepal width (cm)</th>
+      <th>petal length (cm)</th>
+      <th>petal width (cm)</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>6.7</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.3</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>6.3</td>
+      <td>2.5</td>
+      <td>5.0</td>
+      <td>1.9</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>6.5</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.0</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>6.2</td>
+      <td>3.4</td>
+      <td>5.4</td>
+      <td>2.3</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>5.9</td>
+      <td>3.0</td>
+      <td>5.1</td>
+      <td>1.8</td>
+      <td>virginica</td>
+    </tr>
+  </tbody>
+</table>
+<p>150 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal length (cm)&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;target&#39;, ylabel=&#39;sepal length (cm)&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/python_seaborn_stripplot_3_1.png" src="_images/python_seaborn_stripplot_3_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean radius</th>
+      <th>mean texture</th>
+      <th>mean perimeter</th>
+      <th>mean area</th>
+      <th>mean smoothness</th>
+      <th>mean compactness</th>
+      <th>mean concavity</th>
+      <th>mean concave points</th>
+      <th>mean symmetry</th>
+      <th>mean fractal dimension</th>
+      <th>...</th>
+      <th>worst radius</th>
+      <th>worst texture</th>
+      <th>worst perimeter</th>
+      <th>worst area</th>
+      <th>worst smoothness</th>
+      <th>worst compactness</th>
+      <th>worst concavity</th>
+      <th>worst concave points</th>
+      <th>worst symmetry</th>
+      <th>worst fractal dimension</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>17.99</td>
+      <td>10.38</td>
+      <td>122.80</td>
+      <td>1001.0</td>
+      <td>0.11840</td>
+      <td>0.27760</td>
+      <td>0.30010</td>
+      <td>0.14710</td>
+      <td>0.2419</td>
+      <td>0.07871</td>
+      <td>...</td>
+      <td>25.380</td>
+      <td>17.33</td>
+      <td>184.60</td>
+      <td>2019.0</td>
+      <td>0.16220</td>
+      <td>0.66560</td>
+      <td>0.7119</td>
+      <td>0.2654</td>
+      <td>0.4601</td>
+      <td>0.11890</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>20.57</td>
+      <td>17.77</td>
+      <td>132.90</td>
+      <td>1326.0</td>
+      <td>0.08474</td>
+      <td>0.07864</td>
+      <td>0.08690</td>
+      <td>0.07017</td>
+      <td>0.1812</td>
+      <td>0.05667</td>
+      <td>...</td>
+      <td>24.990</td>
+      <td>23.41</td>
+      <td>158.80</td>
+      <td>1956.0</td>
+      <td>0.12380</td>
+      <td>0.18660</td>
+      <td>0.2416</td>
+      <td>0.1860</td>
+      <td>0.2750</td>
+      <td>0.08902</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>19.69</td>
+      <td>21.25</td>
+      <td>130.00</td>
+      <td>1203.0</td>
+      <td>0.10960</td>
+      <td>0.15990</td>
+      <td>0.19740</td>
+      <td>0.12790</td>
+      <td>0.2069</td>
+      <td>0.05999</td>
+      <td>...</td>
+      <td>23.570</td>
+      <td>25.53</td>
+      <td>152.50</td>
+      <td>1709.0</td>
+      <td>0.14440</td>
+      <td>0.42450</td>
+      <td>0.4504</td>
+      <td>0.2430</td>
+      <td>0.3613</td>
+      <td>0.08758</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11.42</td>
+      <td>20.38</td>
+      <td>77.58</td>
+      <td>386.1</td>
+      <td>0.14250</td>
+      <td>0.28390</td>
+      <td>0.24140</td>
+      <td>0.10520</td>
+      <td>0.2597</td>
+      <td>0.09744</td>
+      <td>...</td>
+      <td>14.910</td>
+      <td>26.50</td>
+      <td>98.87</td>
+      <td>567.7</td>
+      <td>0.20980</td>
+      <td>0.86630</td>
+      <td>0.6869</td>
+      <td>0.2575</td>
+      <td>0.6638</td>
+      <td>0.17300</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>20.29</td>
+      <td>14.34</td>
+      <td>135.10</td>
+      <td>1297.0</td>
+      <td>0.10030</td>
+      <td>0.13280</td>
+      <td>0.19800</td>
+      <td>0.10430</td>
+      <td>0.1809</td>
+      <td>0.05883</td>
+      <td>...</td>
+      <td>22.540</td>
+      <td>16.67</td>
+      <td>152.20</td>
+      <td>1575.0</td>
+      <td>0.13740</td>
+      <td>0.20500</td>
+      <td>0.4000</td>
+      <td>0.1625</td>
+      <td>0.2364</td>
+      <td>0.07678</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>564</th>
+      <td>21.56</td>
+      <td>22.39</td>
+      <td>142.00</td>
+      <td>1479.0</td>
+      <td>0.11100</td>
+      <td>0.11590</td>
+      <td>0.24390</td>
+      <td>0.13890</td>
+      <td>0.1726</td>
+      <td>0.05623</td>
+      <td>...</td>
+      <td>25.450</td>
+      <td>26.40</td>
+      <td>166.10</td>
+      <td>2027.0</td>
+      <td>0.14100</td>
+      <td>0.21130</td>
+      <td>0.4107</td>
+      <td>0.2216</td>
+      <td>0.2060</td>
+      <td>0.07115</td>
+    </tr>
+    <tr>
+      <th>565</th>
+      <td>20.13</td>
+      <td>28.25</td>
+      <td>131.20</td>
+      <td>1261.0</td>
+      <td>0.09780</td>
+      <td>0.10340</td>
+      <td>0.14400</td>
+      <td>0.09791</td>
+      <td>0.1752</td>
+      <td>0.05533</td>
+      <td>...</td>
+      <td>23.690</td>
+      <td>38.25</td>
+      <td>155.00</td>
+      <td>1731.0</td>
+      <td>0.11660</td>
+      <td>0.19220</td>
+      <td>0.3215</td>
+      <td>0.1628</td>
+      <td>0.2572</td>
+      <td>0.06637</td>
+    </tr>
+    <tr>
+      <th>566</th>
+      <td>16.60</td>
+      <td>28.08</td>
+      <td>108.30</td>
+      <td>858.1</td>
+      <td>0.08455</td>
+      <td>0.10230</td>
+      <td>0.09251</td>
+      <td>0.05302</td>
+      <td>0.1590</td>
+      <td>0.05648</td>
+      <td>...</td>
+      <td>18.980</td>
+      <td>34.12</td>
+      <td>126.70</td>
+      <td>1124.0</td>
+      <td>0.11390</td>
+      <td>0.30940</td>
+      <td>0.3403</td>
+      <td>0.1418</td>
+      <td>0.2218</td>
+      <td>0.07820</td>
+    </tr>
+    <tr>
+      <th>567</th>
+      <td>20.60</td>
+      <td>29.33</td>
+      <td>140.10</td>
+      <td>1265.0</td>
+      <td>0.11780</td>
+      <td>0.27700</td>
+      <td>0.35140</td>
+      <td>0.15200</td>
+      <td>0.2397</td>
+      <td>0.07016</td>
+      <td>...</td>
+      <td>25.740</td>
+      <td>39.42</td>
+      <td>184.60</td>
+      <td>1821.0</td>
+      <td>0.16500</td>
+      <td>0.86810</td>
+      <td>0.9387</td>
+      <td>0.2650</td>
+      <td>0.4087</td>
+      <td>0.12400</td>
+    </tr>
+    <tr>
+      <th>568</th>
+      <td>7.76</td>
+      <td>24.54</td>
+      <td>47.92</td>
+      <td>181.0</td>
+      <td>0.05263</td>
+      <td>0.04362</td>
+      <td>0.00000</td>
+      <td>0.00000</td>
+      <td>0.1587</td>
+      <td>0.05884</td>
+      <td>...</td>
+      <td>9.456</td>
+      <td>30.37</td>
+      <td>59.16</td>
+      <td>268.6</td>
+      <td>0.08996</td>
+      <td>0.06444</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.2871</td>
+      <td>0.07039</td>
+    </tr>
+  </tbody>
+</table>
+<p>569 rows × 30 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;clinical.tsv&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">header</span><span class="p">,</span> <span class="o">*</span><span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="c1">#lineには改行コードが残っているので、strip()で除く</span>
+    
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;clinical_unique.tsv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">file</span><span class="o">=</span><span class="n">out</span><span class="p">)</span> <span class="c1">#headerには改行コードが残っているので、strip()で除く</span>
+    <span class="k">for</span> <span class="n">caseid</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;clinical_unique.tsv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;case_id&#39;, &#39;case_submitter_id&#39;, &#39;project_id&#39;, &#39;age_at_index&#39;,
+       &#39;age_is_obfuscated&#39;, &#39;cause_of_death&#39;, &#39;cause_of_death_source&#39;,
+       &#39;country_of_residence_at_enrollment&#39;, &#39;days_to_birth&#39;, &#39;days_to_death&#39;,
+       ...
+       &#39;treatment_arm&#39;, &#39;treatment_dose&#39;, &#39;treatment_dose_units&#39;,
+       &#39;treatment_effect&#39;, &#39;treatment_effect_indicator&#39;, &#39;treatment_frequency&#39;,
+       &#39;treatment_intent_type&#39;, &#39;treatment_or_therapy&#39;, &#39;treatment_outcome&#39;,
+       &#39;treatment_type&#39;],
+      dtype=&#39;object&#39;, length=154)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;vital_status&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;age_at_diagnosis&#39;</span><span class="p">],</span> <span class="n">hue</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ajcc_pathologic_stage&#39;</span><span class="p">],</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;vital_status&#39;, ylabel=&#39;age_at_diagnosis&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/python_seaborn_stripplot_7_1.png" src="_images/python_seaborn_stripplot_7_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;jhu-usc.edu_LUSC.HumanMethylation450.4.lvl-3.TCGA-43-6771-01A-11D-1818-05.gdc_hg38.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Composite Element REF</th>
+      <th>Beta_value</th>
+      <th>Chromosome</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Gene_Symbol</th>
+      <th>Gene_Type</th>
+      <th>Transcript_ID</th>
+      <th>Position_to_TSS</th>
+      <th>CGI_Coordinate</th>
+      <th>Feature_Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>cg00000029</td>
+      <td>0.312090</td>
+      <td>chr16</td>
+      <td>53434200</td>
+      <td>53434201</td>
+      <td>RBL2;RBL2;RBL2</td>
+      <td>protein_coding;protein_coding;protein_coding</td>
+      <td>ENST00000262133.9;ENST00000544405.5;ENST000005...</td>
+      <td>-221;-1420;222</td>
+      <td>CGI:chr16:53434489-53435297</td>
+      <td>N_Shore</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>cg00000108</td>
+      <td>NaN</td>
+      <td>chr3</td>
+      <td>37417715</td>
+      <td>37417716</td>
+      <td>C3orf35;C3orf35;C3orf35;C3orf35;C3orf35;C3orf3...</td>
+      <td>lincRNA;lincRNA;lincRNA;lincRNA;lincRNA;lincRN...</td>
+      <td>ENST00000328376.8;ENST00000332506.6;ENST000004...</td>
+      <td>18552;18552;6505;31445;18143;447;18552;18552</td>
+      <td>CGI:chr3:37451927-37453047</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>cg00000109</td>
+      <td>NaN</td>
+      <td>chr3</td>
+      <td>172198247</td>
+      <td>172198248</td>
+      <td>FNDC3B;FNDC3B;FNDC3B;FNDC3B;FNDC3B;FNDC3B</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000336824.7;ENST00000415807.5;ENST000004...</td>
+      <td>157692;158618;151333;71272;158587;71273</td>
+      <td>CGI:chr3:172039703-172040934</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>cg00000165</td>
+      <td>0.356855</td>
+      <td>chr1</td>
+      <td>90729117</td>
+      <td>90729118</td>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+      <td>CGI:chr1:90724932-90727247</td>
+      <td>S_Shore</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>cg00000236</td>
+      <td>0.914564</td>
+      <td>chr8</td>
+      <td>42405776</td>
+      <td>42405777</td>
+      <td>VDAC3</td>
+      <td>protein_coding</td>
+      <td>ENST00000022615.7</td>
+      <td>13872</td>
+      <td>CGI:chr8:42410918-42411241</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>485572</th>
+      <td>rs9363764</td>
+      <td>0.718939</td>
+      <td>chr6</td>
+      <td>67522149</td>
+      <td>67522149</td>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+      <td>CGI:chr6:68634840-68635154</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>485573</th>
+      <td>rs939290</td>
+      <td>0.963762</td>
+      <td>chr3</td>
+      <td>14617359</td>
+      <td>14617359</td>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+      <td>CGI:chr3:14602211-14603323</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>485574</th>
+      <td>rs951295</td>
+      <td>0.544445</td>
+      <td>chr15</td>
+      <td>45707625</td>
+      <td>45707625</td>
+      <td>RP11-718O11.1;RP11-718O11.1</td>
+      <td>lincRNA;lincRNA</td>
+      <td>ENST00000559600.1;ENST00000560705.1</td>
+      <td>2429;2546</td>
+      <td>CGI:chr15:45704255-45705206</td>
+      <td>S_Shelf</td>
+    </tr>
+    <tr>
+      <th>485575</th>
+      <td>rs966367</td>
+      <td>0.024008</td>
+      <td>chr2</td>
+      <td>12008094</td>
+      <td>12008094</td>
+      <td>AC096559.1;AC096559.1;AC096559.1;AC096559.1</td>
+      <td>lincRNA;lincRNA;lincRNA;lincRNA</td>
+      <td>ENST00000412294.4;ENST00000438292.4;ENST000004...</td>
+      <td>965;142208;919;977</td>
+      <td>CGI:chr2:11784857-11785127</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>485576</th>
+      <td>rs9839873</td>
+      <td>0.935300</td>
+      <td>chr3</td>
+      <td>86613005</td>
+      <td>86613005</td>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+      <td>CGI:chr3:86990460-86991366</td>
+      <td>.</td>
+    </tr>
+  </tbody>
+</table>
+<p>485577 rows × 11 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Composite Element REF&#39;, &#39;Beta_value&#39;, &#39;Chromosome&#39;, &#39;Start&#39;, &#39;End&#39;,
+       &#39;Gene_Symbol&#39;, &#39;Gene_Type&#39;, &#39;Transcript_ID&#39;, &#39;Position_to_TSS&#39;,
+       &#39;CGI_Coordinate&#39;, &#39;Feature_Type&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gene_Symbol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;TP53;&#39;</span><span class="p">)</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Composite Element REF</th>
+      <th>Beta_value</th>
+      <th>Chromosome</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Gene_Symbol</th>
+      <th>Gene_Type</th>
+      <th>Transcript_ID</th>
+      <th>Position_to_TSS</th>
+      <th>CGI_Coordinate</th>
+      <th>Feature_Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>17041</th>
+      <td>cg00807143</td>
+      <td>0.078188</td>
+      <td>chr17</td>
+      <td>7687402</td>
+      <td>7687403</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>-1030;137;80;86;80;26;86;86;26;86;80;80;149;86...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>N_Shore</td>
+    </tr>
+    <tr>
+      <th>33529</th>
+      <td>cg01620719</td>
+      <td>NaN</td>
+      <td>chr17</td>
+      <td>7685933</td>
+      <td>7685934</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>439;1606;1549;1555;1549;1495;1555;1555;1495;15...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>N_Shore</td>
+    </tr>
+    <tr>
+      <th>41908</th>
+      <td>cg02045224</td>
+      <td>0.018497</td>
+      <td>chr17</td>
+      <td>7688300</td>
+      <td>7688301</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000420246.5;ENST000004...</td>
+      <td>-761;-818;-812;-818;-872;-812;-812;-872;-812;-...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>Island</td>
+    </tr>
+    <tr>
+      <th>42883</th>
+      <td>cg02087342</td>
+      <td>0.880770</td>
+      <td>chr17</td>
+      <td>7675729</td>
+      <td>7675730</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000359597.7;ENST000004...</td>
+      <td>11810;866;866;11753;11759;11753;11699;-235;-23...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>44396</th>
+      <td>cg02166782</td>
+      <td>0.053263</td>
+      <td>chr17</td>
+      <td>7688246</td>
+      <td>7688247</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000420246.5;ENST000004...</td>
+      <td>-707;-764;-758;-764;-818;-758;-758;-818;-758;-...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>Island</td>
+    </tr>
+    <tr>
+      <th>54762</th>
+      <td>cg02690969</td>
+      <td>0.021958</td>
+      <td>chr17</td>
+      <td>7687297</td>
+      <td>7687298</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>-925;242;185;191;185;131;191;191;131;191;185;1...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>N_Shore</td>
+    </tr>
+    <tr>
+      <th>57773</th>
+      <td>cg02842899</td>
+      <td>0.030032</td>
+      <td>chr17</td>
+      <td>7686173</td>
+      <td>7686174</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>199;1366;1309;1315;1309;1255;1315;1315;1255;13...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>Island</td>
+    </tr>
+    <tr>
+      <th>58029</th>
+      <td>cg02855142</td>
+      <td>0.029022</td>
+      <td>chr17</td>
+      <td>7688629</td>
+      <td>7688630</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000420246.5;ENST000004...</td>
+      <td>-1090;-1147;-1141;-1147;-1201;-1141;-1141;-120...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>S_Shore</td>
+    </tr>
+    <tr>
+      <th>80632</th>
+      <td>cg04009932</td>
+      <td>0.040578</td>
+      <td>chr17</td>
+      <td>7687321</td>
+      <td>7687322</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>-949;218;161;167;161;107;167;167;107;167;161;1...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>N_Shore</td>
+    </tr>
+    <tr>
+      <th>106342</th>
+      <td>cg05348746</td>
+      <td>0.023798</td>
+      <td>chr17</td>
+      <td>7687327</td>
+      <td>7687328</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>-955;212;155;161;155;101;161;161;101;161;155;1...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>N_Shore</td>
+    </tr>
+    <tr>
+      <th>108717</th>
+      <td>cg05479194</td>
+      <td>0.037496</td>
+      <td>chr17</td>
+      <td>7688520</td>
+      <td>7688521</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000420246.5;ENST000004...</td>
+      <td>-981;-1038;-1032;-1038;-1092;-1032;-1032;-1092...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>Island</td>
+    </tr>
+    <tr>
+      <th>123670</th>
+      <td>cg06317056</td>
+      <td>0.027737</td>
+      <td>chr17</td>
+      <td>7686026</td>
+      <td>7686027</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>346;1513;1456;1462;1456;1402;1462;1462;1402;14...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>Island</td>
+    </tr>
+    <tr>
+      <th>124469</th>
+      <td>cg06365412</td>
+      <td>0.881669</td>
+      <td>chr17</td>
+      <td>7677391</td>
+      <td>7677392</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000359597.7;ENST000004...</td>
+      <td>10148;-796;-796;10091;10097;10091;10037;10097;...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>128467</th>
+      <td>cg06587969</td>
+      <td>0.035480</td>
+      <td>chr17</td>
+      <td>7688581</td>
+      <td>7688582</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000420246.5;ENST000004...</td>
+      <td>-1042;-1099;-1093;-1099;-1153;-1093;-1093;-115...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>S_Shore</td>
+    </tr>
+    <tr>
+      <th>151121</th>
+      <td>cg07760161</td>
+      <td>NaN</td>
+      <td>chr17</td>
+      <td>7685060</td>
+      <td>7685061</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000420246.5;ENST000004...</td>
+      <td>2479;2422;2428;2422;2368;2428;2428;2368;2428;2...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>N_Shore</td>
+    </tr>
+    <tr>
+      <th>155279</th>
+      <td>cg07991600</td>
+      <td>0.029726</td>
+      <td>chr17</td>
+      <td>7686062</td>
+      <td>7686063</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>310;1477;1420;1426;1420;1366;1426;1426;1366;14...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>Island</td>
+    </tr>
+    <tr>
+      <th>157570</th>
+      <td>cg08119584</td>
+      <td>0.046643</td>
+      <td>chr17</td>
+      <td>7686658</td>
+      <td>7686659</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>-286;881;824;830;824;770;830;830;770;830;824;8...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>S_Shore</td>
+    </tr>
+    <tr>
+      <th>167932</th>
+      <td>cg08691422</td>
+      <td>NaN</td>
+      <td>chr17</td>
+      <td>7685469</td>
+      <td>7685470</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>903;2070;2013;2019;2013;1959;2019;2019;1959;20...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>N_Shore</td>
+    </tr>
+    <tr>
+      <th>204450</th>
+      <td>cg10792831</td>
+      <td>0.958904</td>
+      <td>chr17</td>
+      <td>7675371</td>
+      <td>7675372</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000359597.7;ENST000004...</td>
+      <td>12168;1224;1224;12111;12117;12111;12057;123;12...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>225227</th>
+      <td>cg12041075</td>
+      <td>0.853395</td>
+      <td>chr17</td>
+      <td>7675994</td>
+      <td>7675995</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000359597.7;ENST000004...</td>
+      <td>11545;601;601;11488;11494;11488;11434;-500;-50...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>225234</th>
+      <td>cg12041429</td>
+      <td>NaN</td>
+      <td>chr17</td>
+      <td>7682557</td>
+      <td>7682558</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000420246.5;ENST000004...</td>
+      <td>4982;4925;4931;4925;4871;4931;4931;4871;4931;4...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>N_Shelf</td>
+    </tr>
+    <tr>
+      <th>230543</th>
+      <td>cg12373934</td>
+      <td>0.049018</td>
+      <td>chr17</td>
+      <td>7687614</td>
+      <td>7687615</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>-1242;-75;-132;-126;-132;-186;-126;-126;-186;-...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>N_Shore</td>
+    </tr>
+    <tr>
+      <th>242984</th>
+      <td>cg13169780</td>
+      <td>0.036275</td>
+      <td>chr17</td>
+      <td>7688252</td>
+      <td>7688253</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000420246.5;ENST000004...</td>
+      <td>-713;-770;-764;-770;-824;-764;-764;-824;-764;-...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>Island</td>
+    </tr>
+    <tr>
+      <th>248373</th>
+      <td>cg13468400</td>
+      <td>0.897289</td>
+      <td>chr17</td>
+      <td>7676228</td>
+      <td>7676229</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000359597.7;ENST000004...</td>
+      <td>11311;367;367;11254;11260;11254;11200;-734;-73...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>266750</th>
+      <td>cg14351634</td>
+      <td>0.017036</td>
+      <td>chr17</td>
+      <td>7687424</td>
+      <td>7687425</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>-1052;115;58;64;58;4;64;64;4;64;58;58;127;64;1...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>N_Shore</td>
+    </tr>
+    <tr>
+      <th>282070</th>
+      <td>cg15206330</td>
+      <td>0.039830</td>
+      <td>chr17</td>
+      <td>7688273</td>
+      <td>7688274</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000420246.5;ENST000004...</td>
+      <td>-734;-791;-785;-791;-845;-785;-785;-845;-785;-...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>Island</td>
+    </tr>
+    <tr>
+      <th>298062</th>
+      <td>cg16203911</td>
+      <td>0.024094</td>
+      <td>chr17</td>
+      <td>7687413</td>
+      <td>7687414</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>-1041;126;69;75;69;15;75;75;15;75;69;69;138;75...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>N_Shore</td>
+    </tr>
+    <tr>
+      <th>301474</th>
+      <td>cg16397722</td>
+      <td>0.935101</td>
+      <td>chr17</td>
+      <td>7673772</td>
+      <td>7673773</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000359597.7;ENST000004...</td>
+      <td>13767;2823;2823;13710;13716;13710;1722;1722;13...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>319417</th>
+      <td>cg17461511</td>
+      <td>0.023710</td>
+      <td>chr17</td>
+      <td>7688234</td>
+      <td>7688235</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000420246.5;ENST000004...</td>
+      <td>-695;-752;-746;-752;-806;-746;-746;-806;-746;-...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>Island</td>
+    </tr>
+    <tr>
+      <th>331294</th>
+      <td>cg18198734</td>
+      <td>0.883197</td>
+      <td>chr17</td>
+      <td>7675945</td>
+      <td>7675946</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000359597.7;ENST000004...</td>
+      <td>11594;650;650;11537;11543;11537;11483;-451;-45...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>333079</th>
+      <td>cg18311066</td>
+      <td>0.020738</td>
+      <td>chr17</td>
+      <td>7688353</td>
+      <td>7688354</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000420246.5;ENST000004...</td>
+      <td>-814;-871;-865;-871;-925;-865;-865;-925;-865;-...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>Island</td>
+    </tr>
+    <tr>
+      <th>376079</th>
+      <td>cg21050342</td>
+      <td>0.026276</td>
+      <td>chr17</td>
+      <td>7688326</td>
+      <td>7688327</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000420246.5;ENST000004...</td>
+      <td>-787;-844;-838;-844;-898;-838;-838;-898;-838;-...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>Island</td>
+    </tr>
+    <tr>
+      <th>393067</th>
+      <td>cg22175811</td>
+      <td>0.040075</td>
+      <td>chr17</td>
+      <td>7686734</td>
+      <td>7686735</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>-362;805;748;754;748;694;754;754;694;754;748;7...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>S_Shore</td>
+    </tr>
+    <tr>
+      <th>404728</th>
+      <td>cg22949073</td>
+      <td>0.836368</td>
+      <td>chr17</td>
+      <td>7669073</td>
+      <td>7669074</td>
+      <td>TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;TP53;T...</td>
+      <td>protein_coding;protein_coding;protein_coding;p...</td>
+      <td>ENST00000269305.7;ENST00000359597.7;ENST000004...</td>
+      <td>18466;7522;7522;18409;18415;18409;6421;6421;64...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>410650</th>
+      <td>cg23290969</td>
+      <td>NaN</td>
+      <td>chr17</td>
+      <td>7685954</td>
+      <td>7685955</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>418;1585;1528;1534;1528;1474;1534;1534;1474;15...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>N_Shore</td>
+    </tr>
+    <tr>
+      <th>419316</th>
+      <td>cg23846713</td>
+      <td>NaN</td>
+      <td>chr17</td>
+      <td>7687677</td>
+      <td>7687678</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>-1305;-138;-195;-189;-195;-249;-189;-189;-249;...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>N_Shore</td>
+    </tr>
+    <tr>
+      <th>439258</th>
+      <td>cg25053252</td>
+      <td>0.017229</td>
+      <td>chr17</td>
+      <td>7686040</td>
+      <td>7686041</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>332;1499;1442;1448;1442;1388;1448;1448;1388;14...</td>
+      <td>CGI:chr17:7685972-7686185</td>
+      <td>Island</td>
+    </tr>
+    <tr>
+      <th>452121</th>
+      <td>cg25896754</td>
+      <td>0.026402</td>
+      <td>chr17</td>
+      <td>7687559</td>
+      <td>7687560</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>-1187;-20;-77;-71;-77;-131;-71;-71;-131;-71;-7...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>N_Shore</td>
+    </tr>
+    <tr>
+      <th>463087</th>
+      <td>cg26539663</td>
+      <td>0.072749</td>
+      <td>chr17</td>
+      <td>7687621</td>
+      <td>7687622</td>
+      <td>RP11-199F11.2;TP53;TP53;TP53;TP53;TP53;TP53;TP...</td>
+      <td>sense_intronic;protein_coding;protein_coding;p...</td>
+      <td>ENST00000571370.1;ENST00000269305.7;ENST000004...</td>
+      <td>-1249;-82;-139;-133;-139;-193;-133;-133;-193;-...</td>
+      <td>CGI:chr17:7688176-7688521</td>
+      <td>N_Shore</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
+    
+  </body>
+</html>

@@ -41,17 +41,17 @@ plt.show()
 plt.close()
 
 
-# **pyplot**モジュール　**subplots( )**メソッド　
+# **pyplot**モジュール　**subplots()**メソッド　
 # 
 # ・図のサイズ、配置等を指定する。
 # 
 # ・戻り値はFigureオブジェクトとAxesオブジェクト。
 # 
-# ・**figsize=( )**のデフォルトは(6.4,4.8)
+# ・**figsize=()**のデフォルトは(6.4,4.8)
 # 
 # <br>
 # 
-# **pyplot**モジュール　**subplots_adjust( )**メソッド
+# **pyplot**モジュール　**subplots_adjust()**メソッド
 # 
 # ・余白のサイズを指定する。  
 # 
@@ -61,13 +61,13 @@ plt.close()
 # 
 # <br>
 # 
-# **twinx( )**
+# **twinx()**
 # 
 # ・二つのAxesオブジェクトを連結する。
 # 
 # <br>
 # 
-# **set_zorder( )**
+# **set_zorder()**
 # 
 # ・どちらのAxesオブジェクトを手前にするか指定する。数値が後の方が手前にくる。
 # 
@@ -79,7 +79,7 @@ plt.close()
 # 
 # <br>
 # 
-# **legend( )**
+# **legend()**
 # 
 # ・**bbox_to_anchor(x,y)**で凡例の座標を指定。(0,0)が図の原点。(1,1)だと図の右上。1超えてもよい。
 # 
@@ -90,7 +90,7 @@ plt.close()
 # 
 # <br>
 # 
-# **set_xlabel( )**, **set_ylabel( )**
+# **set_xlabel()**, **set_ylabel()**
 # 
 # ・x軸、y軸のラベルをつける。
 # 
@@ -98,7 +98,7 @@ plt.close()
 # 
 # <br>
 # 
-# **set_xticks( )**, **set_yticks( )**
+# **set_xticks()**, **set_yticks()**
 # 
 # ・x軸、y軸の目盛りの設定をする。
 # 
@@ -106,7 +106,7 @@ plt.close()
 # 
 # <br>
 # 
-# **set_xticklabels( )**
+# **set_xticklabels()**
 # 
 # ・x軸のラベルを指定する
 # 

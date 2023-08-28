@@ -14,7 +14,7 @@
     - file: python_kaplanmeier
     - file: python_plot_mergeplots
     - file: python_plot_cumulativebar
-    - file: python_practice_functionlist.ipynb
+    - file: python_practice_functionlist
 #- file: content
 #  sections:
 #    - file: markdown
