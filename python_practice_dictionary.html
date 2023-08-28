@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>辞書 &#8212; bioinformatics入門</title>
+    <title>辞書 &#8212; bioinformatics python資料</title>
     
   <link rel="stylesheet" href="_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
 
@@ -80,7 +80,7 @@
   <img src="_static/logo.png" class="logo" alt="logo">
   
   
-  <h1 class="site-logo" id="site-title">bioinformatics入門</h1>
+  <h1 class="site-logo" id="site-title">bioinformatics python資料</h1>
   
 </a>
 </div>
@@ -371,7 +371,7 @@
 <br></p>
 <br>  
 <p>辞書を使っていると、ある一つのキーや値だけでなく、全てのキーや値を取り出して使いたいと思うことがしばしばあります。<br />
-辞書から<strong>すべてのキーを取り出したいとき</strong>には、辞書型のメソッド（辞書型のデータを処理する関数)である<code class="docutils literal notranslate"><span class="pre">keys(</span> <span class="pre">)</span></code>を使用します。</p>
+辞書から<strong>すべてのキーを取り出したいとき</strong>には、辞書型のメソッド（辞書型のデータを処理する関数)である<code class="docutils literal notranslate"><span class="pre">keys()</span></code>を使用します。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">keys</span><span class="p">()</span><span class="n">メソッドの使い方</span>
 <span class="n">辞書型変数名</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
@@ -413,7 +413,7 @@ NM_000389
 </div>
 <p>for文を使い、<code class="docutils literal notranslate"><span class="pre">values()</span></code>で辞書<code class="docutils literal notranslate"><span class="pre">genes_dict</span></code>の要素をひとつずつ取り出し、<code class="docutils literal notranslate"><span class="pre">print()</span></code>で出力しました。</p>
 <br>
-<p>辞書から<strong>キーと値の両方を同時に取り出したい</strong>ときは、<code class="docutils literal notranslate"><span class="pre">items(</span> <span class="pre">)</span></code>を使用します。</p>
+<p>辞書から<strong>キーと値の両方を同時に取り出したい</strong>ときは、<code class="docutils literal notranslate"><span class="pre">items()</span></code>を使用します。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">genes_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -433,7 +433,7 @@ NM_000389
 <p>キーと値の両方を受け取ることができました。<br />
 <code class="docutils literal notranslate"><span class="pre">\t</span></code>はタブ区切りを意味します。<br />
 出力の際、間隔を開けて見やすくするためにタブを入れました。</p>
-<p><code class="docutils literal notranslate"><span class="pre">dict(</span> <span class="pre">)</span></code>はキーと値の二つの値を返しますので、<code class="docutils literal notranslate"><span class="pre">key</span></code>と<code class="docutils literal notranslate"><span class="pre">value</span></code>という二つの変数で受け取っています。</p>
+<p><code class="docutils literal notranslate"><span class="pre">dict()</span></code>はキーと値の二つの値を返しますので、<code class="docutils literal notranslate"><span class="pre">key</span></code>と<code class="docutils literal notranslate"><span class="pre">value</span></code>という二つの変数で受け取っています。</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="id4">
@@ -462,7 +462,7 @@ ERBB2	NO
 </div>
 </div>
 <br>
-<p>要素に存在するかどうかを調べるためには、<code class="docutils literal notranslate"><span class="pre">values(</span> <span class="pre">)</span></code>を合わせて使います。</p>
+<p>要素に存在するかどうかを調べるためには、<code class="docutils literal notranslate"><span class="pre">values()</span></code>を合わせて使います。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s1">&#39;NM_000546&#39;</span> <span class="ow">in</span> <span class="n">genes_dict</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
@@ -583,7 +583,7 @@ ERBB2	NO
 </div>
 </div>
 </div>
-<p>2回目の<code class="docutils literal notranslate"><span class="pre">setdefault(</span> <span class="pre">)</span></code>では、すでにキーが存在しているので何もしていません。</p>
+<p>2回目の<code class="docutils literal notranslate"><span class="pre">setdefault()</span></code>では、すでにキーが存在しているので何もしていません。</p>
 <p>キーがすでに存在する場合、値を追加して紐付けたい場合もあります。<br />
 その場合は、例えば値に空のリストを作成します。</p>
 <div class="cell docutils container">

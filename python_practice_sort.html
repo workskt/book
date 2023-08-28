@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ソート &#8212; bioinformatics入門</title>
+    <title>ソート &#8212; bioinformatics python資料</title>
     
   <link rel="stylesheet" href="_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
 
@@ -80,7 +80,7 @@
   <img src="_static/logo.png" class="logo" alt="logo">
   
   
-  <h1 class="site-logo" id="site-title">bioinformatics入門</h1>
+  <h1 class="site-logo" id="site-title">bioinformatics python資料</h1>
   
 </a>
 </div>
@@ -300,11 +300,11 @@
 <h2>リストのソート<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <br>
 <p>リストの中身を並び替えたい場合は、以下の二通りの方法があります。<br />
-(1) <code class="docutils literal notranslate"><span class="pre">sort(</span> <span class="pre">)</span></code>を使う<br />
-(2) <code class="docutils literal notranslate"><span class="pre">sorted(</span> <span class="pre">)</span></code>を使う</p>
+(1) <code class="docutils literal notranslate"><span class="pre">sort()</span></code>を使う<br />
+(2) <code class="docutils literal notranslate"><span class="pre">sorted()</span></code>を使う</p>
 <hr class="docutils" />
-<p>(1) <code class="docutils literal notranslate"><span class="pre">sort(</span> <span class="pre">)</span></code>を使う</p>
-<p>これはリスト型のメソッドですので、ソートしたいリストと<code class="docutils literal notranslate"><span class="pre">sort(</span> <span class="pre">)</span></code>を<code class="docutils literal notranslate"><span class="pre">.</span></code>で繋ぎます。<br />
+<p>(1) <code class="docutils literal notranslate"><span class="pre">sort()</span></code>を使う</p>
+<p>これはリスト型のメソッドですので、ソートしたいリストと<code class="docutils literal notranslate"><span class="pre">sort()</span></code>を<code class="docutils literal notranslate"><span class="pre">.</span></code>で繋ぎます。<br />
 指定したリストの要素が並び替えられ、上書きされます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -322,7 +322,7 @@
 </div>
 <p>リスト<code class="docutils literal notranslate"><span class="pre">a</span></code>の要素が、アルファベット順に並び替えられました。<br />
 上書きされるので、元の順番を持つ配列は残っていません。</p>
-<p>(2) <code class="docutils literal notranslate"><span class="pre">sorted(</span> <span class="pre">)</span></code>を使う</p>
+<p>(2) <code class="docutils literal notranslate"><span class="pre">sorted()</span></code>を使う</p>
 <p>これは組み込み関数（最初から使える関数）で、新しいリストを返します。</p>
 <blockquote>
 <div><p>組み込み関数の一覧はこちらから。<br />
@@ -381,7 +381,7 @@ https://docs.python.org/ja/3/library/functions.html<br />
 <div class="section" id="id3">
 <h2>文字列のソート<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <br>
-<p>文字列を並び替える場合は、<code class="docutils literal notranslate"><span class="pre">sorted(</span> <span class="pre">)</span></code>を使用します。<br />
+<p>文字列を並び替える場合は、<code class="docutils literal notranslate"><span class="pre">sorted()</span></code>を使用します。<br />
 結果はリスト型として返されます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -404,10 +404,10 @@ https://docs.python.org/ja/3/library/functions.html<br />
 </div>
 </div>
 </div>
-<p>リスト型だと使いにくいので、文字列に戻す場合は、リスト型のメソッド<code class="docutils literal notranslate"><span class="pre">join(</span> <span class="pre">)</span></code>を使います。<br />
-<code class="docutils literal notranslate"><span class="pre">join(</span> <span class="pre">)</span></code>はリストの要素を、指定した区切り文字をはさんで連結してくれます。</p>
+<p>リスト型だと使いにくいので、文字列に戻す場合は、リスト型のメソッド<code class="docutils literal notranslate"><span class="pre">join()</span></code>を使います。<br />
+<code class="docutils literal notranslate"><span class="pre">join()</span></code>はリストの要素を、指定した区切り文字をはさんで連結してくれます。</p>
 <br>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;区切り文字&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;区切り文字&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </pre></div>
 </div>
 <br><div class="cell docutils container">
@@ -444,8 +444,8 @@ https://docs.python.org/ja/3/library/functions.html<br />
 <div class="section" id="id4">
 <h2>辞書のソート<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <br>
-<p>辞書を並び替えたい場合も、<code class="docutils literal notranslate"><span class="pre">sorted(</span> <span class="pre">)</span></code>を使用します。</p>
-<p>キーを並び替えたい場合は、<code class="docutils literal notranslate"><span class="pre">keys(</span> <span class="pre">)</span></code>を使います。<br />
+<p>辞書を並び替えたい場合も、<code class="docutils literal notranslate"><span class="pre">sorted()</span></code>を使用します。</p>
+<p>キーを並び替えたい場合は、<code class="docutils literal notranslate"><span class="pre">keys()</span></code>を使います。<br />
 結果はリスト形式で返されます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -463,7 +463,7 @@ https://docs.python.org/ja/3/library/functions.html<br />
 </div>
 </div>
 </div>
-<p>要素を並び替えたい場合は、<code class="docutils literal notranslate"><span class="pre">values(</span> <span class="pre">)</span></code>を使います。</p>
+<p>要素を並び替えたい場合は、<code class="docutils literal notranslate"><span class="pre">values()</span></code>を使います。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">genes_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;TP53&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;EGFR&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s1">&#39;MYC&#39;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span> <span class="s1">&#39;CDKN1A&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
@@ -495,8 +495,8 @@ https://docs.python.org/ja/3/library/functions.html<br />
 </div>
 <br>
 <p>さて、要素の順番で並び替えて、その順番でキーを取得したいときはどうすればよいでしょうか。<br />
-遺伝子名と発現量が格納された辞書を使って、遺伝子を発現量順に並べるといったことはしばしばあります。</p>
-<p>この場合、辞書型のメソッド<code class="docutils literal notranslate"><span class="pre">items(</span> <span class="pre">)</span></code>、<strong>key関数</strong>、<strong>lambda関数</strong>を使用します。<br />
+遺伝子名と発現量が格納された辞書を使って、遺伝子を発現量順に並べるといった作業が必要になることはよくあります。</p>
+<p>この場合、辞書型のメソッド<code class="docutils literal notranslate"><span class="pre">items()</span></code>、<strong>key関数</strong>、<strong>lambda関数</strong>を使用します。<br />
 結果はタプル型で返されます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -513,8 +513,7 @@ https://docs.python.org/ja/3/library/functions.html<br />
 </div>
 </div>
 <p>要素の降順に並び替えられて、タプル型で結果が返ってきました。</p>
-<p><code class="docutils literal notranslate"><span class="pre">sorted(</span> <span class="pre">)</span></code>のカッコ内がちょっと難しいかもしれませんが、とりあえずそのまま覚えましょう。<br />
-慣れた頃に調べてみると、理解できるようになっていると思います。</p>
+<p>ここでは細かい説明は省略しますが、<code class="docutils literal notranslate"><span class="pre">sorted()</span></code>のカッコ内がちょっとややこしいかもしれません。</p>
 <p>もし遺伝子名をリストで取得したければ、リスト内包表記を使いましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pandasデータフレームの扱い方 &#8212; bioinformatics入門</title>
+    <title>pandasデータフレームの扱い方 &#8212; bioinformatics python資料</title>
     
   <link rel="stylesheet" href="_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
 
@@ -80,7 +80,7 @@
   <img src="_static/logo.png" class="logo" alt="logo">
   
   
-  <h1 class="site-logo" id="site-title">bioinformatics入門</h1>
+  <h1 class="site-logo" id="site-title">bioinformatics python資料</h1>
   
 </a>
 </div>
@@ -317,7 +317,7 @@
 </div>
 </div>
 <br>
-<p>irisはdictionary-like objectのようですので、とりあえず<code class="docutils literal notranslate"><span class="pre">keys(</span> <span class="pre">)</span></code>で項目を確認してみます。</p>
+<p>irisはdictionary-like objectのようですので、とりあえず<code class="docutils literal notranslate"><span class="pre">keys()</span></code>で項目を確認してみます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
@@ -325,7 +325,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;data&#39;, &#39;target&#39;, &#39;frame&#39;, &#39;target_names&#39;, &#39;DESCR&#39;, &#39;feature_names&#39;, &#39;filename&#39;, &#39;data_module&#39;])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;data&#39;, &#39;target&#39;, &#39;frame&#39;, &#39;target_names&#39;, &#39;DESCR&#39;, &#39;feature_names&#39;, &#39;filename&#39;])
 </pre></div>
 </div>
 </div>
@@ -350,7 +350,7 @@
 </div>
 <br>
 <p>‘data’は各個体のデータ、’target’は品種のインデックス、’target_names’は品種名、’feature_names’はデータ項目が格納されているようです。</p>
-<p>扱いやすくするために、<code class="docutils literal notranslate"><span class="pre">pandas</span></code>の<code class="docutils literal notranslate"><span class="pre">DataFrame(</span> <span class="pre">)</span></code>でデータフレームの形式に変換します。</p>
+<p>扱いやすくするために、<code class="docutils literal notranslate"><span class="pre">pandas</span></code>の<code class="docutils literal notranslate"><span class="pre">DataFrame()</span></code>でデータフレームの形式に変換します。</p>
 <p><code class="docutils literal notranslate"><span class="pre">columns</span></code>で列ラベル情報を指定します。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -613,7 +613,7 @@
 <p>target（品種のインデックス）が追加されました。</p>
 <br>
 <p>targetがインデックスだとわかりにくいので、品種名に変換します。</p>
-<p><strong>特定の行だけ取得する</strong>ためには、<code class="docutils literal notranslate"><span class="pre">loc[</span> <span class="pre">]</span></code>を使います。</p>
+<p><strong>特定の行だけ取得する</strong>ためには、<code class="docutils literal notranslate"><span class="pre">loc[]</span></code>を使います。</p>
 <br>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">行番号</span><span class="p">]</span>
 </pre></div>
@@ -696,7 +696,7 @@
 </div></div></div>
 </div>
 <br>
-<p><code class="docutils literal notranslate"><span class="pre">loc.[</span> <span class="pre">]</span></code>の<code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>内に条件を入れると、その条件と一致する行だけ取得できます。</p>
+<p><code class="docutils literal notranslate"><span class="pre">loc.[]</span></code>の<code class="docutils literal notranslate"><span class="pre">[]</span></code>内に条件を入れると、その条件と一致する行だけ取得できます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
@@ -1282,8 +1282,8 @@
 <h2>データフレームのファイルへの出力<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <br>
 <p>このデータフレーム形式をいったんタブ区切りファイルに出力します。</p>
-<p>出力のためには<code class="docutils literal notranslate"><span class="pre">to_csv(</span> <span class="pre">)</span></code>を使います。</p>
-<p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code>内に出力ファイルのパスを記入します。</p>
+<p>出力のためには<code class="docutils literal notranslate"><span class="pre">to_csv()</span></code>を使います。</p>
+<p><code class="docutils literal notranslate"><span class="pre">()</span></code>内に出力ファイルのパスを記入します。</p>
 <p><code class="docutils literal notranslate"><span class="pre">sep='\t'</span></code>を指定することでタブ区切りファイルとして出力できます。</p>
 <p>指定しない場合はcsvファイルとして出力します。</p>
 <p>行ラベル(index)は必要ないので、<code class="docutils literal notranslate"><span class="pre">index=False</span></code>を指定します。</p>
@@ -1301,9 +1301,9 @@
 <h2>データの読み込み<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <br>
 <p>ファイルをデータフレームとして読み込むためには、以下の関数を使用します。</p>
-<p><code class="docutils literal notranslate"><span class="pre">pd.read_table(</span> <span class="pre">)</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">pd.read_table()</span></code>
 タブ区切りファイルの読み込み</p>
-<p><code class="docutils literal notranslate"><span class="pre">pd.read_csv(</span> <span class="pre">)</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code>
 csvファイルの読み込み</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1569,7 +1569,7 @@ csvファイルの読み込み</p>
 </div></div></div>
 </div>
 <br>
-<p>特定の列だけ取得するには、<code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>の中に列ラベルを指定します。</p>
+<p>特定の列だけ取得するには、<code class="docutils literal notranslate"><span class="pre">[]</span></code>の中に列ラベルを指定します。</p>
 <br>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;列ラベル&#39;</span><span class="p">]</span>
 </pre></div>
@@ -1598,7 +1598,7 @@ Name: target, Length: 150, dtype: object
 </div>
 </div>
 <br>
-<p>特定の行だけ取得するには、<code class="docutils literal notranslate"><span class="pre">loc[</span> <span class="pre">]</span></code>を使用します。</p>
+<p>特定の行だけ取得するには、<code class="docutils literal notranslate"><span class="pre">loc[]</span></code>を使用します。</p>
 <br>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">行ラベル</span><span class="p">]</span>
 </pre></div>
@@ -1611,7 +1611,7 @@ Name: target, Length: 150, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sepal length (cm)          5.9
-sepal width (cm)           3.0
+sepal width (cm)             3
 petal length (cm)          5.1
 petal width (cm)           1.8
 target               virginica
@@ -1698,7 +1698,7 @@ Name: 149, dtype: object
 </div></div></div>
 </div>
 <br>
-<p>条件に該当する行だけ出力する場合にも、<code class="docutils literal notranslate"><span class="pre">loc[</span> <span class="pre">]</span></code>を使用します。</p>
+<p>条件に該当する行だけ出力する場合にも、<code class="docutils literal notranslate"><span class="pre">loc[]</span></code>を使用します。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;virginica&#39;</span><span class="p">]</span>
@@ -2282,7 +2282,7 @@ Name: 149, dtype: object
 <div class="section" id="id4">
 <h2>データフレームの連結<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <br>
-<p>空のデータフレームを作成するには、<code class="docutils literal notranslate"><span class="pre">DataFrame(</span> <span class="pre">)</span></code>を使用して以下のようにします。</p>
+<p>空のデータフレームを作成するには、<code class="docutils literal notranslate"><span class="pre">DataFrame()</span></code>を使用して以下のようにします。</p>
 <br>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[])</span>
 </pre></div>
@@ -2295,7 +2295,7 @@ Name: 149, dtype: object
 </div>
 </div>
 <br>
-<p>データフレームの連結には、<code class="docutils literal notranslate"><span class="pre">concat(</span> <span class="pre">)</span></code>を使用します。</p>
+<p>データフレームの連結には、<code class="docutils literal notranslate"><span class="pre">concat()</span></code>を使用します。</p>
 <p>縦方向に連結する場合は以下のようにします。</p>
 <br>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -3147,28 +3147,28 @@ Name: 149, dtype: object
       <td>4.9</td>
       <td>4.7</td>
       <td>4.6</td>
-      <td>5.0</td>
+      <td>5</td>
       <td>5.4</td>
       <td>4.6</td>
-      <td>5.0</td>
+      <td>5</td>
       <td>4.4</td>
       <td>4.9</td>
       <td>...</td>
-      <td>5.0</td>
+      <td>5</td>
       <td>4.5</td>
       <td>4.4</td>
-      <td>5.0</td>
+      <td>5</td>
       <td>5.1</td>
       <td>4.8</td>
       <td>5.1</td>
       <td>4.6</td>
       <td>5.3</td>
-      <td>5.0</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>sepal width (cm)</th>
       <td>3.5</td>
-      <td>3.0</td>
+      <td>3</td>
       <td>3.2</td>
       <td>3.1</td>
       <td>3.6</td>
@@ -3183,7 +3183,7 @@ Name: 149, dtype: object
       <td>3.2</td>
       <td>3.5</td>
       <td>3.8</td>
-      <td>3.0</td>
+      <td>3</td>
       <td>3.8</td>
       <td>3.2</td>
       <td>3.7</td>
