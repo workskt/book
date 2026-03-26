@@ -48,25 +48,25 @@ plt.show()
 plt.close()  
 
 
-# **numpy**モジュール **add()**
+# **numpy**モジュール **add( )**
 # 
 # ・配列の要素を足し算する。
 # 
 # <br>
 # 
-# **numpy**モジュール **tolist()**
+# **numpy**モジュール **tolist( )**
 # 
 # ・Numpy配列をリスト型に変換する。
 # 
 # <br>
 # 
-# **pyplot**モジュール **gca()**
+# **pyplot**モジュール **gca( )**
 # 
 # ・現在のAxesオブジェクトを取得する。
 # 
 # <br>
 # 
-# **get_legend_handles_labels()**
+# **get_legend_handles_labels( )**
 # 
 # ・handlerとlabelを取得する。handlerは線やマーカーを含んだオブジェクト。labelsは凡例に表示されるラベル（リスト型）。
 # 
