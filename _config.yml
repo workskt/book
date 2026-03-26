@@ -1,5 +1,9 @@
 # Book settings
+<<<<<<< HEAD
 title: bioinformaticsのためのpython資料
+=======
+title: bioinformatics指導用資料
+>>>>>>> f757c8a0b4f9522873847bebe1b2c72f788e30df
 author: The Jupyter Book Community
 logo: logo.png
 
