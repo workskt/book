@@ -1,298 +1,348 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>&lt;no title&gt; &#8212; bioinformaticsのためのpython資料</title>
-    
-  <link rel="stylesheet" href="_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-  <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.30270b6e4c972e43c488.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python_seaborn_stripplot';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-
-
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
+    
+    
+    
+  </div>
   
-  <img src="_static/logo.png" class="logo" alt="logo">
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
   
   
-  <h1 class="site-logo" id="site-title">bioinformaticsのためのpython資料</h1>
   
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="bioinformaticsのためのpython資料 - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="bioinformaticsのためのpython資料 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    bioinformaticsのためのpython資料
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="python_practice_hensuu.html">変数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_mojiretsu.html">文字列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_list.html">リスト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_repeat.html">繰り返し</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_if.html">if文 wihle文</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_dictionary.html">辞書</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_list_comprehension.html">リスト内包表記</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_sort.html">ソート</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_fileopen.html">テキストファイルを開く・ファイルに出力する</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_pandas_dataframe.html">pandasデータフレームの扱い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_plot_scatter.html">散布図の作成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_kaplanmeier.html">TCGAのデータを使ってKaplanMeier生存曲線を作る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_plot_mergeplots.html">共通のx軸に二つのプロットを表示する</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_plot_cumulativebar.html">積み上げ棒グラフを作成する</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_functionlist.html">関数一覧</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/python_seaborn_stripplot.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-</div>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
 
-<form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   bioinformaticsのためのpython資料
-  </a>
- </li>
-</ul>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="python_practice_hensuu.html">
-   変数
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_practice_mojiretsu.html">
-   文字列
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_practice_list.html">
-   リスト
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_practice_repeat.html">
-   繰り返し
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_practice_if.html">
-   if文 wihle文
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_practice_dictionary.html">
-   辞書
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_practice_list_comprehension.html">
-   リスト内包表記
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_practice_sort.html">
-   ソート
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_practice_fileopen.html">
-   テキストファイルを開く・ファイルに出力する
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_pandas_dataframe.html">
-   pandasデータフレームの扱い方
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_plot_scatter.html">
-   散布図の作成
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_kaplanmeier.html">
-   TCGAのデータを使ってKaplanMeier生存曲線を作る
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_plot_mergeplots.html">
-   共通のx軸に二つのプロットを表示する
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_plot_cumulativebar.html">
-   積み上げ棒グラフを作成する
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_practice_functionlist.html">
-   関数一覧
-  </a>
- </li>
-</ul>
-
-</nav>
-
- <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
 
 
-          
 
 
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/python_seaborn_stripplot.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-    
+  
 </div>
-        <!-- Source interaction buttons -->
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_seaborn_stripplot.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/python_seaborn_stripplot.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
 </div>
+              
+              
 
-    </div>
-
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
     <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="simple nav section-nav flex-column">
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
 </ul>
 
-        </nav>
-        
+            </nav>
+        </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">a4732e5dffa2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
 </pre></div>
 </div>
 </div>
@@ -438,10 +488,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;target&#39;, ylabel=&#39;sepal length (cm)&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;target&#39;, ylabel=&#39;sepal length (cm)&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/python_seaborn_stripplot_3_1.png" src="_images/python_seaborn_stripplot_3_1.png" />
+<img alt="_images/b05fffdeb189448c1042bd01590eda4bbce5c46e8959b9b073a4bd8ef7d78739.png" src="_images/b05fffdeb189448c1042bd01590eda4bbce5c46e8959b9b073a4bd8ef7d78739.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -469,149 +519,53 @@
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>mean radius</th>
-      <th>mean texture</th>
-      <th>mean perimeter</th>
-      <th>mean area</th>
-      <th>mean smoothness</th>
-      <th>mean compactness</th>
-      <th>mean concavity</th>
-      <th>mean concave points</th>
-      <th>mean symmetry</th>
-      <th>mean fractal dimension</th>
-      <th>...</th>
-      <th>worst radius</th>
-      <th>worst texture</th>
-      <th>worst perimeter</th>
-      <th>worst area</th>
-      <th>worst smoothness</th>
-      <th>worst compactness</th>
-      <th>worst concavity</th>
-      <th>worst concave points</th>
-      <th>worst symmetry</th>
-      <th>worst fractal dimension</th>
+      <th>sepal length (cm)</th>
+      <th>sepal width (cm)</th>
+      <th>petal length (cm)</th>
+      <th>petal width (cm)</th>
+      <th>target</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>17.99</td>
-      <td>10.38</td>
-      <td>122.80</td>
-      <td>1001.0</td>
-      <td>0.11840</td>
-      <td>0.27760</td>
-      <td>0.30010</td>
-      <td>0.14710</td>
-      <td>0.2419</td>
-      <td>0.07871</td>
-      <td>...</td>
-      <td>25.380</td>
-      <td>17.33</td>
-      <td>184.60</td>
-      <td>2019.0</td>
-      <td>0.16220</td>
-      <td>0.66560</td>
-      <td>0.7119</td>
-      <td>0.2654</td>
-      <td>0.4601</td>
-      <td>0.11890</td>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>20.57</td>
-      <td>17.77</td>
-      <td>132.90</td>
-      <td>1326.0</td>
-      <td>0.08474</td>
-      <td>0.07864</td>
-      <td>0.08690</td>
-      <td>0.07017</td>
-      <td>0.1812</td>
-      <td>0.05667</td>
-      <td>...</td>
-      <td>24.990</td>
-      <td>23.41</td>
-      <td>158.80</td>
-      <td>1956.0</td>
-      <td>0.12380</td>
-      <td>0.18660</td>
-      <td>0.2416</td>
-      <td>0.1860</td>
-      <td>0.2750</td>
-      <td>0.08902</td>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>19.69</td>
-      <td>21.25</td>
-      <td>130.00</td>
-      <td>1203.0</td>
-      <td>0.10960</td>
-      <td>0.15990</td>
-      <td>0.19740</td>
-      <td>0.12790</td>
-      <td>0.2069</td>
-      <td>0.05999</td>
-      <td>...</td>
-      <td>23.570</td>
-      <td>25.53</td>
-      <td>152.50</td>
-      <td>1709.0</td>
-      <td>0.14440</td>
-      <td>0.42450</td>
-      <td>0.4504</td>
-      <td>0.2430</td>
-      <td>0.3613</td>
-      <td>0.08758</td>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>setosa</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>11.42</td>
-      <td>20.38</td>
-      <td>77.58</td>
-      <td>386.1</td>
-      <td>0.14250</td>
-      <td>0.28390</td>
-      <td>0.24140</td>
-      <td>0.10520</td>
-      <td>0.2597</td>
-      <td>0.09744</td>
-      <td>...</td>
-      <td>14.910</td>
-      <td>26.50</td>
-      <td>98.87</td>
-      <td>567.7</td>
-      <td>0.20980</td>
-      <td>0.86630</td>
-      <td>0.6869</td>
-      <td>0.2575</td>
-      <td>0.6638</td>
-      <td>0.17300</td>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>20.29</td>
-      <td>14.34</td>
-      <td>135.10</td>
-      <td>1297.0</td>
-      <td>0.10030</td>
-      <td>0.13280</td>
-      <td>0.19800</td>
-      <td>0.10430</td>
-      <td>0.1809</td>
-      <td>0.05883</td>
-      <td>...</td>
-      <td>22.540</td>
-      <td>16.67</td>
-      <td>152.20</td>
-      <td>1575.0</td>
-      <td>0.13740</td>
-      <td>0.20500</td>
-      <td>0.4000</td>
-      <td>0.1625</td>
-      <td>0.2364</td>
-      <td>0.07678</td>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
     </tr>
     <tr>
       <th>...</th>
@@ -620,146 +574,50 @@
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
-      <th>564</th>
-      <td>21.56</td>
-      <td>22.39</td>
-      <td>142.00</td>
-      <td>1479.0</td>
-      <td>0.11100</td>
-      <td>0.11590</td>
-      <td>0.24390</td>
-      <td>0.13890</td>
-      <td>0.1726</td>
-      <td>0.05623</td>
-      <td>...</td>
-      <td>25.450</td>
-      <td>26.40</td>
-      <td>166.10</td>
-      <td>2027.0</td>
-      <td>0.14100</td>
-      <td>0.21130</td>
-      <td>0.4107</td>
-      <td>0.2216</td>
-      <td>0.2060</td>
-      <td>0.07115</td>
+      <th>145</th>
+      <td>6.7</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.3</td>
+      <td>virginica</td>
     </tr>
     <tr>
-      <th>565</th>
-      <td>20.13</td>
-      <td>28.25</td>
-      <td>131.20</td>
-      <td>1261.0</td>
-      <td>0.09780</td>
-      <td>0.10340</td>
-      <td>0.14400</td>
-      <td>0.09791</td>
-      <td>0.1752</td>
-      <td>0.05533</td>
-      <td>...</td>
-      <td>23.690</td>
-      <td>38.25</td>
-      <td>155.00</td>
-      <td>1731.0</td>
-      <td>0.11660</td>
-      <td>0.19220</td>
-      <td>0.3215</td>
-      <td>0.1628</td>
-      <td>0.2572</td>
-      <td>0.06637</td>
+      <th>146</th>
+      <td>6.3</td>
+      <td>2.5</td>
+      <td>5.0</td>
+      <td>1.9</td>
+      <td>virginica</td>
     </tr>
     <tr>
-      <th>566</th>
-      <td>16.60</td>
-      <td>28.08</td>
-      <td>108.30</td>
-      <td>858.1</td>
-      <td>0.08455</td>
-      <td>0.10230</td>
-      <td>0.09251</td>
-      <td>0.05302</td>
-      <td>0.1590</td>
-      <td>0.05648</td>
-      <td>...</td>
-      <td>18.980</td>
-      <td>34.12</td>
-      <td>126.70</td>
-      <td>1124.0</td>
-      <td>0.11390</td>
-      <td>0.30940</td>
-      <td>0.3403</td>
-      <td>0.1418</td>
-      <td>0.2218</td>
-      <td>0.07820</td>
+      <th>147</th>
+      <td>6.5</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.0</td>
+      <td>virginica</td>
     </tr>
     <tr>
-      <th>567</th>
-      <td>20.60</td>
-      <td>29.33</td>
-      <td>140.10</td>
-      <td>1265.0</td>
-      <td>0.11780</td>
-      <td>0.27700</td>
-      <td>0.35140</td>
-      <td>0.15200</td>
-      <td>0.2397</td>
-      <td>0.07016</td>
-      <td>...</td>
-      <td>25.740</td>
-      <td>39.42</td>
-      <td>184.60</td>
-      <td>1821.0</td>
-      <td>0.16500</td>
-      <td>0.86810</td>
-      <td>0.9387</td>
-      <td>0.2650</td>
-      <td>0.4087</td>
-      <td>0.12400</td>
+      <th>148</th>
+      <td>6.2</td>
+      <td>3.4</td>
+      <td>5.4</td>
+      <td>2.3</td>
+      <td>virginica</td>
     </tr>
     <tr>
-      <th>568</th>
-      <td>7.76</td>
-      <td>24.54</td>
-      <td>47.92</td>
-      <td>181.0</td>
-      <td>0.05263</td>
-      <td>0.04362</td>
-      <td>0.00000</td>
-      <td>0.00000</td>
-      <td>0.1587</td>
-      <td>0.05884</td>
-      <td>...</td>
-      <td>9.456</td>
-      <td>30.37</td>
-      <td>59.16</td>
-      <td>268.6</td>
-      <td>0.08996</td>
-      <td>0.06444</td>
-      <td>0.0000</td>
-      <td>0.0000</td>
-      <td>0.2871</td>
-      <td>0.07039</td>
+      <th>149</th>
+      <td>5.9</td>
+      <td>3.0</td>
+      <td>5.1</td>
+      <td>1.8</td>
+      <td>virginica</td>
     </tr>
   </tbody>
 </table>
-<p>569 rows × 30 columns</p>
+<p>150 rows × 5 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -809,16 +667,62 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;vital_status&#39;, ylabel=&#39;age_at_diagnosis&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;vital_status&#39;, ylabel=&#39;age_at_diagnosis&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/python_seaborn_stripplot_7_1.png" src="_images/python_seaborn_stripplot_7_1.png" />
+<img alt="_images/e3b786718684f7637851204c47f5f8d674d6f0448c199c341ecaa7a32b4901a8.png" src="_images/e3b786718684f7637851204c47f5f8d674d6f0448c199c341ecaa7a32b4901a8.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;jhu-usc.edu_LUSC.HumanMethylation450.4.lvl-3.TCGA-43-6771-01A-11D-1818-05.gdc_hg38.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">9</span><span class="o">-</span><span class="mi">446703</span><span class="n">a1edb7</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;jhu-usc.edu_LUSC.HumanMethylation450.4.lvl-3.TCGA-43-6771-01A-11D-1818-05.gdc_hg38.txt&#39;</span><span class="p">)</span>
+
+<span class="nn">~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/pandas/io/parsers/readers.py</span> in <span class="ni">read_table</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1240</span>     <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1241</span> 
+<span class="ne">-&gt; </span><span class="mi">1242</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1243</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1244</span> 
+
+<span class="nn">~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/pandas/io/parsers/readers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">575</span> 
+<span class="g g-Whitespace">    </span><span class="mi">576</span>     <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">577</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">578</span> 
+<span class="g g-Whitespace">    </span><span class="mi">579</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+
+<span class="nn">~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/pandas/io/parsers/readers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1405</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1406</span>         <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1407</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1408</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1409</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/pandas/io/parsers/readers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1659</span>                 <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1660</span>                     <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1661</span>             <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1662</span>                 <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1663</span>                 <span class="n">mode</span><span class="p">,</span>
+
+<span class="nn">~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/pandas/io/common.py</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">857</span>         <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">858</span>             <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">859</span>             <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">860</span>                 <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">861</span>                 <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;jhu-usc.edu_LUSC.HumanMethylation450.4.lvl-3.TCGA-43-6771-01A-11D-1818-05.gdc_hg38.txt&#39;
 </pre></div>
 </div>
 </div>
@@ -1638,7 +1542,7 @@
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1646,36 +1550,84 @@
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-        </div>
-    </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
     
-    <div class='prev-next-bottom'>
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
         
 
+      </main>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By The Jupyter Book Community<br/>
-        
-            &copy; Copyright 2020.<br/>
-      </p>
-    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
   </footer>
-</main>
-
-
-      </div>
-    </div>
-
-    
-  <script src="_static/js/index.30270b6e4c972e43c488.js"></script>
-
-
-    
   </body>
 </html>
