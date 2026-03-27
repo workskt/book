@@ -331,6 +331,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">変数に文字列を代入する</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">特定の文字を取り出す</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">複数の文字を取り出す</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">文字列を検索する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">条件と一致する文字列を検索する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">条件と一致する部分を抽出する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">練習</a></li>
 </ul>
             </nav>
         </div>
@@ -507,6 +511,129 @@ DNA配列を文字列として扱う際に便利です。</p>
 </div>
 </div>
 </div>
+<hr class="docutils" />
+<div class="section" id="id5">
+<h2>文字列を検索する<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">re</span></code>モジュールの<code class="docutils literal notranslate"><span class="pre">search()</span></code>関数を使うと、指定した文字列を検索することができます。<br>
+<code class="docutils literal notranslate"><span class="pre">re</span></code>モジュールはデフォルトでは使用できないため、使う前に<code class="docutils literal notranslate"><span class="pre">import</span></code>で呼び出す必要があります。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>特に何も出力されませんが、これで<code class="docutils literal notranslate"><span class="pre">re</span></code>モジュールの関数が使用できるようになります。<br><br>
+モジュール内の関数を使用するためには、<strong>モジュール名と関数名をカンマで繋ぎます</strong>。<br>
+<code class="docutils literal notranslate"><span class="pre">search()</span></code>関数では二つの引数が要求されます。<br>
+一つ目に検索したい文字列を、二つ目に検索の対象となる文字列もしくは文字列が格納された変数を指定します。<br><br>
+例えば、<code class="docutils literal notranslate"><span class="pre">tumor</span> <span class="pre">protein</span> <span class="pre">p53</span></code>が格納された変数<code class="docutils literal notranslate"><span class="pre">a</span></code>の中に、<code class="docutils literal notranslate"><span class="pre">p53</span></code>という文字列があるか検索したい場合には以下のように書きます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;p53&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(14, 17), match=&#39;p53&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">search()</span></code>はマッチする文字が存在した場合、マッチオブジェクトを返します。<br>
+ここではマッチオブジェクトを<code class="docutils literal notranslate"><span class="pre">match</span></code>という変数に格納し、それを<code class="docutils literal notranslate"><span class="pre">print()</span></code>で表示させています。<br><br>
+返された結果は、index14から17(つまり15文字目から17文字目)に<code class="docutils literal notranslate"><span class="pre">p53</span></code>という文字列がマッチしたことを示しています。<br>
+マッチオブジェクト自体はそれほど重要ではないので、あまり気にする必要はありません。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;p63&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+</pre></div>
+</div>
+</div>
+</div>
+<p>マッチする文字列が存在しない場合は<code class="docutils literal notranslate"><span class="pre">None</span></code>が返されます。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id6">
+<h2>条件と一致する文字列を検索する<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>特定の文字列だけでなく、条件に合致した文字列を検索することができます。<br>
+条件を指定する場合には<strong>正規表現</strong>というものを使います。<br>
+正規表現には以下のようなものがあります。<br></p>
+<p><code class="docutils literal notranslate"><span class="pre">\d</span></code> 数字<br>
+<code class="docutils literal notranslate"><span class="pre">\w</span></code> 文字と<code class="docutils literal notranslate"><span class="pre">_</span></code><br>
+<code class="docutils literal notranslate"><span class="pre">.</span></code> 任意の一文字<br>
+<code class="docutils literal notranslate"><span class="pre">*</span></code> 直前のパターンを0回以上繰り返し<br>
+<code class="docutils literal notranslate"><span class="pre">+</span></code> 直前のパターンを1回以上繰り返し<br></p>
+<p>上記は一例ですので、より詳細は以下のサイトを参照してください。<br>
+<a class="reference external" href="https://note.nkmk.me/python-re-match-search-findall-etc/#:~:text=%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE%E3%80%81%E6%96%87%E5%AD%97%E6%95%B0%EF%BC%89-,Python%E3%81%A7%E3%81%AE%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE%E3%81%AE%E3%83%A1%E3%82%BF%E6%96%87%E5%AD%97%E3%83%BB%E7%89%B9%E6%AE%8A%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%A8%E6%B3%A8%E6%84%8F%E7%82%B9,-Python3%E3%81%AEre">Pythonでの正規表現のメタ文字・特殊シーケンスと注意点</a></p>
+<p>例えば、<code class="docutils literal notranslate"><span class="pre">pの後に数字</span></code>という文字列が存在するか検索する場合は以下のように書きます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;p\d+&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(14, 17), match=&#39;p53&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id7">
+<h2>条件と一致する部分を抽出する<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">group()</span></code>関数を使うことで、文字列の中から条件に一致する部分だけ取得することができます。<br><br></p>
+<p>以下は、<code class="docutils literal notranslate"><span class="pre">pの後に数字</span></code>という文字列が存在した場合、その該当部分を抽出する方法です。<br>
+<code class="docutils literal notranslate"><span class="pre">match()</span></code>を使用する場合は、<code class="docutils literal notranslate"><span class="pre">search()</span></code>で検索する際に<strong>抽出したい部分を( )で囲っておく</strong>必要があります。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;(p\d+)&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p53
+</pre></div>
+</div>
+</div>
+</div>
+<p>条件に該当する<code class="docutils literal notranslate"><span class="pre">p53</span></code>という部分だけ出力されました。<br><br>
+<code class="docutils literal notranslate"><span class="pre">group()</span></code>の括弧内の数値は指定した該当部分の1番目を抽出するという命令です。<br>
+以下のように、抽出したい部分は複数指定することが可能です。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;tumor (protein) (p\d+)&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>protein
+p53
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id8">
+<h2>練習<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<p>ゲノムのバリアントは以下のルールで記載されます(HGVS表記法)。<br>
+<a class="reference external" href="https://hgvs-nomenclature.org/stable/">HGVS Nomenclature</a><br></p>
+<p>以下のバリアント表記から、ゲノム座標の数値だけ抽出して出力してください。<br>
+NC_000023.10:g.33038255C&gt;A</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -575,6 +702,10 @@ DNA配列を文字列として扱う際に便利です。</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">変数に文字列を代入する</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">特定の文字を取り出す</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">複数の文字を取り出す</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">文字列を検索する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">条件と一致する文字列を検索する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">条件と一致する部分を抽出する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">練習</a></li>
 </ul>
   </nav></div>
 
