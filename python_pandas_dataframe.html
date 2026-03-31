@@ -61,7 +61,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_pandas_dataframe';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="散布図の作成" href="python_plot_scatter.html" />
+    <link rel="next" title="統計検定を行う" href="python_practice_mannwhitneyu.html" />
     <link rel="prev" title="テキストファイルを開く・ファイルに出力する" href="python_practice_fileopen.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -175,6 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="python_practice_sort.html">ソート</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_practice_fileopen.html">テキストファイルを開く・ファイルに出力する</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">pandasデータフレームの扱い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_mannwhitneyu.html">統計検定を行う</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_scatter.html">散布図の作成</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_kaplanmeier.html">TCGAのデータを使ってKaplanMeier生存曲線を作る</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_mergeplots.html">共通のx軸に二つのプロットを表示する</a></li>
@@ -2347,7 +2348,7 @@ Name: 149, dtype: object
 </pre></div>
 </div>
 <br>
-<p>axisは省略可</p>
+<p>axisは省略可です。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df2</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;setosa&#39;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -2926,7 +2927,7 @@ Name: 149, dtype: object
 </div></div></div>
 </div>
 <br>
-<p>横方向に連結</p>
+<p>横方向に連結したい場合は<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>を指定します。</p>
 <br>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -3125,7 +3126,7 @@ Name: 149, dtype: object
 </div></div></div>
 </div>
 <br>
-<p>行列をひっくり返す</p>
+<p>行列をひっくり返すときは<code class="docutils literal notranslate"><span class="pre">T</span></code>を使用します。</p>
 <br>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
@@ -3354,11 +3355,11 @@ Name: 149, dtype: object
       </div>
     </a>
     <a class="right-next"
-       href="python_plot_scatter.html"
+       href="python_practice_mannwhitneyu.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">散布図の作成</p>
+        <p class="prev-next-title">統計検定を行う</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

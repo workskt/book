@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="python_practice_sort.html">ソート</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_practice_fileopen.html">テキストファイルを開く・ファイルに出力する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_pandas_dataframe.html">pandasデータフレームの扱い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_mannwhitneyu.html">統計検定を行う</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_scatter.html">散布図の作成</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_kaplanmeier.html">TCGAのデータを使ってKaplanMeier生存曲線を作る</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_mergeplots.html">共通のx軸に二つのプロットを表示する</a></li>
@@ -344,8 +345,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>リストa [&#39;e&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;] 4560346368
-リストb [&#39;e&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;] 4560346368
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>リストa [&#39;e&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;] 4598418240
+リストb [&#39;e&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;] 4598418240
 </pre></div>
 </div>
 </div>
@@ -363,8 +364,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>辞書a {&#39;A&#39;: 4, &#39;B&#39;: 2, &#39;C&#39;: 3, &#39;D&#39;: 4} 4560988352
-辞書b {&#39;A&#39;: 4, &#39;B&#39;: 2, &#39;C&#39;: 3, &#39;D&#39;: 4} 4560988352
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>辞書a {&#39;A&#39;: 4, &#39;B&#39;: 2, &#39;C&#39;: 3, &#39;D&#39;: 4} 4599215872
+辞書b {&#39;A&#39;: 4, &#39;B&#39;: 2, &#39;C&#39;: 3, &#39;D&#39;: 4} 4599215872
 </pre></div>
 </div>
 </div>
@@ -383,8 +384,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>リストa [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;] 4560279040
-リストb [&#39;d&#39;, &#39;c&#39;, &#39;b&#39;, &#39;a&#39;] 4560346368
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>リストa [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;] 4598384064
+リストb [&#39;d&#39;, &#39;c&#39;, &#39;b&#39;, &#39;a&#39;] 4598418240
 </pre></div>
 </div>
 </div>
@@ -401,8 +402,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>リストa [&#39;d&#39;, &#39;c&#39;, &#39;b&#39;, &#39;a&#39;] 4559733184
-リストb [&#39;d&#39;, &#39;c&#39;, &#39;b&#39;, &#39;a&#39;] 4559733184
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>リストa [&#39;d&#39;, &#39;c&#39;, &#39;b&#39;, &#39;a&#39;] 4598350848
+リストb [&#39;d&#39;, &#39;c&#39;, &#39;b&#39;, &#39;a&#39;] 4598350848
 </pre></div>
 </div>
 </div>
@@ -422,8 +423,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>リストa [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;] 4560800832
-リストb [&#39;e&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;] 4559874688
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>リストa [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;] 4598417536
+リストb [&#39;e&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;] 4597946688
 </pre></div>
 </div>
 </div>
@@ -440,8 +441,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>リストa [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;] 4560302272
-リストb [&#39;d&#39;, &#39;c&#39;, &#39;b&#39;, &#39;a&#39;] 4559733184
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>リストa [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;] 4598369984
+リストb [&#39;d&#39;, &#39;c&#39;, &#39;b&#39;, &#39;a&#39;] 4598350848
 </pre></div>
 </div>
 </div>
@@ -480,10 +481,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>辞書a {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: {&#39;x&#39;: 5, &#39;y&#39;: 6}} 4561089792
-辞書b {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: {&#39;x&#39;: 5, &#39;y&#39;: 6}} 4561089664
-辞書a {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: {&#39;x&#39;: 10, &#39;y&#39;: 6}} 4561089792
-辞書b {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: {&#39;x&#39;: 10, &#39;y&#39;: 6}} 4561089664
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>辞書a {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: {&#39;x&#39;: 5, &#39;y&#39;: 6}} 4599284544
+辞書b {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: {&#39;x&#39;: 5, &#39;y&#39;: 6}} 4599284416
+辞書a {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: {&#39;x&#39;: 10, &#39;y&#39;: 6}} 4599284544
+辞書b {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: {&#39;x&#39;: 10, &#39;y&#39;: 6}} 4599284416
 </pre></div>
 </div>
 </div>
@@ -506,10 +507,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>辞書a {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: {&#39;x&#39;: 5, &#39;y&#39;: 6}} 4561038784
-辞書b {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: {&#39;x&#39;: 5, &#39;y&#39;: 6}} 4561037184
-辞書a {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: {&#39;x&#39;: 5, &#39;y&#39;: 6}} 4561038784
-辞書b {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: {&#39;x&#39;: 10, &#39;y&#39;: 6}} 4561037184
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>辞書a {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: {&#39;x&#39;: 5, &#39;y&#39;: 6}} 4599240768
+辞書b {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: {&#39;x&#39;: 5, &#39;y&#39;: 6}} 4599240000
+辞書a {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: {&#39;x&#39;: 5, &#39;y&#39;: 6}} 4599240768
+辞書b {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: {&#39;x&#39;: 10, &#39;y&#39;: 6}} 4599240000
 </pre></div>
 </div>
 </div>
@@ -528,10 +529,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>文字a tokyo 4561036848
-文字b tokyo 4561036848
-文字a tokyo 4561036848
-文字b osaka 4561035440
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>文字a tokyo 4599239280
+文字b tokyo 4599239280
+文字a tokyo 4599239280
+文字b osaka 4599239408
 </pre></div>
 </div>
 </div>

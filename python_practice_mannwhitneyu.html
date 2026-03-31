@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>リスト内包表記 &#8212; bioinformaticsのためのpython資料</title>
+    <title>統計検定を行う &#8212; bioinformaticsのためのpython資料</title>
   
   
   
@@ -58,11 +58,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'python_practice_list_comprehension';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python_practice_mannwhitneyu';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="ソート" href="python_practice_sort.html" />
-    <link rel="prev" title="辞書" href="python_practice_dictionary.html" />
+    <link rel="next" title="散布図の作成" href="python_plot_scatter.html" />
+    <link rel="prev" title="pandasデータフレームの扱い方" href="python_pandas_dataframe.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -171,11 +171,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="python_practice_repeat.html">繰り返し</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_practice_if.html">if文 wihle文</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_practice_dictionary.html">辞書</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">リスト内包表記</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_list_comprehension.html">リスト内包表記</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_practice_sort.html">ソート</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_practice_fileopen.html">テキストファイルを開く・ファイルに出力する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_pandas_dataframe.html">pandasデータフレームの扱い方</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python_practice_mannwhitneyu.html">統計検定を行う</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">統計検定を行う</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_scatter.html">散布図の作成</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_kaplanmeier.html">TCGAのデータを使ってKaplanMeier生存曲線を作る</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_mergeplots.html">共通のx軸に二つのプロットを表示する</a></li>
@@ -235,7 +235,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/python_practice_list_comprehension.ipynb" target="_blank"
+      <li><a href="_sources/python_practice_mannwhitneyu.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -306,7 +306,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -317,11 +319,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>リスト内包表記</h1>
+    <h1>統計検定を行う</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">練習</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -332,84 +342,271 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>リスト内包表記<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1>統計検定を行う<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <hr class="docutils" />
-<p><strong>for文</strong>などの繰り返し処理を行う場合に、リスト内包表記というものがあります。<br />
-以下のように書きます。</p>
+<p>データフレームからデータを抽出し、2群間に統計的に有意な差があるか検定を行います。<br>
+今回はMann-WhitneyのU検定を行います。<br>
+まずはirisデータを取得しましょう。(「pandasデータフレームの扱い方」参照)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;setosa&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;versicolor&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;virginica&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal length (cm)</th>
+      <th>sepal width (cm)</th>
+      <th>petal length (cm)</th>
+      <th>petal width (cm)</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>6.7</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.3</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>6.3</td>
+      <td>2.5</td>
+      <td>5.0</td>
+      <td>1.9</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>6.5</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.0</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>6.2</td>
+      <td>3.4</td>
+      <td>5.4</td>
+      <td>2.3</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>5.9</td>
+      <td>3.0</td>
+      <td>5.1</td>
+      <td>1.8</td>
+      <td>virginica</td>
+    </tr>
+  </tbody>
+</table>
+<p>150 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>まずはsetosaのsepal length (cm)のデータを取得し、<code class="docutils literal notranslate"><span class="pre">setosa</span></code>という変数に格納します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">setosa</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;setosa&#39;</span><span class="p">][</span><span class="s1">&#39;sepal length (cm)&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">setosa</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     5.1
+1     4.9
+2     4.7
+3     4.6
+4     5.0
+5     5.4
+6     4.6
+7     5.0
+8     4.4
+9     4.9
+10    5.4
+11    4.8
+12    4.8
+13    4.3
+14    5.8
+15    5.7
+16    5.4
+17    5.1
+18    5.7
+19    5.1
+20    5.4
+21    5.1
+22    4.6
+23    5.1
+24    4.8
+25    5.0
+26    5.0
+27    5.2
+28    5.2
+29    4.7
+30    4.8
+31    5.4
+32    5.2
+33    5.5
+34    4.9
+35    5.0
+36    5.5
+37    4.9
+38    4.4
+39    5.1
+40    5.0
+41    4.5
+42    4.4
+43    5.0
+44    5.1
+45    4.8
+46    5.1
+47    4.6
+48    5.3
+49    5.0
+Name: sepal length (cm), dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">df.loc[df['target']</span> <span class="pre">==</span> <span class="pre">'setosa']</span></code>でsetosaの行だけ取得し、さらにそこに<code class="docutils literal notranslate"><span class="pre">['sepal</span> <span class="pre">length</span> <span class="pre">(cm)']</span></code>を繋げることでsepal lengthの列を抽出しています。<br>
 <br>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">処理式</span> <span class="k">for</span>　<span class="n">変数</span> <span class="ow">in</span> <span class="n">イテラブル</span> <span class="p">]</span>
-</pre></div>
-</div>
-<br>
-<p>イテラブルとは繰り返し処理が可能なオブジェクトのことです。<br />
-リストや辞書、文字列などが該当します。</p>
-<p>通常の<strong>for文</strong>よりも短く書ける、処理時間が速いというメリットがありますので、<br />
-簡単な処理であればリスト内表記を使うようにしましょう。</p>
+virginicaのsepal lengthも同様の方法で取得します。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
-<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">virginica</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;virginica&#39;</span><span class="p">][</span><span class="s1">&#39;sepal length (cm)&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>両者の中央値に差があるかどうかをMann-WhitneyのU検定により検定します。<br>
+<code class="docutils literal notranslate"><span class="pre">scipy</span></code>の<code class="docutils literal notranslate"><span class="pre">stats</span></code>モジュールの<code class="docutils literal notranslate"><span class="pre">mannwhitneyu</span></code>を使用します。<br>
+<code class="docutils literal notranslate"><span class="pre">alternative</span> <span class="pre">=</span> <span class="pre">'two-sided'</span></code>で両側検定を行います。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">mannwhitneyu</span><span class="p">(</span><span class="n">setosa</span><span class="p">,</span> <span class="n">virginica</span><span class="p">,</span> <span class="n">alternative</span> <span class="o">=</span> <span class="s1">&#39;two-sided&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">statistic</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 5, 10, 15, 20]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38.5
 </pre></div>
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">v</span> <span class="pre">in</span> <span class="pre">a</span></code>の部分は通常の<strong>for文</strong>と同じです（最後のコロンがない点を除き）。<br />
-一つ目の<code class="docutils literal notranslate"><span class="pre">v</span></code>は、<strong>for文</strong>でリスト<code class="docutils literal notranslate"><span class="pre">a</span></code>から繰り返し取り出される二つ目の<code class="docutils literal notranslate"><span class="pre">v</span></code>を受け取ります。<br />
-処理式の部分は<code class="docutils literal notranslate"><span class="pre">v</span></code>だけですので、取り出された二つ目の<code class="docutils literal notranslate"><span class="pre">v</span></code>をそのまま一つ目の<code class="docutils literal notranslate"><span class="pre">v</span></code>が受け取り、リスト<code class="docutils literal notranslate"><span class="pre">b</span></code>に渡しています。</p>
-<p>処理式の部分を以下のように変えてみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
-<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">pvalue</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 10, 20, 30, 40]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.396699069396538e-17
 </pre></div>
 </div>
 </div>
 </div>
-<p>リスト<code class="docutils literal notranslate"><span class="pre">a</span></code>から取り出した要素を、2倍にしてリスト<code class="docutils literal notranslate"><span class="pre">b</span></code>に渡しました。</p>
-<p><strong>for文</strong>部分の後ろに<strong>if文</strong>を持ってくることもできます。<br />
-これにより、イテラブルの中で条件に該当するものだけ取り出す処理を、1行で書くことができます。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
-<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">a</span> <span class="k">if</span> <span class="n">v</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10, 20]
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">%</span></code>は指定した数値で割った余りを返す演算子です。<br />
-<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">v</span> <span class="pre">%</span> <span class="pre">2</span> <span class="pre">==</span> <span class="pre">0</span></code>は、<code class="docutils literal notranslate"><span class="pre">v</span></code>を<code class="docutils literal notranslate"><span class="pre">2</span></code>で割った余りが<code class="docutils literal notranslate"><span class="pre">0</span></code>になる場合だけ、<code class="docutils literal notranslate"><span class="pre">v</span></code>の値を返すことを意味します。<br />
-実際、リスト<code class="docutils literal notranslate"><span class="pre">b</span></code>には偶数の数値だけ渡されました。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;tumor protein p53&#39;</span>
-<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">a</span> <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="s1">&#39;o&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;o&#39;, &#39;o&#39;]
-</pre></div>
-</div>
-</div>
+<p>統計的有意に差があることがわかりました。</p>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h2>練習<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>setosaとvirginicaのsepal lengthの平均に差があるどうかを、T検定により検定してください。</p>
 </div>
 </div>
 
@@ -444,20 +641,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="python_practice_dictionary.html"
+       href="python_pandas_dataframe.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">辞書</p>
+        <p class="prev-next-title">pandasデータフレームの扱い方</p>
       </div>
     </a>
     <a class="right-next"
-       href="python_practice_sort.html"
+       href="python_plot_scatter.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">ソート</p>
+        <p class="prev-next-title">散布図の作成</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -467,6 +664,20 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">練習</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

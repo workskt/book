@@ -175,6 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="python_practice_sort.html">ソート</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">テキストファイルを開く・ファイルに出力する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_pandas_dataframe.html">pandasデータフレームの扱い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_mannwhitneyu.html">統計検定を行う</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_scatter.html">散布図の作成</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_kaplanmeier.html">TCGAのデータを使ってKaplanMeier生存曲線を作る</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_mergeplots.html">共通のx軸に二つのプロットを表示する</a></li>
@@ -305,7 +306,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -321,6 +324,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">練習</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -643,6 +654,11 @@ NLGN1 NM_001365929,NM_001365928,NM_001365934,NM_001365933,NM_001365932,NM_001365
 <p><code class="docutils literal notranslate"><span class="pre">print()</span></code>のカッコ内に、<code class="docutils literal notranslate"><span class="pre">file=出力ファイルオブジェクト</span></code>で出力先を指定します。<br />
 <code class="docutils literal notranslate"><span class="pre">sep=</span></code>で、<code class="docutils literal notranslate"><span class="pre">print()</span></code>内の出力内容の区切り方を指定します。<br />
 今回は、gene symbolとRefSeq IDをタブで区切って出力したかったので、<code class="docutils literal notranslate"><span class="pre">sep='\t'</span></code>と記載しています。</p>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h2>練習<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>refFlat.txtファイルの転写産物のうち、<code class="docutils literal notranslate"><span class="pre">chr22</span></code>にコードされているストランド<code class="docutils literal notranslate"><span class="pre">+</span></code>の転写産物のRefSeq IDを全て出力し、テキストファイルに保存してください。</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -699,6 +715,20 @@ NLGN1 NM_001365929,NM_001365928,NM_001365934,NM_001365933,NM_001365932,NM_001365
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">練習</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
