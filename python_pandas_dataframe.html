@@ -2793,6 +2793,7 @@ Name: 149, dtype: object
 </table>
 </div></div></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">df.loc[df['target']</span> <span class="pre">==</span> <span class="pre">'setosa']</span></code>は<code class="docutils literal notranslate"><span class="pre">df[df['target']</span> <span class="pre">==</span> <span class="pre">'setosa']</span></code>のように、<code class="docutils literal notranslate"><span class="pre">loc</span></code>を使用せずに書くことも可能です。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df3</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;virginica&#39;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
