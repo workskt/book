@@ -11,6 +11,7 @@ sections:
 - file: python_practice_sort
 - file: python_practice_fileopen
 - file: python_pandas_dataframe
+- file: python_practice_mannwhitneyu
 - file: python_plot_scatter
 - file: python_kaplanmeier
 - file: python_plot_mergeplots
