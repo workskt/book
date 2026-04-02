@@ -17,26 +17,20 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-inference = DefaultInference(n_cpus=8)
-dds = DeseqDataSet(
-    counts=counts_df,
-    metadata=metadata,
-    design="~condition",
-    refit_cooks=True,
-    inference=inference,
-    # n_cpus=8, # n_cpus can be specified here or in the inference object
-)
+from pydeseq2.dds import DeseqDataSet
+from pydeseq2.utils import load_example_data
+from pydeseq2.default_inference import DefaultInference
+from pydeseq2.ds import DeseqStats
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mTypeError[0m                                 Traceback (most recent call last)
-[0;32m<ipython-input-6-eef0f19326ef>[0m in [0;36m<module>[0;34m[0m
-[1;32m      1[0m [0minference[0m [0;34m=[0m [0mDefaultInference[0m[0;34m([0m[0mn_cpus[0m[0;34m=[0m[0;36m8[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 2[0;31m dds = DeseqDataSet(
-[0m[1;32m      3[0m     [0mcounts[0m[0;34m=[0m[0mcounts_df[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      4[0m     [0mmetadata[0m[0;34m=[0m[0mmetadata[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m     [0mdesign[0m[0;34m=[0m[0;34m"~condition"[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;32m<ipython-input-1-88cb5f5b1fed>[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0;32mfrom[0m [0mpydeseq2[0m[0;34m.[0m[0mdds[0m [0;32mimport[0m [0mDeseqDataSet[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m [0;32mfrom[0m [0mpydeseq2[0m[0;34m.[0m[0mutils[0m [0;32mimport[0m [0mload_example_data[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0;32mfrom[0m [0mpydeseq2[0m[0;34m.[0m[0mdefault_inference[0m [0;32mimport[0m [0mDefaultInference[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;32mfrom[0m [0mpydeseq2[0m[0;34m.[0m[0mds[0m [0;32mimport[0m [0mDeseqStats[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mTypeError[0m: __init__() got an unexpected keyword argument 'design'
-TypeError: __init__() got an unexpected keyword argument 'design'
+[0;31mModuleNotFoundError[0m: No module named 'pydeseq2'
+ModuleNotFoundError: No module named 'pydeseq2'
 
