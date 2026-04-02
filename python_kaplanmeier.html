@@ -61,7 +61,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_kaplanmeier';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="共通のx軸に二つのプロットを表示する" href="python_plot_mergeplots.html" />
+    <link rel="next" title="RNA-seq関連" href="python_rnaseq.html" />
     <link rel="prev" title="散布図の作成" href="python_plot_scatter.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -178,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="python_practice_mannwhitneyu.html">統計検定を行う</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_scatter.html">散布図の作成</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">TCGAのデータを使ってKaplanMeier生存曲線を作る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_rnaseq.html">RNA-seq関連</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_mergeplots.html">共通のx軸に二つのプロットを表示する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_cumulativebar.html">積み上げ棒グラフを作成する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_practice_functionlist.html">関数一覧</a></li>
@@ -523,10 +524,77 @@ dce87821-a5cd-4415-ab0c-ac5ed2459929	TCGA-63-5128	TCGA-LUSC	&#39;--	&#39;--	&#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;timeline&#39;&gt;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+&lt;ipython-input-5-6444da973a8d&gt; in &lt;module&gt;
+----&gt; 1 from lifelines import KaplanMeierFitter
+      2 kmf = KaplanMeierFitter()
+      3 kmf.fit(T, event_observed=E, label=&#39;lung&#39;)
+      4 kmf.survival_function_
+      5 kmf.plot_survival_function()
+
+~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/lifelines/__init__.py in &lt;module&gt;
+      3 
+      4 from typing import List
+----&gt; 5 from lifelines.fitters.weibull_fitter import WeibullFitter
+      6 from lifelines.fitters.exponential_fitter import ExponentialFitter
+      7 from lifelines.fitters.nelson_aalen_fitter import NelsonAalenFitter
+
+~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/lifelines/fitters/__init__.py in &lt;module&gt;
+     12 import numpy as np
+     13 
+---&gt; 14 from autograd import hessian, value_and_grad, elementwise_grad as egrad, grad
+     15 from autograd.differential_operators import make_jvp_reversemode
+     16 from autograd.misc import flatten
+
+~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/autograd/__init__.py in &lt;module&gt;
+      1 from __future__ import absolute_import
+----&gt; 2 from .differential_operators import (
+      3     make_vjp, grad, multigrad_dict, elementwise_grad, value_and_grad,
+      4     grad_and_aux, hessian_tensor_product, hessian_vector_product, hessian,
+      5     jacobian, tensor_jacobian_product, vector_jacobian_product, grad_named,
+
+~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/autograd/differential_operators.py in &lt;module&gt;
+     11 from .extend import primitive, defvjp_argnum, vspace
+     12 
+---&gt; 13 import autograd.numpy as np
+     14 
+     15 make_vjp = unary_to_nary(_make_vjp)
+
+~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/autograd/numpy/__init__.py in &lt;module&gt;
+      1 from __future__ import absolute_import
+----&gt; 2 from .numpy_wrapper import *
+      3 from . import numpy_boxes
+      4 from . import numpy_vspaces
+      5 from . import numpy_vjps
+
+~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/autograd/numpy/numpy_wrapper.py in &lt;module&gt;
+     29             new[name] = obj
+     30 
+---&gt; 31 wrap_namespace(_np.__dict__, globals())
+     32 
+     33 # ----- Special treatment of list-input functions -----
+
+~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/autograd/numpy/numpy_wrapper.py in wrap_namespace(old, new)
+     18 def wrap_namespace(old, new):
+     19     unchanged_types = {float, int, type(None), type}
+---&gt; 20     int_types = {_np.int, _np.int8, _np.int16, _np.int32, _np.int64, _np.integer}
+     21     for name, obj in old.items():
+     22         if obj in notrace_functions:
+
+~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/numpy/__init__.py in __getattr__(attr)
+    303 
+    304         if attr in __former_attrs__:
+--&gt; 305             raise AttributeError(__former_attrs__[attr])
+    306 
+    307         # Importing Tester requires importing all of UnitTest which is not a
+
+AttributeError: module &#39;numpy&#39; has no attribute &#39;int&#39;.
+`np.int` was a deprecated alias for the builtin `int`. To avoid this error in existing code, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
 </pre></div>
 </div>
-<img alt="_images/e107d4d090582873ce19e8c21437462418597813fd91e86a8ecf47feb708a1cb.png" src="_images/e107d4d090582873ce19e8c21437462418597813fd91e86a8ecf47feb708a1cb.png" />
 </div>
 </div>
 <p>stageI, IIとstage III, IVで分けて曲線を書いてみます。<br />
@@ -773,7 +841,7 @@ Name: E, Length: 397, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cc79e259c737b8b34f10c0619a87339b2469069f7a0d875944dd2efda67efb09.png" src="_images/cc79e259c737b8b34f10c0619a87339b2469069f7a0d875944dd2efda67efb09.png" />
+<img alt="_images/27fde9f61c389d4939b4a931b807835d9d694e9fbd754281c0473f786e012ce2.png" src="_images/27fde9f61c389d4939b4a931b807835d9d694e9fbd754281c0473f786e012ce2.png" />
 </div>
 </div>
 </div>
@@ -818,11 +886,11 @@ Name: E, Length: 397, dtype: int64
       </div>
     </a>
     <a class="right-next"
-       href="python_plot_mergeplots.html"
+       href="python_rnaseq.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">共通のx軸に二つのプロットを表示する</p>
+        <p class="prev-next-title">RNA-seq関連</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -1,0 +1,877 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RNA-seq関連 &#8212; bioinformaticsのためのpython資料</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python_rnaseq';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="共通のx軸に二つのプロットを表示する" href="python_plot_mergeplots.html" />
+    <link rel="prev" title="TCGAのデータを使ってKaplanMeier生存曲線を作る" href="python_kaplanmeier.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="bioinformaticsのためのpython資料 - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="bioinformaticsのためのpython資料 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    bioinformaticsのためのpython資料
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="python_practice_hensuu.html">変数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_mojiretsu.html">文字列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_list.html">リスト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_repeat.html">繰り返し</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_if.html">if文 wihle文</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_dictionary.html">辞書</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_list_comprehension.html">リスト内包表記</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_sort.html">ソート</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_fileopen.html">テキストファイルを開く・ファイルに出力する</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_pandas_dataframe.html">pandasデータフレームの扱い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_mannwhitneyu.html">統計検定を行う</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_plot_scatter.html">散布図の作成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_kaplanmeier.html">TCGAのデータを使ってKaplanMeier生存曲線を作る</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">RNA-seq関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_plot_mergeplots.html">共通のx軸に二つのプロットを表示する</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_plot_cumulativebar.html">積み上げ棒グラフを作成する</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_functionlist.html">関数一覧</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/python_rnaseq.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>RNA-seq関連</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deseq2">DESeq2解析</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volcano-plot">Volcano plotの作成</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="rna-seq">
+<h1>RNA-seq関連<a class="headerlink" href="#rna-seq" title="Permalink to this heading">#</a></h1>
+<hr class="docutils" />
+<div class="section" id="deseq2">
+<h2>DESeq2解析<a class="headerlink" href="#deseq2" title="Permalink to this heading">#</a></h2>
+<p>PyDESeq2を使えば、PythonでDESeq2解析を行うことが可能です。<br>
+DESeq2パッケージRにもありますので、Rでも解析可能です。<br></p>
+<p>PyDESeq2のインストール方法および使用方法は<a class="reference external" href="https://pydeseq2.readthedocs.io/en/latest/auto_examples/plot_minimal_pydeseq2_pipeline.html">こちら</a>を読んでください。<br>
+DESeq2に関する以下の情報は全てこのサイトに記載されています。</p>
+<p>まずはPyDESeq2から必要なパッケージをimportします。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pickle</span> <span class="k">as</span> <span class="nn">pkl</span>
+
+<span class="kn">from</span> <span class="nn">pydeseq2.dds</span> <span class="kn">import</span> <span class="n">DeseqDataSet</span>
+<span class="kn">from</span> <span class="nn">pydeseq2.utils</span> <span class="kn">import</span> <span class="n">load_example_data</span>
+<span class="kn">from</span> <span class="nn">pydeseq2.default_inference</span> <span class="kn">import</span> <span class="n">DefaultInference</span>
+<span class="kn">from</span> <span class="nn">pydeseq2.ds</span> <span class="kn">import</span> <span class="n">DeseqStats</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span><span class="n">f72911bef8</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pickle</span> <span class="k">as</span> <span class="nn">pkl</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">pydeseq2.dds</span> <span class="kn">import</span> <span class="n">DeseqDataSet</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">pydeseq2.utils</span> <span class="kn">import</span> <span class="n">load_example_data</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">pydeseq2.default_inference</span> <span class="kn">import</span> <span class="n">DefaultInference</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pydeseq2&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>出力結果を保存する場合は、以下を<code class="docutils literal notranslate"><span class="pre">SAVE=True</span></code>にし、<code class="docutils literal notranslate"><span class="pre">OUTPUT_PATH</span></code>に保存するディレクトリをしてくしましょうk。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SAVE</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># whether to save the outputs of this notebook</span>
+
+<span class="k">if</span> <span class="n">SAVE</span><span class="p">:</span>
+    <span class="c1"># Replace this with the path to directory where you would like results to be saved</span>
+    <span class="n">OUTPUT_PATH</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">OUTPUT_PATH</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Create path if it doesn&#39;t exist</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><br>ここではテストデータをダウンロードして使用します。<br>
+以下の方法でリードカウントとメタデータのテストデータをダウンロードします。<br>
+<strong>実際の解析では、<code class="docutils literal notranslate"><span class="pre">RSEM</span></code>等の解析により得られたリードカウントのデータを使用することになります。</strong><br></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts_df</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">(</span>
+    <span class="n">modality</span><span class="o">=</span><span class="s2">&quot;raw_counts&quot;</span><span class="p">,</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;synthetic&quot;</span><span class="p">,</span>
+    <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">(</span>
+    <span class="n">modality</span><span class="o">=</span><span class="s2">&quot;metadata&quot;</span><span class="p">,</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;synthetic&quot;</span><span class="p">,</span>
+    <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">counts_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           gene1  gene2  gene3  gene4  gene5  gene6  gene7  gene8  gene9  \
+sample1       12     21      4    130     18      0     16     54     49   
+sample2        1     44      2     63     11     10     70     32     57   
+sample3        4      4     11    180     21      3     28     34     65   
+sample4        1     10      2    100     44      9     28     16     33   
+sample5        1     11      6    135     16      2     32     29     31   
+...          ...    ...    ...    ...    ...    ...    ...    ...    ...   
+sample96       7     26      3     67     11      4     41     44     54   
+sample97       1     14      3     71     33      5     19     42     25   
+sample98      10     36      2     72     11      2     66     27     16   
+sample99      18     14      3     66     53     11     32     19     79   
+sample100     21      9      3     42     13     13     19     78     30   
+
+           gene10  
+sample1         3  
+sample2         9  
+sample3         2  
+sample4         9  
+sample5         5  
+...           ...  
+sample96        1  
+sample97        4  
+sample98        9  
+sample99       11  
+sample100       5  
+
+[100 rows x 10 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          condition group
+sample1           A     X
+sample2           A     Y
+sample3           A     X
+sample4           A     Y
+sample5           A     X
+...             ...   ...
+sample96          B     Y
+sample97          B     X
+sample98          B     Y
+sample99          B     X
+sample100         B     Y
+
+[100 rows x 2 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<p><br>実データの場合は以下のようにアノテーション情報の有無やリードカウントでサンプルの絞り込みを行うことが推奨されます。<br>
+このテストデータでは不要です。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples_to_keep</span> <span class="o">=</span> <span class="o">~</span><span class="n">metadata</span><span class="o">.</span><span class="n">condition</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+<span class="n">counts_df</span> <span class="o">=</span> <span class="n">counts_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_to_keep</span><span class="p">]</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_to_keep</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">genes_to_keep</span> <span class="o">=</span> <span class="n">counts_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">counts_df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">counts_df</span> <span class="o">=</span> <span class="n">counts_df</span><span class="p">[</span><span class="n">genes_to_keep</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><br><code class="docutils literal notranslate"><span class="pre">DeseqDataSet</span></code>オブジェクトを用いて、分散とlog-fold changeのパラメータを推定します。<br>
+<code class="docutils literal notranslate"><span class="pre">design</span></code>でメタデータの<code class="docutils literal notranslate"><span class="pre">condition</span></code>を入力することで、比較する群を指定します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inference</span> <span class="o">=</span> <span class="n">DefaultInference</span><span class="p">(</span><span class="n">n_cpus</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">dds</span> <span class="o">=</span> <span class="n">DeseqDataSet</span><span class="p">(</span>
+    <span class="n">counts</span><span class="o">=</span><span class="n">counts_df</span><span class="p">,</span>
+    <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
+    <span class="n">design</span><span class="o">=</span><span class="s2">&quot;~condition&quot;</span><span class="p">,</span>
+    <span class="n">refit_cooks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">inference</span><span class="o">=</span><span class="n">inference</span><span class="p">,</span>
+    <span class="c1"># n_cpus=8, # n_cpus can be specified here or in the inference object</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dds</span><span class="o">.</span><span class="n">deseq2</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">SAVE</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">OUTPUT_PATH</span><span class="p">,</span> <span class="s2">&quot;dds.pkl&quot;</span><span class="p">),</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">pkl</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">dds</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using None as control genes, passed at DeseqDataSet initialization
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting size factors...
+... done in 0.00 seconds.
+
+Fitting dispersions...
+... done in 0.01 seconds.
+
+Fitting dispersion trend curve...
+... done in 0.01 seconds.
+
+Fitting MAP dispersions...
+... done in 0.01 seconds.
+
+Fitting LFCs...
+... done in 0.01 seconds.
+
+Calculating cook&#39;s distance...
+... done in 0.01 seconds.
+
+Replacing 0 outlier genes.
+</pre></div>
+</div>
+</div>
+</div>
+<p><br>推定したパラメータにより、2群間の発現変化解析とWald検定を行います。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">DeseqStats</span><span class="p">(</span><span class="n">dds</span><span class="p">,</span> <span class="n">contrast</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;condition&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">],</span> <span class="n">inference</span><span class="o">=</span><span class="n">inference</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">SAVE</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">OUTPUT_PATH</span><span class="p">,</span> <span class="s2">&quot;ds.pkl&quot;</span><span class="p">),</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">pkl</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: condition B vs A
+          baseMean  log2FoldChange     lfcSE      stat    pvalue      padj
+gene1     8.541317        0.632812  0.289101  2.188898  0.028604  0.064150
+gene2    21.281239        0.538552  0.149963  3.591236  0.000329  0.001646
+gene3     5.010123       -0.632830  0.295236 -2.143476  0.032075  0.064150
+gene4   100.517961       -0.412102  0.118629 -3.473868  0.000513  0.001710
+gene5    27.142450        0.582065  0.154706  3.762409  0.000168  0.001646
+gene6     5.413043        0.001457  0.310311  0.004696  0.996253  0.996253
+gene7    28.294023        0.134338  0.149945  0.895917  0.370297  0.411441
+gene8    40.358344       -0.270656  0.136401 -1.984261  0.047227  0.078711
+gene9    37.166183       -0.212715  0.133243 -1.596437  0.110391  0.143147
+gene10   11.589325        0.386011  0.244588  1.578207  0.114518  0.143147
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 0.03 seconds.
+</pre></div>
+</div>
+</div>
+</div>
+<p><br>結果は<code class="docutils literal notranslate"><span class="pre">ds.results_df</span></code>に格納されています。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">results_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          baseMean  log2FoldChange     lfcSE      stat    pvalue      padj
+gene1     8.541317        0.632812  0.289101  2.188898  0.028604  0.064150
+gene2    21.281239        0.538552  0.149963  3.591236  0.000329  0.001646
+gene3     5.010123       -0.632830  0.295236 -2.143476  0.032075  0.064150
+gene4   100.517961       -0.412102  0.118629 -3.473868  0.000513  0.001710
+gene5    27.142450        0.582065  0.154706  3.762409  0.000168  0.001646
+gene6     5.413043        0.001457  0.310311  0.004696  0.996253  0.996253
+gene7    28.294023        0.134338  0.149945  0.895917  0.370297  0.411441
+gene8    40.358344       -0.270656  0.136401 -1.984261  0.047227  0.078711
+gene9    37.166183       -0.212715  0.133243 -1.596437  0.110391  0.143147
+gene10   11.589325        0.386011  0.244588  1.578207  0.114518  0.143147
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="volcano-plot">
+<h2>Volcano plotの作成<a class="headerlink" href="#volcano-plot" title="Permalink to this heading">#</a></h2>
+<p>DESeq2の結果を<code class="docutils literal notranslate"><span class="pre">df</span></code>に格納し、補正後p値を-log10値(score)に変換します。<br></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">results_df</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;padj&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          baseMean  log2FoldChange     lfcSE      stat    pvalue      padj  \
+gene1     8.541317        0.632812  0.289101  2.188898  0.028604  0.064150   
+gene2    21.281239        0.538552  0.149963  3.591236  0.000329  0.001646   
+gene3     5.010123       -0.632830  0.295236 -2.143476  0.032075  0.064150   
+gene4   100.517961       -0.412102  0.118629 -3.473868  0.000513  0.001710   
+gene5    27.142450        0.582065  0.154706  3.762409  0.000168  0.001646   
+gene6     5.413043        0.001457  0.310311  0.004696  0.996253  0.996253   
+gene7    28.294023        0.134338  0.149945  0.895917  0.370297  0.411441   
+gene8    40.358344       -0.270656  0.136401 -1.984261  0.047227  0.078711   
+gene9    37.166183       -0.212715  0.133243 -1.596437  0.110391  0.143147   
+gene10   11.589325        0.386011  0.244588  1.578207  0.114518  0.143147   
+
+           score  
+gene1   1.192805  
+gene2   2.783685  
+gene3   1.192805  
+gene4   2.766992  
+gene5   2.783685  
+gene6   0.001630  
+gene7   0.385692  
+gene8   1.103963  
+gene9   0.844216  
+gene10  0.844216  
+</pre></div>
+</div>
+</div>
+</div>
+<p><br>次に、発現量変化に応じてプロットする色を指定する列を追加します。<br>
+ここではlog2値の絶対値0.2、score1.3(補正後p値0.05に相当)を基準にしていますが、示したい内容に応じて変更してください。<br></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">results_df</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Not significant&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;log2FoldChange&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">1.3</span><span class="p">),</span> <span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Up&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;log2FoldChange&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">1.3</span><span class="p">),</span> <span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Down&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          baseMean  log2FoldChange     lfcSE      stat    pvalue      padj  \
+gene1     8.541317        0.632812  0.289101  2.188898  0.028604  0.064150   
+gene2    21.281239        0.538552  0.149963  3.591236  0.000329  0.001646   
+gene3     5.010123       -0.632830  0.295236 -2.143476  0.032075  0.064150   
+gene4   100.517961       -0.412102  0.118629 -3.473868  0.000513  0.001710   
+gene5    27.142450        0.582065  0.154706  3.762409  0.000168  0.001646   
+gene6     5.413043        0.001457  0.310311  0.004696  0.996253  0.996253   
+gene7    28.294023        0.134338  0.149945  0.895917  0.370297  0.411441   
+gene8    40.358344       -0.270656  0.136401 -1.984261  0.047227  0.078711   
+gene9    37.166183       -0.212715  0.133243 -1.596437  0.110391  0.143147   
+gene10   11.589325        0.386011  0.244588  1.578207  0.114518  0.143147   
+
+           score            color  
+gene1   1.192805  Not significant  
+gene2   2.783685               Up  
+gene3   1.192805  Not significant  
+gene4   2.766992             Down  
+gene5   2.783685               Up  
+gene6   0.001630  Not significant  
+gene7   0.385692  Not significant  
+gene8   1.103963  Not significant  
+gene9   0.844216  Not significant  
+gene10  0.844216  Not significant  
+</pre></div>
+</div>
+</div>
+</div>
+<p><br>X軸にFC(log2)、Y軸に補正後p値を指定します。<br></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;log2FoldChange&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;color&#39;</span><span class="p">,</span>
+                     <span class="n">hue_order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Not significant&#39;</span><span class="p">,</span> <span class="s1">&#39;Up&#39;</span><span class="p">,</span> <span class="s1">&#39;Down&#39;</span><span class="p">],</span>
+                     <span class="n">palette</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;darkgrey&#39;</span><span class="p">,</span> <span class="s1">&#39;crimson&#39;</span><span class="p">,</span> <span class="s1">&#39;royalblue&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bbox_to_anchor</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.22</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">frameon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">prop</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="s1">&#39;bold&#39;</span><span class="p">})</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;FC (log2)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;-log10(q-value)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.02</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="c1">#plt.close()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+<img alt="_images/922d3ef65cf3430c3874a6c2d8ead8273fe75f85867a672162c93305d78b813c.png" src="_images/922d3ef65cf3430c3874a6c2d8ead8273fe75f85867a672162c93305d78b813c.png" />
+</div>
+</div>
+<p><br>有意差があるときに遺伝子名を表示させる場合は<code class="docutils literal notranslate"><span class="pre">plt</span></code>の<code class="docutils literal notranslate"><span class="pre">text</span></code>を使って以下のようにします。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;log2FoldChange&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;color&#39;</span><span class="p">,</span>
+                     <span class="n">hue_order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Not significant&#39;</span><span class="p">,</span> <span class="s1">&#39;Up&#39;</span><span class="p">,</span> <span class="s1">&#39;Down&#39;</span><span class="p">],</span>
+                     <span class="n">palette</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;darkgrey&#39;</span><span class="p">,</span> <span class="s1">&#39;crimson&#39;</span><span class="p">,</span> <span class="s1">&#39;royalblue&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bbox_to_anchor</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.22</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">frameon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">prop</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="s1">&#39;bold&#39;</span><span class="p">})</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;FC (log2)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;-log10(q-value)&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">log2FoldChange</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.2</span> <span class="ow">and</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">score</span> <span class="o">&gt;</span> <span class="mf">1.3</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">log2FoldChange</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">score</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.02</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+<img alt="_images/f644c63ec0f6a1f7338fc070294bca1449ca5585ec509b95123b0f4fecb56b2b.png" src="_images/f644c63ec0f6a1f7338fc070294bca1449ca5585ec509b95123b0f4fecb56b2b.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="python_kaplanmeier.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">TCGAのデータを使ってKaplanMeier生存曲線を作る</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="python_plot_mergeplots.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">共通のx軸に二つのプロットを表示する</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deseq2">DESeq2解析</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volcano-plot">Volcano plotの作成</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

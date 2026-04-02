@@ -176,6 +176,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="python_practice_mannwhitneyu.html">統計検定を行う</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_scatter.html">散布図の作成</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_kaplanmeier.html">TCGAのデータを使ってKaplanMeier生存曲線を作る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_rnaseq.html">RNA-seq関連</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_mergeplots.html">共通のx軸に二つのプロットを表示する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_cumulativebar.html">積み上げ棒グラフを作成する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_practice_functionlist.html">関数一覧</a></li>
@@ -506,10 +507,77 @@ dce87821-a5cd-4415-ab0c-ac5ed2459929	TCGA-63-5128	TCGA-LUSC	&#39;--	&#39;--	&#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;timeline&#39;&gt;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+&lt;ipython-input-5-6444da973a8d&gt; in &lt;module&gt;
+----&gt; 1 from lifelines import KaplanMeierFitter
+      2 kmf = KaplanMeierFitter()
+      3 kmf.fit(T, event_observed=E, label=&#39;lung&#39;)
+      4 kmf.survival_function_
+      5 kmf.plot_survival_function()
+
+~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/lifelines/__init__.py in &lt;module&gt;
+      3 
+      4 from typing import List
+----&gt; 5 from lifelines.fitters.weibull_fitter import WeibullFitter
+      6 from lifelines.fitters.exponential_fitter import ExponentialFitter
+      7 from lifelines.fitters.nelson_aalen_fitter import NelsonAalenFitter
+
+~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/lifelines/fitters/__init__.py in &lt;module&gt;
+     12 import numpy as np
+     13 
+---&gt; 14 from autograd import hessian, value_and_grad, elementwise_grad as egrad, grad
+     15 from autograd.differential_operators import make_jvp_reversemode
+     16 from autograd.misc import flatten
+
+~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/autograd/__init__.py in &lt;module&gt;
+      1 from __future__ import absolute_import
+----&gt; 2 from .differential_operators import (
+      3     make_vjp, grad, multigrad_dict, elementwise_grad, value_and_grad,
+      4     grad_and_aux, hessian_tensor_product, hessian_vector_product, hessian,
+      5     jacobian, tensor_jacobian_product, vector_jacobian_product, grad_named,
+
+~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/autograd/differential_operators.py in &lt;module&gt;
+     11 from .extend import primitive, defvjp_argnum, vspace
+     12 
+---&gt; 13 import autograd.numpy as np
+     14 
+     15 make_vjp = unary_to_nary(_make_vjp)
+
+~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/autograd/numpy/__init__.py in &lt;module&gt;
+      1 from __future__ import absolute_import
+----&gt; 2 from .numpy_wrapper import *
+      3 from . import numpy_boxes
+      4 from . import numpy_vspaces
+      5 from . import numpy_vjps
+
+~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/autograd/numpy/numpy_wrapper.py in &lt;module&gt;
+     29             new[name] = obj
+     30 
+---&gt; 31 wrap_namespace(_np.__dict__, globals())
+     32 
+     33 # ----- Special treatment of list-input functions -----
+
+~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/autograd/numpy/numpy_wrapper.py in wrap_namespace(old, new)
+     18 def wrap_namespace(old, new):
+     19     unchanged_types = {float, int, type(None), type}
+---&gt; 20     int_types = {_np.int, _np.int8, _np.int16, _np.int32, _np.int64, _np.integer}
+     21     for name, obj in old.items():
+     22         if obj in notrace_functions:
+
+~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/numpy/__init__.py in __getattr__(attr)
+    303 
+    304         if attr in __former_attrs__:
+--&gt; 305             raise AttributeError(__former_attrs__[attr])
+    306 
+    307         # Importing Tester requires importing all of UnitTest which is not a
+
+AttributeError: module &#39;numpy&#39; has no attribute &#39;int&#39;.
+`np.int` was a deprecated alias for the builtin `int`. To avoid this error in existing code, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
 </pre></div>
 </div>
-<img alt="_images/e107d4d090582873ce19e8c21437462418597813fd91e86a8ecf47feb708a1cb.png" src="_images/e107d4d090582873ce19e8c21437462418597813fd91e86a8ecf47feb708a1cb.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -728,7 +796,7 @@ Name: E, Length: 397, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cc79e259c737b8b34f10c0619a87339b2469069f7a0d875944dd2efda67efb09.png" src="_images/cc79e259c737b8b34f10c0619a87339b2469069f7a0d875944dd2efda67efb09.png" />
+<img alt="_images/27fde9f61c389d4939b4a931b807835d9d694e9fbd754281c0473f786e012ce2.png" src="_images/27fde9f61c389d4939b4a931b807835d9d694e9fbd754281c0473f786e012ce2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -745,101 +813,6 @@ Name: E, Length: 397, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>T</th>
-      <th>E</th>
-      <th>group</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>6.0</td>
-      <td>1</td>
-      <td>miR-137</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>13.0</td>
-      <td>1</td>
-      <td>miR-137</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>13.0</td>
-      <td>1</td>
-      <td>miR-137</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>13.0</td>
-      <td>1</td>
-      <td>miR-137</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>19.0</td>
-      <td>1</td>
-      <td>miR-137</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>158</th>
-      <td>60.0</td>
-      <td>1</td>
-      <td>control</td>
-    </tr>
-    <tr>
-      <th>159</th>
-      <td>60.0</td>
-      <td>1</td>
-      <td>control</td>
-    </tr>
-    <tr>
-      <th>160</th>
-      <td>60.0</td>
-      <td>1</td>
-      <td>control</td>
-    </tr>
-    <tr>
-      <th>161</th>
-      <td>60.0</td>
-      <td>1</td>
-      <td>control</td>
-    </tr>
-    <tr>
-      <th>162</th>
-      <td>66.0</td>
-      <td>1</td>
-      <td>control</td>
-    </tr>
-  </tbody>
-</table>
-<p>163 rows × 3 columns</p>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -857,11 +830,6 @@ Name: E, Length: 397, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;lifelines.KaplanMeierFitter:&quot;KM_estimate&quot;, fitted with 163 total observations, 7 right-censored observations&gt;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -871,12 +839,6 @@ Name: E, Length: 397, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;timeline&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/1cb9fd9e6ffc4aa08728a7b86f95379310af8bfb89eb5f175f9545aac384a6a8.png" src="_images/1cb9fd9e6ffc4aa08728a7b86f95379310af8bfb89eb5f175f9545aac384a6a8.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -884,32 +846,10 @@ Name: E, Length: 397, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;timeline&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/5e0031c3522d11d96ef5a4a97554d6deb2fab70a81f1f2c9046e9858ce128a64.png" src="_images/5e0031c3522d11d96ef5a4a97554d6deb2fab70a81f1f2c9046e9858ce128a64.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       6.0
-1      13.0
-2      13.0
-3      13.0
-4      19.0
-       ... 
-158    60.0
-159    60.0
-160    60.0
-161    60.0
-162    66.0
-Name: T, Length: 163, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -920,22 +860,6 @@ Name: T, Length: 163, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      1
-1      1
-2      1
-3      1
-4      1
-      ..
-158    1
-159    1
-160    1
-161    1
-162    1
-Name: E, Length: 163, dtype: int64
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -943,101 +867,6 @@ Name: E, Length: 163, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>T</th>
-      <th>E</th>
-      <th>group</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>6.0</td>
-      <td>1</td>
-      <td>miR-137</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>13.0</td>
-      <td>1</td>
-      <td>miR-137</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>13.0</td>
-      <td>1</td>
-      <td>miR-137</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>13.0</td>
-      <td>1</td>
-      <td>miR-137</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>19.0</td>
-      <td>1</td>
-      <td>miR-137</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>158</th>
-      <td>60.0</td>
-      <td>1</td>
-      <td>control</td>
-    </tr>
-    <tr>
-      <th>159</th>
-      <td>60.0</td>
-      <td>1</td>
-      <td>control</td>
-    </tr>
-    <tr>
-      <th>160</th>
-      <td>60.0</td>
-      <td>1</td>
-      <td>control</td>
-    </tr>
-    <tr>
-      <th>161</th>
-      <td>60.0</td>
-      <td>1</td>
-      <td>control</td>
-    </tr>
-    <tr>
-      <th>162</th>
-      <td>66.0</td>
-      <td>1</td>
-      <td>control</td>
-    </tr>
-  </tbody>
-</table>
-<p>163 rows × 3 columns</p>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1049,22 +878,6 @@ Name: E, Length: 163, dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      miR-137
-1      miR-137
-2      miR-137
-3      miR-137
-4      miR-137
-        ...   
-158    control
-159    control
-160    control
-161    control
-162    control
-Name: group, Length: 163, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1082,42 +895,10 @@ Name: group, Length: 163, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       True
-1       True
-2       True
-3       True
-4       True
-       ...  
-158    False
-159    False
-160    False
-161    False
-162    False
-Name: group, Length: 163, dtype: bool
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">==</span> <span class="s1">&#39;miR-137&#39;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       True
-1       True
-2       True
-3       True
-4       True
-       ...  
-158    False
-159    False
-160    False
-161    False
-162    False
-Name: group, Length: 163, dtype: bool
 </pre></div>
 </div>
 </div>
@@ -1132,9 +913,6 @@ Name: group, Length: 163, dtype: bool
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/40e8d45ed9e30c5ecf799d120bb704b3cf16ccbd5f35280a5306b4c1f892563b.png" src="_images/40e8d45ed9e30c5ecf799d120bb704b3cf16ccbd5f35280a5306b4c1f892563b.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1142,76 +920,6 @@ Name: group, Length: 163, dtype: bool
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>T</th>
-      <th>E</th>
-      <th>group</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>39</th>
-      <td>61.0</td>
-      <td>0</td>
-      <td>control</td>
-    </tr>
-    <tr>
-      <th>41</th>
-      <td>61.0</td>
-      <td>0</td>
-      <td>control</td>
-    </tr>
-    <tr>
-      <th>54</th>
-      <td>69.0</td>
-      <td>0</td>
-      <td>control</td>
-    </tr>
-    <tr>
-      <th>71</th>
-      <td>68.0</td>
-      <td>0</td>
-      <td>control</td>
-    </tr>
-    <tr>
-      <th>89</th>
-      <td>7.0</td>
-      <td>0</td>
-      <td>control</td>
-    </tr>
-    <tr>
-      <th>144</th>
-      <td>45.0</td>
-      <td>0</td>
-      <td>control</td>
-    </tr>
-    <tr>
-      <th>152</th>
-      <td>60.0</td>
-      <td>0</td>
-      <td>control</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1233,317 +941,6 @@ Name: group, Length: 163, dtype: bool
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>case_id</th>
-      <th>case_submitter_id</th>
-      <th>project_id</th>
-      <th>age_at_index</th>
-      <th>age_is_obfuscated</th>
-      <th>cause_of_death</th>
-      <th>cause_of_death_source</th>
-      <th>country_of_residence_at_enrollment</th>
-      <th>days_to_birth</th>
-      <th>days_to_death</th>
-      <th>...</th>
-      <th>treatment_arm</th>
-      <th>treatment_dose</th>
-      <th>treatment_dose_units</th>
-      <th>treatment_effect</th>
-      <th>treatment_effect_indicator</th>
-      <th>treatment_frequency</th>
-      <th>treatment_intent_type</th>
-      <th>treatment_or_therapy</th>
-      <th>treatment_outcome</th>
-      <th>treatment_type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>14a4a93a-e24d-46f2-bee3-18bd792ef95a</td>
-      <td>TCGA-39-5019</td>
-      <td>TCGA-LUSC</td>
-      <td>70</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>-25756</td>
-      <td>'--</td>
-      <td>...</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>no</td>
-      <td>'--</td>
-      <td>Pharmaceutical Therapy, NOS</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>14a4a93a-e24d-46f2-bee3-18bd792ef95a</td>
-      <td>TCGA-39-5019</td>
-      <td>TCGA-LUSC</td>
-      <td>70</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>-25756</td>
-      <td>'--</td>
-      <td>...</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>no</td>
-      <td>'--</td>
-      <td>Radiation Therapy, NOS</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>037c57d1-b4a5-45dc-bda4-0550461d321b</td>
-      <td>TCGA-22-1016</td>
-      <td>TCGA-LUSC</td>
-      <td>65</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>-24078</td>
-      <td>822</td>
-      <td>...</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>no</td>
-      <td>'--</td>
-      <td>Pharmaceutical Therapy, NOS</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>037c57d1-b4a5-45dc-bda4-0550461d321b</td>
-      <td>TCGA-22-1016</td>
-      <td>TCGA-LUSC</td>
-      <td>65</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>-24078</td>
-      <td>822</td>
-      <td>...</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>no</td>
-      <td>'--</td>
-      <td>Radiation Therapy, NOS</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>a2d7c06b-efa9-4b7e-9ea6-b47c9ad6ef38</td>
-      <td>TCGA-63-A5MR</td>
-      <td>TCGA-LUSC</td>
-      <td>70</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>-25879</td>
-      <td>'--</td>
-      <td>...</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>no</td>
-      <td>'--</td>
-      <td>Pharmaceutical Therapy, NOS</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>989</th>
-      <td>4eaf5d63-9b33-4c7f-871e-45daa735f972</td>
-      <td>TCGA-34-A5IX</td>
-      <td>TCGA-LUSC</td>
-      <td>80</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>-29391</td>
-      <td>'--</td>
-      <td>...</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>no</td>
-      <td>'--</td>
-      <td>Pharmaceutical Therapy, NOS</td>
-    </tr>
-    <tr>
-      <th>990</th>
-      <td>72c49014-f949-4d02-ae71-26a243e0b102</td>
-      <td>TCGA-52-7809</td>
-      <td>TCGA-LUSC</td>
-      <td>74</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>-27233</td>
-      <td>166</td>
-      <td>...</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>not reported</td>
-      <td>'--</td>
-      <td>Pharmaceutical Therapy, NOS</td>
-    </tr>
-    <tr>
-      <th>991</th>
-      <td>72c49014-f949-4d02-ae71-26a243e0b102</td>
-      <td>TCGA-52-7809</td>
-      <td>TCGA-LUSC</td>
-      <td>74</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>-27233</td>
-      <td>166</td>
-      <td>...</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>not reported</td>
-      <td>'--</td>
-      <td>Radiation Therapy, NOS</td>
-    </tr>
-    <tr>
-      <th>992</th>
-      <td>18f18672-2a23-4e26-987b-38c454ff46c7</td>
-      <td>TCGA-34-5927</td>
-      <td>TCGA-LUSC</td>
-      <td>70</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>-25857</td>
-      <td>'--</td>
-      <td>...</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>no</td>
-      <td>'--</td>
-      <td>Radiation Therapy, NOS</td>
-    </tr>
-    <tr>
-      <th>993</th>
-      <td>18f18672-2a23-4e26-987b-38c454ff46c7</td>
-      <td>TCGA-34-5927</td>
-      <td>TCGA-LUSC</td>
-      <td>70</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>-25857</td>
-      <td>'--</td>
-      <td>...</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>'--</td>
-      <td>yes</td>
-      <td>'--</td>
-      <td>Pharmaceutical Therapy, NOS</td>
-    </tr>
-  </tbody>
-</table>
-<p>994 rows × 154 columns</p>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1555,22 +952,6 @@ Name: group, Length: 163, dtype: bool
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ta</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      3387
-1      3387
-4      2716
-5      2716
-6       581
-       ... 
-987     557
-988    1031
-989    1031
-992    1361
-993    1361
-Name: days_to_last_follow_up, Length: 558, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1588,22 +969,6 @@ Name: days_to_last_follow_up, Length: 558, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2       822
-3       822
-8      3600
-9      3600
-20      827
-       ... 
-983     740
-984     687
-985     687
-990     166
-991     166
-Name: days_to_death, Length: 436, dtype: object
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1615,22 +980,6 @@ Name: days_to_death, Length: 436, dtype: object
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      3387
-1      3387
-4      2716
-5      2716
-6       581
-       ... 
-983     740
-984     687
-985     687
-990     166
-991     166
-Length: 994, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1657,42 +1006,10 @@ Length: 994, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      0
-1      0
-4      0
-5      0
-6      0
-      ..
-987    0
-988    0
-989    0
-992    0
-993    0
-Name: vital_status, Length: 558, dtype: object
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ed</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2      1
-3      1
-8      1
-9      1
-20     1
-      ..
-983    1
-984    1
-985    1
-990    1
-991    1
-Name: vital_status, Length: 436, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1710,99 +1027,12 @@ Name: vital_status, Length: 436, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      0
-1      0
-4      0
-5      0
-6      0
-      ..
-983    1
-984    1
-985    1
-990    1
-991    1
-Name: vital_status, Length: 994, dtype: object
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lifelines</span> <span class="kn">import</span> <span class="n">KaplanMeierFitter</span>
 <span class="n">kmf</span> <span class="o">=</span> <span class="n">KaplanMeierFitter</span><span class="p">()</span>
 <span class="n">kmf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">event_observed</span> <span class="o">=</span> <span class="n">E</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kt_imacpro/.pyenv/versions/3.8.5/lib/python3.8/site-packages/lifelines/utils/__init__.py:1176: UserWarning: Attempting to convert an unexpected datatype &#39;object&#39; to float. Suggestion: 1) use `lifelines.utils.datetimes_to_durations` to do conversions or 2) manually convert to floats/booleans.
-  warnings.warn(warning_text, UserWarning)
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/lifelines/utils/__init__.py</span> in <span class="ni">check_nans_or_infs</span><span class="nt">(df_or_array)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1169</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1170</span>         <span class="n">infs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">df_or_array</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1171</span>     <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-
-<span class="ne">TypeError</span>: ufunc &#39;isinf&#39; not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule &#39;&#39;safe&#39;&#39;
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/lifelines/utils/__init__.py</span> in <span class="ni">check_nans_or_infs</span><span class="nt">(df_or_array)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1177</span>         <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1178</span>             <span class="n">infs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">df_or_array</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">1179</span>         <span class="k">except</span><span class="p">:</span>
-
-<span class="ne">ValueError</span>: could not convert string to float: &quot;&#39;--&quot;
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">43</span><span class="o">-</span><span class="mi">7</span><span class="n">f53473c2b25</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">lifelines</span> <span class="kn">import</span> <span class="n">KaplanMeierFitter</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">kmf</span> <span class="o">=</span> <span class="n">KaplanMeierFitter</span><span class="p">()</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">kmf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">event_observed</span> <span class="o">=</span> <span class="n">E</span><span class="p">)</span>
-
-<span class="nn">~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/lifelines/utils/__init__.py</span> in <span class="ni">f</span><span class="nt">(model, *args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span>         <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span>             <span class="bp">cls</span><span class="o">.</span><span class="n">set_censoring_type</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">54</span>             <span class="k">return</span> <span class="n">function</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span> 
-<span class="g g-Whitespace">     </span><span class="mi">56</span>         <span class="k">return</span> <span class="n">f</span>
-
-<span class="nn">~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/lifelines/fitters/kaplan_meier_fitter.py</span> in <span class="ni">fit</span><span class="nt">(self, durations, event_observed, timeline, entry, label, alpha, ci_labels, weights)</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span>         <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span><span class="sd"> </span>
-<span class="ne">--&gt; </span><span class="mi">114</span><span class="sd">         return self._fit(durations, event_observed, timeline, entry, label, alpha, ci_labels, weights)</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">116</span><span class="sd">     @CensoringType.interval_censoring</span>
-
-<span class="nn">~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/lifelines/fitters/kaplan_meier_fitter.py</span> in <span class="ni">_fit</span><span class="nt">(self, durations, event_observed, timeline, entry, label, alpha, ci_labels, weights)</span>
-<span class="g g-Whitespace">    </span><span class="mi">293</span><span class="sd">         &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">294</span>         <span class="n">durations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">durations</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">295</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_check_values</span><span class="p">(</span><span class="n">durations</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">296</span> 
-<span class="g g-Whitespace">    </span><span class="mi">297</span>         <span class="k">if</span> <span class="n">event_observed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/lifelines/fitters/kaplan_meier_fitter.py</span> in <span class="ni">_check_values</span><span class="nt">(self, array)</span>
-<span class="g g-Whitespace">    </span><span class="mi">365</span> 
-<span class="g g-Whitespace">    </span><span class="mi">366</span>     <span class="k">def</span> <span class="nf">_check_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">367</span>         <span class="n">check_nans_or_infs</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">368</span> 
-<span class="g g-Whitespace">    </span><span class="mi">369</span>     <span class="k">def</span> <span class="nf">plot_loglogs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-
-<span class="nn">~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/lifelines/utils/__init__.py</span> in <span class="ni">check_nans_or_infs</span><span class="nt">(df_or_array)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1178</span>             <span class="n">infs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">df_or_array</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">1179</span>         <span class="k">except</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1180</span>             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Wrong dtype &#39;</span><span class="si">%s</span><span class="s2">&#39;.&quot;</span> <span class="o">%</span> <span class="n">df_or_array</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1181</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1182</span>     <span class="k">if</span> <span class="n">infs</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-
-<span class="ne">TypeError</span>: Wrong dtype &#39;object&#39;.
 </pre></div>
 </div>
 </div>

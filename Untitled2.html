@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>リスト &#8212; bioinformaticsのためのpython資料</title>
+    <title>RNA-seq関連 &#8212; bioinformaticsのためのpython資料</title>
   
   
   
@@ -58,11 +58,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'python_practice_list';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Untitled2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="繰り返し" href="python_practice_repeat.html" />
-    <link rel="prev" title="文字列" href="python_practice_mojiretsu.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -164,10 +162,10 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="python_practice_hensuu.html">変数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_practice_mojiretsu.html">文字列</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">リスト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_practice_list.html">リスト</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_practice_repeat.html">繰り返し</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_practice_if.html">if文 wihle文</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_practice_dictionary.html">辞書</a></li>
@@ -236,7 +234,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/python_practice_list.ipynb" target="_blank"
+      <li><a href="_sources/Untitled2.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -320,7 +318,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>リスト</h1>
+    <h1>RNA-seq関連</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -330,11 +328,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">リストの作成</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">リストから要素を取り出す</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">要素を変更する</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">要素を追加する</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">タプル</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deseq2">DESeq2解析</a></li>
 </ul>
             </nav>
         </div>
@@ -346,220 +340,246 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>リスト<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="rna-seq">
+<h1>RNA-seq関連<a class="headerlink" href="#rna-seq" title="Permalink to this heading">#</a></h1>
 <hr class="docutils" />
-<div class="section" id="id2">
-<h2>リストの作成<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<br>
-<p>リストは、複数のデータを格納できる変数です。<br />
-以下のように書くことでリストにデータを格納できます。</p>
-<br>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">変数</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;要素1&#39;</span><span class="p">,</span> <span class="s1">&#39;要素2&#39;</span><span class="p">,</span> <span class="s1">&#39;要素3&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-<br>
-<p>格納したい要素をカンマで区切り、全体を<code class="docutils literal notranslate"><span class="pre">[]</span></code>で囲みます。
-要素は何個でも構いません。</p>
-<br>
-<p>以下のようなリストを作成してみます。</p>
+<div class="section" id="deseq2">
+<h2>DESeq2解析<a class="headerlink" href="#deseq2" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TP53&#39;</span><span class="p">,</span> <span class="s1">&#39;EGFR&#39;</span><span class="p">,</span> <span class="s1">&#39;MYC&#39;</span><span class="p">,</span> <span class="s1">&#39;CDKN1A&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;TP53&#39;, &#39;EGFR&#39;, &#39;MYC&#39;, &#39;CDKN1A&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>作成したリストが表示されます。</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="id3">
-<h2>リストから要素を取り出す<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
-<p>リストから特定の要素を取り出す時は、リストの変数名の横にインデックスをつけます(<code class="docutils literal notranslate"><span class="pre">[]</span></code>をつけて、その中に順番を記入)。</p>
-<p>文字列の処理の時と同様、インデックスは<strong>1番目は0</strong>です。以降、2番目は1、3番目は2と続きます。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TP53
-</pre></div>
-</div>
-</div>
-</div>
-<p>リストの一番目の要素である<code class="docutils literal notranslate"><span class="pre">TP53</span></code>が表示されます。</p>
-<br>
-<p><strong>マイナスの数値</strong>を入れると、後ろから数えた順番の要素を取り出せます。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CDKN1A
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>コロン</strong>を使って、複数の要素を取り出すこともできます(スライス）。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;EGFR&#39;, &#39;MYC&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>終点で指定した順番の一つ前までの要素が表示されます。<br />
-文字列の場合と一緒です。</p>
-<p>最初の要素から取り出す場合は始点を省略できます。<br />
-最後の要素まで取り出す場合は終点を省略できます。<br />
-この点は文字列のスライスと同様です。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:</span> <span class="mi">2</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;TP53&#39;, &#39;EGFR&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>最初と2番目の要素を取得できました。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MYC&#39;, &#39;CDKN1A&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>３番目から最後までの要素を取得できました。</p>
-<br>
-<p><strong>存在しないインデックスを指定するとエラーになります</strong>ので注意してください。<br />
-エラーが存在すると、その部分でプログラムは止まってしまい、最後まで実行されません。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pydeseq2.dds</span> <span class="kn">import</span> <span class="n">DeseqDataSet</span>
+<span class="kn">from</span> <span class="nn">pydeseq2.utils</span> <span class="kn">import</span> <span class="n">load_example_data</span>
+<span class="kn">from</span> <span class="nn">pydeseq2.default_inference</span> <span class="kn">import</span> <span class="n">DefaultInference</span>
+<span class="kn">from</span> <span class="nn">pydeseq2.ds</span> <span class="kn">import</span> <span class="n">DeseqStats</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">ba4863cd608d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">88</span><span class="n">cb5f5b1fed</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">pydeseq2.dds</span> <span class="kn">import</span> <span class="n">DeseqDataSet</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">pydeseq2.utils</span> <span class="kn">import</span> <span class="n">load_example_data</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">pydeseq2.default_inference</span> <span class="kn">import</span> <span class="n">DefaultInference</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">pydeseq2.ds</span> <span class="kn">import</span> <span class="n">DeseqStats</span>
 
-<span class="ne">IndexError</span>: list index out of range
-</pre></div>
-</div>
-</div>
-</div>
-<p>エラーメッセージが表示されます。<br />
-<code class="docutils literal notranslate"><span class="pre">list</span> <span class="pre">index</span> <span class="pre">out</span> <span class="pre">of</span> <span class="pre">range</span></code>とエラーの理由をちゃんと教えてくれます。</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="id4">
-<h2>要素を変更する<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
-<p>リストの中の要素を別のものに置き換えたい時は、置き換えたい要素をスライスで指定して、代入演算子<code class="docutils literal notranslate"><span class="pre">=</span></code>で新しい要素を代入します。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;KRAS&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;TP53&#39;, &#39;EGFR&#39;, &#39;MYC&#39;, &#39;KRAS&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>リストの4番目の要素が、<code class="docutils literal notranslate"><span class="pre">CDKN1A</span></code>から<code class="docutils literal notranslate"><span class="pre">KRAS</span></code>に置き換わりました。</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="id5">
-<h2>要素を追加する<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
-<p>リストに要素を追加したいときには、リスト型のメソッド（リスト型のデータを処理する関数）である<code class="docutils literal notranslate"><span class="pre">append()</span></code>を使います。</p>
-<p>カッコの中に追加したい要素を入力します。</p>
-<p>使い方は、処理をしたい変数とメソッドを<code class="docutils literal notranslate"><span class="pre">.</span></code>で繋ぎます。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;RB&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;TP53&#39;, &#39;EGFR&#39;, &#39;MYC&#39;, &#39;KRAS&#39;, &#39;RB&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>リスト<code class="docutils literal notranslate"><span class="pre">a</span></code>に、新しい要素<code class="docutils literal notranslate"><span class="pre">RB</span></code>が追加されました。</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="id6">
-<h2>タプル<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
-<p>タプルはリストと似ていますが、内容を変更できません。
-リストでは<code class="docutils literal notranslate"><span class="pre">[]</span></code>で囲みましたが、タプルでは<code class="docutils literal notranslate"><span class="pre">()</span></code>で囲みます。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;TP53&#39;</span><span class="p">,</span> <span class="s1">&#39;EGFR&#39;</span><span class="p">,</span> <span class="s1">&#39;MYC&#39;</span><span class="p">,</span> <span class="s1">&#39;CDKN1A&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;TP53&#39;, &#39;EGFR&#39;, &#39;MYC&#39;, &#39;CDKN1A&#39;)
-TP53
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pydeseq2&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;ACTB&#39;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="n">fda681251c81</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;ACTB&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SAVE</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># whether to save the outputs of this notebook</span>
 
-<span class="ne">TypeError</span>: &#39;tuple&#39; object does not support item assignment
+<span class="k">if</span> <span class="n">SAVE</span><span class="p">:</span>
+    <span class="c1"># Replace this with the path to directory where you would like results to be saved</span>
+    <span class="n">OUTPUT_PATH</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">OUTPUT_PATH</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Create path if it doesn&#39;t exist</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>中身は変更できませんのでエラーになります。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts_df</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">(</span>
+    <span class="n">modality</span><span class="o">=</span><span class="s2">&quot;raw_counts&quot;</span><span class="p">,</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;synthetic&quot;</span><span class="p">,</span>
+    <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">(</span>
+    <span class="n">modality</span><span class="o">=</span><span class="s2">&quot;metadata&quot;</span><span class="p">,</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;synthetic&quot;</span><span class="p">,</span>
+    <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">counts_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           gene1  gene2  gene3  gene4  gene5  gene6  gene7  gene8  gene9  \
+sample1       12     21      4    130     18      0     16     54     49   
+sample2        1     44      2     63     11     10     70     32     57   
+sample3        4      4     11    180     21      3     28     34     65   
+sample4        1     10      2    100     44      9     28     16     33   
+sample5        1     11      6    135     16      2     32     29     31   
+...          ...    ...    ...    ...    ...    ...    ...    ...    ...   
+sample96       7     26      3     67     11      4     41     44     54   
+sample97       1     14      3     71     33      5     19     42     25   
+sample98      10     36      2     72     11      2     66     27     16   
+sample99      18     14      3     66     53     11     32     19     79   
+sample100     21      9      3     42     13     13     19     78     30   
+
+           gene10  
+sample1         3  
+sample2         9  
+sample3         2  
+sample4         9  
+sample5         5  
+...           ...  
+sample96        1  
+sample97        4  
+sample98        9  
+sample99       11  
+sample100       5  
+
+[100 rows x 10 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples_to_keep</span> <span class="o">=</span> <span class="o">~</span><span class="n">metadata</span><span class="o">.</span><span class="n">condition</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+<span class="n">counts_df</span> <span class="o">=</span> <span class="n">counts_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_to_keep</span><span class="p">]</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_to_keep</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">genes_to_keep</span> <span class="o">=</span> <span class="n">counts_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">counts_df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">counts_df</span> <span class="o">=</span> <span class="n">counts_df</span><span class="p">[</span><span class="n">genes_to_keep</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inference</span> <span class="o">=</span> <span class="n">DefaultInference</span><span class="p">(</span><span class="n">n_cpus</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">dds</span> <span class="o">=</span> <span class="n">DeseqDataSet</span><span class="p">(</span>
+    <span class="n">counts</span><span class="o">=</span><span class="n">counts_df</span><span class="p">,</span>
+    <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
+    <span class="n">design</span><span class="o">=</span><span class="s2">&quot;~condition&quot;</span><span class="p">,</span>
+    <span class="n">refit_cooks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">inference</span><span class="o">=</span><span class="n">inference</span><span class="p">,</span>
+    <span class="c1"># n_cpus=8, # n_cpus can be specified here or in the inference object</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dds</span><span class="o">.</span><span class="n">deseq2</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">SAVE</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">OUTPUT_PATH</span><span class="p">,</span> <span class="s2">&quot;dds.pkl&quot;</span><span class="p">),</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">pkl</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">dds</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using None as control genes, passed at DeseqDataSet initialization
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting size factors...
+... done in 0.00 seconds.
+
+Fitting dispersions...
+... done in 0.01 seconds.
+
+Fitting dispersion trend curve...
+... done in 0.01 seconds.
+
+Fitting MAP dispersions...
+... done in 0.02 seconds.
+
+Fitting LFCs...
+... done in 0.01 seconds.
+
+Calculating cook&#39;s distance...
+... done in 0.01 seconds.
+
+Replacing 0 outlier genes.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 100 × 10
+    obs: &#39;condition&#39;, &#39;group&#39;, &#39;size_factors&#39;, &#39;replaceable&#39;
+    var: &#39;_normed_means&#39;, &#39;non_zero&#39;, &#39;_MoM_dispersions&#39;, &#39;genewise_dispersions&#39;, &#39;_genewise_converged&#39;, &#39;fitted_dispersions&#39;, &#39;MAP_dispersions&#39;, &#39;_MAP_converged&#39;, &#39;dispersions&#39;, &#39;_outlier_genes&#39;, &#39;_LFC_converged&#39;, &#39;replaced&#39;, &#39;refitted&#39;, &#39;_pvalue_cooks_outlier&#39;
+    uns: &#39;trend_coeffs&#39;, &#39;disp_function_type&#39;, &#39;_squared_logres&#39;, &#39;prior_disp_var&#39;
+    obsm: &#39;design_matrix&#39;, &#39;_mu_LFC&#39;, &#39;_hat_diagonals&#39;
+    varm: &#39;LFC&#39;
+    layers: &#39;normed_counts&#39;, &#39;_mu_hat&#39;, &#39;cooks&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dds</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="s2">&quot;dispersions&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gene1     0.882598
+gene2     0.222578
+gene3     0.837238
+gene4     0.158970
+gene5     0.249926
+gene6     0.973647
+gene7     0.235155
+gene8     0.198781
+gene9     0.186520
+gene10    0.631900
+Name: dispersions, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">DeseqStats</span><span class="p">(</span><span class="n">dds</span><span class="p">,</span> <span class="n">contrast</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;condition&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">],</span> <span class="n">inference</span><span class="o">=</span><span class="n">inference</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">SAVE</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">OUTPUT_PATH</span><span class="p">,</span> <span class="s2">&quot;ds.pkl&quot;</span><span class="p">),</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">pkl</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: condition B vs A
+          baseMean  log2FoldChange     lfcSE      stat    pvalue      padj
+gene1     8.541317        0.632812  0.289101  2.188898  0.028604  0.064150
+gene2    21.281239        0.538552  0.149963  3.591236  0.000329  0.001646
+gene3     5.010123       -0.632830  0.295236 -2.143476  0.032075  0.064150
+gene4   100.517961       -0.412102  0.118629 -3.473868  0.000513  0.001710
+gene5    27.142450        0.582065  0.154706  3.762409  0.000168  0.001646
+gene6     5.413043        0.001457  0.310311  0.004696  0.996253  0.996253
+gene7    28.294023        0.134338  0.149945  0.895917  0.370297  0.411441
+gene8    40.358344       -0.270656  0.136401 -1.984261  0.047227  0.078711
+gene9    37.166183       -0.212715  0.133243 -1.596437  0.110391  0.143147
+gene10   11.589325        0.386011  0.244588  1.578207  0.114518  0.143147
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>... done in 10.62 seconds.
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -593,24 +613,6 @@ TP53
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="python_practice_mojiretsu.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">文字列</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="python_practice_repeat.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">繰り返し</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -626,11 +628,7 @@ TP53
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">リストの作成</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">リストから要素を取り出す</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">要素を変更する</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">要素を追加する</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">タプル</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deseq2">DESeq2解析</a></li>
 </ul>
   </nav></div>
 
