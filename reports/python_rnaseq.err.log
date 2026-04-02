@@ -17,30 +17,26 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-counts_df = load_example_data(
-    modality="raw_counts",
-    dataset="synthetic",
-    debug=False,
+inference = DefaultInference(n_cpus=8)
+dds = DeseqDataSet(
+    counts=counts_df,
+    metadata=metadata,
+    design="~condition",
+    refit_cooks=True,
+    inference=inference,
+    # n_cpus=8, # n_cpus can be specified here or in the inference object
 )
-
-metadata = load_example_data(
-    modality="metadata",
-    dataset="synthetic",
-    debug=False,
-)
-
-print(counts_df)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m<ipython-input-1-83084677fe76>[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m counts_df = load_example_data(
-[0m[1;32m      2[0m     [0mmodality[0m[0;34m=[0m[0;34m"raw_counts"[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      3[0m     [0mdataset[0m[0;34m=[0m[0;34m"synthetic"[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      4[0m     [0mdebug[0m[0;34m=[0m[0;32mFalse[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m )
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-6-eef0f19326ef>[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0minference[0m [0;34m=[0m [0mDefaultInference[0m[0;34m([0m[0mn_cpus[0m[0;34m=[0m[0;36m8[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 2[0;31m dds = DeseqDataSet(
+[0m[1;32m      3[0m     [0mcounts[0m[0;34m=[0m[0mcounts_df[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m     [0mmetadata[0m[0;34m=[0m[0mmetadata[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m     [0mdesign[0m[0;34m=[0m[0;34m"~condition"[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mNameError[0m: name 'load_example_data' is not defined
-NameError: name 'load_example_data' is not defined
+[0;31mTypeError[0m: __init__() got an unexpected keyword argument 'design'
+TypeError: __init__() got an unexpected keyword argument 'design'
 
