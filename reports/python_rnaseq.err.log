@@ -17,24 +17,30 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import os
-import pickle as pkl
+counts_df = load_example_data(
+    modality="raw_counts",
+    dataset="synthetic",
+    debug=False,
+)
 
-from pydeseq2.dds import DeseqDataSet
-from pydeseq2.utils import load_example_data
-from pydeseq2.default_inference import DefaultInference
-from pydeseq2.ds import DeseqStats
+metadata = load_example_data(
+    modality="metadata",
+    dataset="synthetic",
+    debug=False,
+)
+
+print(counts_df)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m<ipython-input-1-54f72911bef8>[0m in [0;36m<module>[0;34m[0m
-[1;32m      2[0m [0;32mimport[0m [0mpickle[0m [0;32mas[0m [0mpkl[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      3[0m [0;34m[0m[0m
-[0;32m----> 4[0;31m [0;32mfrom[0m [0mpydeseq2[0m[0;34m.[0m[0mdds[0m [0;32mimport[0m [0mDeseqDataSet[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      5[0m [0;32mfrom[0m [0mpydeseq2[0m[0;34m.[0m[0mutils[0m [0;32mimport[0m [0mload_example_data[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      6[0m [0;32mfrom[0m [0mpydeseq2[0m[0;34m.[0m[0mdefault_inference[0m [0;32mimport[0m [0mDefaultInference[0m[0;34m[0m[0;34m[0m[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-1-83084677fe76>[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m counts_df = load_example_data(
+[0m[1;32m      2[0m     [0mmodality[0m[0;34m=[0m[0;34m"raw_counts"[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m     [0mdataset[0m[0;34m=[0m[0;34m"synthetic"[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m     [0mdebug[0m[0;34m=[0m[0;32mFalse[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m )
 
-[0;31mModuleNotFoundError[0m: No module named 'pydeseq2'
-ModuleNotFoundError: No module named 'pydeseq2'
+[0;31mNameError[0m: name 'load_example_data' is not defined
+NameError: name 'load_example_data' is not defined
 
