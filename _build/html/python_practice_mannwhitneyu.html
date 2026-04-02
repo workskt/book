@@ -178,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">統計検定を行う</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_scatter.html">散布図の作成</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_kaplanmeier.html">TCGAのデータを使ってKaplanMeier生存曲線を作る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_rnaseq.html">RNA-seq関連</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_mergeplots.html">共通のx軸に二つのプロットを表示する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_plot_cumulativebar.html">積み上げ棒グラフを作成する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_practice_functionlist.html">関数一覧</a></li>
@@ -567,7 +568,7 @@ virginicaのsepal lengthも同様の方法で取得します。</p>
 </div>
 </div>
 </div>
-<p>両者の中央値に差があるかどうかをMann-WhitneyのU検定により検定します。<br>
+<p>2群に差があるかどうかをMann-WhitneyのU検定により検定します。<br>
 <code class="docutils literal notranslate"><span class="pre">scipy</span></code>の<code class="docutils literal notranslate"><span class="pre">stats</span></code>モジュールの<code class="docutils literal notranslate"><span class="pre">mannwhitneyu</span></code>を使用します。<br>
 <code class="docutils literal notranslate"><span class="pre">alternative</span> <span class="pre">=</span> <span class="pre">'two-sided'</span></code>で両側検定を行います。</p>
 <div class="cell docutils container">
@@ -606,8 +607,8 @@ virginicaのsepal lengthも同様の方法で取得します。</p>
 <hr class="docutils" />
 <div class="section" id="id2">
 <h2>練習<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>(1)setosaとvirginicaのsepal lengthの平均に差があるどうかを、T検定により検定してください。<br>
-(2)setosaとversicolorのpetal widthの中央値に差があるかどうかを、Mann-WhitneyのU検定により検定してください。<br></p>
+<p>(1)setosaとvirginicaのsepal lengthに差があるどうかを、T検定により検定してください。<br>
+(2)setosaとversicolorのpetal widthに差があるかどうかを、Mann-WhitneyのU検定により検定してください。<br></p>
 </div>
 </div>
 
