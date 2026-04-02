@@ -353,6 +353,18 @@ DESeq2パッケージRにもありますので、Rでも解析可能です。<br
 <p>PyDESeq2のインストール方法および使用方法は<a class="reference external" href="https://pydeseq2.readthedocs.io/en/latest/auto_examples/plot_minimal_pydeseq2_pipeline.html">こちら</a>を読んでください。<br>
 このページに記載されたDESeq2に関する情報は全て上記のサイトに記載されています。</p>
 <p>まずはPyDESeq2から必要なパッケージをimportします。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">pydeseq2.dds</span> <span class="kn">import</span> <span class="n">DeseqDataSet</span>
+<span class="kn">from</span> <span class="nn">pydeseq2.utils</span> <span class="kn">import</span> <span class="n">load_example_data</span>
+<span class="kn">from</span> <span class="nn">pydeseq2.default_inference</span> <span class="kn">import</span> <span class="n">DefaultInference</span>
+<span class="kn">from</span> <span class="nn">pydeseq2.ds</span> <span class="kn">import</span> <span class="n">DeseqStats</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><br>ここではテストデータをダウンロードして使用します。<br>
 以下の方法でリードカウントとメタデータのテストデータをダウンロードします。<br>
 <strong>実際の解析では、<code class="docutils literal notranslate"><span class="pre">RSEM</span></code>等の解析により得られたリードカウントのデータを使用することになります。</strong><br></p>
@@ -375,16 +387,33 @@ DESeq2パッケージRにもありますので、Rでも解析可能です。<br
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">83084677</span><span class="n">fe76</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">counts_df</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">modality</span><span class="o">=</span><span class="s2">&quot;raw_counts&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;synthetic&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           gene1  gene2  gene3  gene4  gene5  gene6  gene7  gene8  gene9  \
+sample1       12     21      4    130     18      0     16     54     49   
+sample2        1     44      2     63     11     10     70     32     57   
+sample3        4      4     11    180     21      3     28     34     65   
+sample4        1     10      2    100     44      9     28     16     33   
+sample5        1     11      6    135     16      2     32     29     31   
+...          ...    ...    ...    ...    ...    ...    ...    ...    ...   
+sample96       7     26      3     67     11      4     41     44     54   
+sample97       1     14      3     71     33      5     19     42     25   
+sample98      10     36      2     72     11      2     66     27     16   
+sample99      18     14      3     66     53     11     32     19     79   
+sample100     21      9      3     42     13     13     19     78     30   
 
-<span class="ne">NameError</span>: name &#39;load_example_data&#39; is not defined
+           gene10  
+sample1         3  
+sample2         9  
+sample3         2  
+sample4         9  
+sample5         5  
+...           ...  
+sample96        1  
+sample97        4  
+sample98        9  
+sample99       11  
+sample100       5  
+
+[100 rows x 10 columns]
 </pre></div>
 </div>
 </div>
@@ -446,6 +475,20 @@ sample100         B     Y
     <span class="n">inference</span><span class="o">=</span><span class="n">inference</span><span class="p">,</span>
     <span class="c1"># n_cpus=8, # n_cpus can be specified here or in the inference object</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">eef0f19326ef</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">inference</span> <span class="o">=</span> <span class="n">DefaultInference</span><span class="p">(</span><span class="n">n_cpus</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">dds</span> <span class="o">=</span> <span class="n">DeseqDataSet</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">counts</span><span class="o">=</span><span class="n">counts_df</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">design</span><span class="o">=</span><span class="s2">&quot;~condition&quot;</span><span class="p">,</span>
+
+<span class="ne">TypeError</span>: __init__() got an unexpected keyword argument &#39;design&#39;
 </pre></div>
 </div>
 </div>
@@ -515,7 +558,7 @@ gene10   11.589325        0.386011  0.244588  1.578207  0.114518  0.143147
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
-... done in 0.02 seconds.
+... done in 0.01 seconds.
 </pre></div>
 </div>
 </div>
@@ -652,7 +695,7 @@ gene10  0.844216  Not significant
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2012f60d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x204f51450&gt;
 </pre></div>
 </div>
 <img alt="_images/922d3ef65cf3430c3874a6c2d8ead8273fe75f85867a672162c93305d78b813c.png" src="_images/922d3ef65cf3430c3874a6c2d8ead8273fe75f85867a672162c93305d78b813c.png" />
@@ -679,7 +722,7 @@ gene10  0.844216  Not significant
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x204d69bd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x204de7610&gt;
 </pre></div>
 </div>
 <img alt="_images/f644c63ec0f6a1f7338fc070294bca1449ca5585ec509b95123b0f4fecb56b2b.png" src="_images/f644c63ec0f6a1f7338fc070294bca1449ca5585ec509b95123b0f4fecb56b2b.png" />
