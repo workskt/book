@@ -364,6 +364,20 @@ DESeq2パッケージRにもありますので、Rでも解析可能です。<br
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="n">c8f59ed7e68</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">os</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">pydeseq2.dds</span> <span class="kn">import</span> <span class="n">DeseqDataSet</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">pydeseq2.utils</span> <span class="kn">import</span> <span class="n">load_example_data</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">pydeseq2.default_inference</span> <span class="kn">import</span> <span class="n">DefaultInference</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pydeseq2&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p><br>ここではテストデータをダウンロードして使用します。<br>
 以下の方法でリードカウントとメタデータのテストデータをダウンロードします。<br>
@@ -478,20 +492,6 @@ sample100         B     Y
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">eef0f19326ef</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">inference</span> <span class="o">=</span> <span class="n">DefaultInference</span><span class="p">(</span><span class="n">n_cpus</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">dds</span> <span class="o">=</span> <span class="n">DeseqDataSet</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">counts</span><span class="o">=</span><span class="n">counts_df</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">design</span><span class="o">=</span><span class="s2">&quot;~condition&quot;</span><span class="p">,</span>
-
-<span class="ne">TypeError</span>: __init__() got an unexpected keyword argument &#39;design&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p><br><code class="docutils literal notranslate"><span class="pre">deseq2</span></code>を使って解析を実行します。</p>
 <div class="cell docutils container">
@@ -508,10 +508,10 @@ sample100         B     Y
 ... done in 0.00 seconds.
 
 Fitting dispersions...
-... done in 0.01 seconds.
+... done in 0.02 seconds.
 
 Fitting dispersion trend curve...
-... done in 0.01 seconds.
+... done in 0.02 seconds.
 
 Fitting MAP dispersions...
 ... done in 0.02 seconds.
@@ -558,7 +558,7 @@ gene10   11.589325        0.386011  0.244588  1.578207  0.114518  0.143147
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
-... done in 0.01 seconds.
+... done in 0.02 seconds.
 </pre></div>
 </div>
 </div>
@@ -695,7 +695,7 @@ gene10  0.844216  Not significant
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x204f51450&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x200d9b250&gt;
 </pre></div>
 </div>
 <img alt="_images/922d3ef65cf3430c3874a6c2d8ead8273fe75f85867a672162c93305d78b813c.png" src="_images/922d3ef65cf3430c3874a6c2d8ead8273fe75f85867a672162c93305d78b813c.png" />
@@ -722,7 +722,7 @@ gene10  0.844216  Not significant
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x204de7610&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x200eb0050&gt;
 </pre></div>
 </div>
 <img alt="_images/f644c63ec0f6a1f7338fc070294bca1449ca5585ec509b95123b0f4fecb56b2b.png" src="_images/f644c63ec0f6a1f7338fc070294bca1449ca5585ec509b95123b0f4fecb56b2b.png" />

@@ -17,37 +17,14 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-conda activate pydeseq2
+from pydeseq2.dds import DeseqDataSet
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mValueError[0m                                Traceback (most recent call last)
-[0;32m<ipython-input-2-3006441bc782>[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0mget_ipython[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0mrun_line_magic[0m[0;34m([0m[0;34m'conda'[0m[0;34m,[0m [0;34m'activate pydeseq2'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;32m<ipython-input-1-ce43fdd1789a>[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0;32mfrom[0m [0mpydeseq2[0m[0;34m.[0m[0mdds[0m [0;32mimport[0m [0mDeseqDataSet[0m[0;34m[0m[0;34m[0m[0m
 [0m
-[0;32m~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/IPython/core/interactiveshell.py[0m in [0;36mrun_line_magic[0;34m(self, magic_name, line, _stack_depth)[0m
-[1;32m   2324[0m                 [0mkwargs[0m[0;34m[[0m[0;34m'local_ns'[0m[0;34m][0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mget_local_scope[0m[0;34m([0m[0mstack_depth[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   2325[0m             [0;32mwith[0m [0mself[0m[0;34m.[0m[0mbuiltin_trap[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 2326[0;31m                 [0mresult[0m [0;34m=[0m [0mfn[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   2327[0m             [0;32mreturn[0m [0mresult[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   2328[0m [0;34m[0m[0m
-
-[0;32m<decorator-gen-100>[0m in [0;36mconda[0;34m(self, line)[0m
-
-[0;32m~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/IPython/core/magic.py[0m in [0;36m<lambda>[0;34m(f, *a, **k)[0m
-[1;32m    185[0m     [0;31m# but it's overkill for just that one bit of state.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    186[0m     [0;32mdef[0m [0mmagic_deco[0m[0;34m([0m[0marg[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 187[0;31m         [0mcall[0m [0;34m=[0m [0;32mlambda[0m [0mf[0m[0;34m,[0m [0;34m*[0m[0ma[0m[0;34m,[0m [0;34m**[0m[0mk[0m[0;34m:[0m [0mf[0m[0;34m([0m[0;34m*[0m[0ma[0m[0;34m,[0m [0;34m**[0m[0mk[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    188[0m [0;34m[0m[0m
-[1;32m    189[0m         [0;32mif[0m [0mcallable[0m[0;34m([0m[0marg[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m~/.pyenv/versions/3.8.5/lib/python3.8/site-packages/IPython/core/magics/packaging.py[0m in [0;36mconda[0;34m(self, line)[0m
-[1;32m     77[0m         """
-[1;32m     78[0m         [0;32mif[0m [0;32mnot[0m [0m_is_conda_environment[0m[0;34m([0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 79[0;31m             raise ValueError("The python kernel does not appear to be a conda environment.  "
-[0m[1;32m     80[0m                              "Please use ``%pip install`` instead.")
-[1;32m     81[0m [0;34m[0m[0m
-
-[0;31mValueError[0m: The python kernel does not appear to be a conda environment.  Please use ``%pip install`` instead.
-ValueError: The python kernel does not appear to be a conda environment.  Please use ``%pip install`` instead.
+[0;31mModuleNotFoundError[0m: No module named 'pydeseq2'
+ModuleNotFoundError: No module named 'pydeseq2'
 
