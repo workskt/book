@@ -595,7 +595,7 @@ DNA配列を文字列として扱う際に便利です。</p>
 <h2>条件と一致する部分を抽出する<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">group()</span></code>メソッドを使うことで、文字列の中から条件に一致する部分だけ取得することができます。<br><br></p>
 <p>以下は、<code class="docutils literal notranslate"><span class="pre">pの後に数字</span></code>という文字列が存在した場合、その該当部分を抽出する方法です。<br>
-<code class="docutils literal notranslate"><span class="pre">match()</span></code>を使用する場合は、<code class="docutils literal notranslate"><span class="pre">search()</span></code>で検索する際に<strong>抽出したい部分を( )で囲っておく</strong>必要があります。</p>
+<code class="docutils literal notranslate"><span class="pre">group()</span></code>を使用する場合は、<code class="docutils literal notranslate"><span class="pre">search()</span></code>で検索する際に<strong>抽出したい部分を( )で囲っておく</strong>必要があります。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;(p\d+)&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
