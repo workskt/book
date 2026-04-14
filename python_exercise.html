@@ -350,27 +350,30 @@ document.write(`
 <div class="section" id="id2">
 <h2>演習1<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>以下の遺伝子リストには、Gene symbol, chr, geneID (ensembl ID), gene typeが格納されています。<br>
-<span class="xref myst">遺伝子リスト</span><br></p>
-<p>(1) gene typeがprotein_codingの遺伝子の中に、Gene symbolが同一にも関わらずgeneIDが異なるものが存在します。そのGene symbolを抽出し、そのGene symbolと紐付けられているgeneIDをテキストファイルに出力してください。<br>
+<a class="reference external" href="https://github.com/workskt/book/blob/master/python_exercise1_list.txt">遺伝子リスト</a><br></p>
+<p>(1) gene typeがprotein_codingの遺伝子の中に、Gene symbolが同一にも関わらずgeneIDが異なるものが存在します。<br>
+そのGene symbolを抽出し、そのGene symbolと紐付けられているgeneIDをテキストファイルに出力してください。<br>
 (2) (1)で抽出した遺伝子の中で、X染色体もしくはY染色体にコードされているものを抽出してください。<br>
-(3) <a class="reference external" href="https://asia.ensembl.org/index.html">Ensembl</a>のアノテーション情報(gencode.v46.basic.annotation.gtf)を取得し(<strong>ファイルサイズが大きいので注意</strong>)、(1)で抽出したgeneIDのTranscript Support Level (TSL)を取得し、テキストファイルに出力してください。<br>
+(3) <a class="reference external" href="https://asia.ensembl.org/index.html">Ensembl</a>のアノテーション情報(gencode.v46.basic.annotation.gtf)をダウンロードし(<strong>ファイルサイズが大きいので注意</strong>)、(1)で抽出したgeneIDのTranscript Support Level (TSL)を取得してテキストファイルに出力してください。<br>
 ヒント:TSLは<strong>level</strong>や<strong>transcript_suppoert_level</strong>という表記で記載されています。<br></p>
 <hr class="docutils" />
 </div>
 <div class="section" id="id3">
 <h2>演習2<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>RNA-seqで20,000遺伝子の発現量変化を解析したところ、2,000遺伝子が発現上昇していました。<br>
-GO term XはRNA-seqで解析した20,000遺伝子のうち、100遺伝子が有しています。<br>
-今回の解析で発現上昇した2,000遺伝子のGO termを調べたところ、30遺伝子がGO term Xを有していました。<br>
-この結果が生じる確率(30遺伝子<strong>以上</strong>がGO term Xを有している確率)を超幾何分布を用いて算出するコードを作成してください。</p>
+GO term XXXはRNA-seqで解析した20,000遺伝子のうち、100遺伝子が有しています。<br>
+今回の解析で発現上昇した2,000遺伝子のGO termを調べたところ、30遺伝子がGO term XXXを有していました。<br>
+この結果が生じる確率(30遺伝子<strong>以上</strong>がGO term XXXを有している確率)を超幾何分布を用いて算出するコードを作成してください。</p>
 <hr class="docutils" />
 </div>
 <div class="section" id="id4">
 <h2>演習3<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/">NCBI</a>のDownloadから、ヒトゲノムに関する各種データがダウンロードできます。<br>
-<a class="reference external" href="https://ftp.ncbi.nlm.nih.gov/gene/DATA/">gene/DATA</a>からはGO (Gene Ontology)の情報が取得できます。<br>
-(1) gene2goとgene2refseqをダウンロードし(<strong>ファイルサイズが大きいので注意</strong>)、そこからヒト遺伝子の情報だけ抽出してテキストファイルに出力してください。<br>
-ヒトのTaxnomy IDは<a class="reference external" href="https://www.ncbi.nlm.nih.gov/taxonomy">こちら</a>で調べてください。<br>
+その下層の<a class="reference external" href="https://ftp.ncbi.nlm.nih.gov/gene/DATA/">gene/DATA</a>からはGO (Gene Ontology)に関する情報が取得できます。<br>
+(1) gene2goとgene2refseqをダウンロードしてください(<strong>ファイルサイズが大きいので注意</strong>)。<br>
+gene2goはRefSeqIDとGO termが紐づけられています。また、gene2refseqはgene symbolとRefSeqIDが紐づけられています。<br>
+これらのファイルにはヒト以外の生物種の情報も含まれていますので、それぞれのファイルからヒト遺伝子の情報だけ抽出してテキストファイルに出力してください。<br>
+ヒント:ヒトのTaxnomy IDは<a class="reference external" href="https://www.ncbi.nlm.nih.gov/taxonomy">こちら</a>で調べてください。<br>
 (2) (1)の2つのファイルの出力内容をGene symbolで連結して、各遺伝子が有するGO termをまとめたリストを作成してください。<br></p>
 </div>
 </div>
